@@ -11,11 +11,18 @@ const ItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    category: {
-        type: String,
+    categories: {
+        type: [String],
         required: true,
     },
     description: String,
+    isDigital: Boolean,
+    isPromoted: Boolean,
+    printingSize: {
+        type: String,
+        enum: ['12-inch', '24-inch', '36-inch', '48-inch']
+    },
+    comments: [String],
     ratingCount: {
         type: Number,
         default: 0

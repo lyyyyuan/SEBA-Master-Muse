@@ -10,8 +10,8 @@ const CartSchema = new mongoose.Schema({
     orders: {
         type: [
             {
-                item: {
-                    type: ItemSchema,
+                itemId: {
+                    type: mongoose.SchemaTypes.ObjectId,
                     required: true,
                 },
                 quantity: {
