@@ -35,8 +35,6 @@ const StoreSchema = new mongoose.Schema({
             }
         ]
     }
-}, {
-    _id: false,
 });
 
 StoreSchema.set('versionKey', false);
