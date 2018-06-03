@@ -5,7 +5,7 @@ const bcrypt     = require('bcryptjs');
 
 const config     = require('../config');
 const UserModel  = require('../models/user');
-
+const ItemModel  = require('../models/item');
 
 const login = (req,res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'password')) return res.status(400).json({
@@ -108,10 +108,45 @@ const logout = (req, res) => {
     res.status(200).send({ token: null });
 };
 
+const findItembyName = (req,res)=>{
+    const itemMame=req.params.name;
+    const items=ItemModel.find({name:itemMame});
+    res.status(200).json(items);
 
+}
+
+const findItembyCate = (req,res)=>{
+    const itemCate=req.params.cate;
+    const items=ItemModel.find({
+        'categories.type': {
+        $in:[itemCate]
+        }
+    });
+    res.status(200).json(items);
+}
+
+const openStore= (req,res)=>{
+    const {
+        userId,
+        storeName,
+        storeItems
+    } = req.body;
+    StoreModel.insert({
+            name:storeName,
+            items:storeItems
+        })
+    ItemModel.insert({
+        items
+        }
+    )
+    res.status(200)
+}
 module.exports = {
     login,
     register,
     logout,
-    me
+    me,
+    findItembyCate,
+    findItembyName,
+    openStore
 };
