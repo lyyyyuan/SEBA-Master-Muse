@@ -6,13 +6,20 @@ const UserModel = require('../models/user');
 const getItems = async (req, res) => {
     const {itemIds} = req.query;
 
-    const items = await ItemModel.find({
-        _id: {
-            $in: itemIds
-        }
-    });
+    if(!!itemIds) {
 
-    res.status(200).json(items);
+        const items = await ItemModel.find({
+            _id: {
+                $in: itemIds
+            }
+        });
+        
+        res.status(200).json(items);
+    } else {
+        res.status(404).json({
+            message: "item id required"
+        })
+    }
 }
 
 const addItem = async (req, res) => {
