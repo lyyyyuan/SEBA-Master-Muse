@@ -10,7 +10,7 @@ const auth  = require('./routes/auth');
 const movie = require('./routes/movie');
 const cart = require('./routes/cart');
 const store = require('./routes/store');
-
+const item = require('./routes/item');
 
 const api = express();
 
@@ -34,6 +34,7 @@ api.use('/auth'  , auth);
 api.use('/movies', movie);
 api.use('/cart', cart);
 api.use('/store', store);
+api.use('/item', item);
 
 
 
