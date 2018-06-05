@@ -108,17 +108,17 @@ const logout = (req, res) => {
 };
 
 const findItemsByName = (req,res)=>{
-    const itemName=req.params.name;
-    const items=ItemModel.find({name:/itemName/});
+    const name=req.params.name;
+    const items=ItemModel.find({name:/name/});
     res.status(200).json(items);
 
 }
 
 const findItemsByCategory = (req,res)=>{
-    const itemCate=req.params.cate;
+    const category=req.params.category;
     const items=ItemModel.find({
         'categories.type': {
-        $in:[itemCate]
+        $in:[category]
         }
     });
     res.status(200).json(items);
@@ -135,10 +135,10 @@ const filterItems  = (req,res)=> {
     } = req.body;
     const items = ItemModel.find({
         'price': {$gt: priceFloor, $lt: priceCeiling},
-        'category.type': {
+        'categories.type': {
             $in: [subject,medium,artStyle]
         },
-        'rating': rating,
+        'totalRating': rating,
 
     });
     res.status(200).json(items);
