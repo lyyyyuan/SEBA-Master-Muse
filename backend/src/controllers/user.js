@@ -2,7 +2,6 @@
 
 const jwt        = require('jsonwebtoken');
 const bcrypt     = require('bcryptjs');
-
 const config     = require('../config');
 const UserModel  = require('../models/user');
 const ItemModel  = require('../models/item');
@@ -108,14 +107,14 @@ const logout = (req, res) => {
     res.status(200).send({ token: null });
 };
 
-const findItembyName = (req,res)=>{
-    const itemMame=req.params.name;
-    const items=ItemModel.find({name:itemMame});
+const findItemsByName = (req,res)=>{
+    const itemName=req.params.name;
+    const items=ItemModel.find({name:/itemName/});
     res.status(200).json(items);
 
 }
 
-const findItembyCate = (req,res)=>{
+const findItemsByCategory = (req,res)=>{
     const itemCate=req.params.cate;
     const items=ItemModel.find({
         'categories.type': {
@@ -125,28 +124,32 @@ const findItembyCate = (req,res)=>{
     res.status(200).json(items);
 }
 
-const openStore= (req,res)=>{
+const filterItems  = (req,res)=> {
     const {
-        userId,
-        storeName,
-        storeItems
+        subject,
+        priceFloor,
+        priceCeiling,
+        rating,
+        medium,
+        artStyle
     } = req.body;
-    StoreModel.insert({
-            name:storeName,
-            items:storeItems
-        })
-    ItemModel.insert({
-        items
-        }
-    )
-    res.status(200)
+    const items = ItemModel.find({
+        'price': {$gt: priceFloor, $lt: priceCeiling},
+        'category.type': {
+            $in: [subject,medium,artStyle]
+        },
+        'rating': rating,
+
+    });
+    res.status(200).json(items);
 }
+
 module.exports = {
     login,
     register,
     logout,
     me,
-    findItembyCate,
-    findItembyName,
-    openStore
+    findItemsByName,
+    findItemsByCategory,
+    filterItems
 };
