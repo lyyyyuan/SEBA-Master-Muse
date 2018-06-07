@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Page from '../components/Page'
 
 export class MainPageView extends React.Component {
     constructor(props) {
@@ -13,11 +12,9 @@ export class MainPageView extends React.Component {
     render() {
         return (
             <div>
-                <Header
-                    title='MUSE'
-                />
+                <Page>
                 <h3>Main Page Placeholder</h3>
-                <Footer />
+                </Page>
             </div>
         )
     }
