@@ -37,7 +37,7 @@ class Header extends React.Component {
                     colored
                     nav={<Button onClick={() => this.setState({ drawerVisible: !this.state.drawerVisible })} icon>menu</Button>}
                     title={this.props.title}
-                    actions={<KebabMenu id="toolbar-colored-kebab-menu" />}>
+                    actions={<Button flat primary>Login</Button>}>
                 </Toolbar>
             </div>
         );
