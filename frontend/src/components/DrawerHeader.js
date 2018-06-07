@@ -26,36 +26,40 @@ class DrawerHeader extends Component {
         if (this.state.isLoggedIn) {
 
             const user = UserService.getCurrentUser();
-            
+
             return (
-                <Toolbar
-                    nav={<Button
-                        flat
-                        primary
-                        iconEl={<FontIcon iconClassName='fa fa-user'></FontIcon>}
-                        style={{
-                            width: '100%',
-                        }}
-                    >
-                        {user.username}
-                           </Button>}
-                    className="md-divider-border md-divider-border--bottom"
-                />
+                <div>
+                    
+                    <Toolbar
+                        nav={<Avatar src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg' role="presentation" />}
+                        title={user.username}
+                        className="md-divider-border md-divider-border--bottom"
+                    />
+                </div>
             );
         } else {
             return (
                 <Toolbar
-                    nav={<Button
-                        flat
-                        iconEl={<FontIcon iconClassName='fa fa-user'></FontIcon>}
-                        style={{
-                            width: '100%',
-                            color: 'grey'
-                        }}
-                        onClick={this.toLogin}
-                    >
-                        Sign In Here
-                           </Button>}
+                    nav={
+                        <Button
+                            icon
+                            disabled
+                            iconClassName='fa fa-user'
+                            style={{
+                                color: 'grey'
+                            }}
+                            
+                        />
+                    }
+                    actions={
+                        <Button
+                            flat
+                            primary
+                            onClick={this.toLogin}
+                        >
+                            Please Sign In
+                            </Button>
+                    }
                     className="md-divider-border md-divider-border--bottom"
                 />
             )

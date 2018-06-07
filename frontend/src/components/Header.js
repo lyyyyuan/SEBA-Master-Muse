@@ -1,9 +1,9 @@
 "use strict";
 
 import React from 'react';
-import { Toolbar, Button, Drawer } from 'react-md';
+import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
-import DrawerHeader from './DrawerHeader';
+import CustomDrawer from './CustomDrawer';
 import UserService from '../services/UserService';
 
 
@@ -26,9 +26,6 @@ class Header extends React.Component {
         }
     }
 
-    handleVisibility = (drawerVisible) => {
-        this.setState({ drawerVisible });
-    };
 
     toHome = () => {
         this.props.history.push('/');
@@ -43,20 +40,18 @@ class Header extends React.Component {
         location.reload();
     }
 
+    toggleDrawer = () => this.setState({ drawerVisible: !this.state.drawerVisible });
+
     render() {
         return (
             <div>
-                <Drawer
-                    id='drawer'
-                    type={Drawer.DrawerTypes.TEMPORARY}
-                    visible={this.state.drawerVisible}
-                    position='left'
-                    onVisibilityChange={this.handleVisibility}
-                    header={<DrawerHeader history={this.props.history} />}
+                <CustomDrawer 
+                visibility={this.state.drawerVisible}
+                onVisibilityChange={this.toggleDrawer}
                 />
                 <Toolbar
                     colored
-                    nav={<Button onClick={() => this.setState({ drawerVisible: !this.state.drawerVisible })} icon>menu</Button>}
+                    nav={<Button onClick={this.toggleDrawer} icon>menu</Button>}
                     children={
                         <Button
                             flat 
