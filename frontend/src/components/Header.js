@@ -48,6 +48,7 @@ class Header extends React.Component {
                 <CustomDrawer 
                 visibility={this.state.drawerVisible}
                 onVisibilityChange={this.toggleDrawer}
+                history={this.props.history}
                 />
                 <Toolbar
                     colored
