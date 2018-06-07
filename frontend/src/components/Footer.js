@@ -20,7 +20,7 @@ class PlainFooter extends React.Component {
     }
 }
 
-export const Footer = Styled(PlainFooter)`
+const Footer = Styled(PlainFooter)`
     max-height: 35px;
     bottom: 0;
     left: 0;
@@ -32,3 +32,5 @@ export const Footer = Styled(PlainFooter)`
         margin-top: 4px;
     }
 `;
+
+export default Footer;
