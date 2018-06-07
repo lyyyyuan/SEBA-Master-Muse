@@ -4,16 +4,18 @@ const ItemModel = require('../models/item');
 const UserModel = require('../models/user');
 
 const getItems = async (req, res) => {
-    const {itemIds} = req.query;
+    const {
+        itemIds
+    } = req.query;
 
-    if(!!itemIds) {
+    if (!!itemIds) {
 
         const items = await ItemModel.find({
             _id: {
                 $in: itemIds
             }
         });
-        
+
         res.status(200).json(items);
     } else {
         res.status(404).json({
@@ -48,11 +50,13 @@ const removeItem = async (req, res) => {
     } = req.body;
 
     const item = await ItemModel.findByIdAndRemove(itemId);
-    
+
     if (!!item) {
         const user = await UserModel.findById(userId);
-        
-        user.store.items = user.store.items.filter((item) => {item.itemId !== itemId});
+
+        user.store.items = user.store.items.filter((item) => {
+            item.itemId !== itemId
+        });
         user.save();
         res.status(200).json(user.store);
     } else {
@@ -60,7 +64,7 @@ const removeItem = async (req, res) => {
             message: "item not found"
         })
     }
-    
+
 }
 
 const updateItem = async (req, res) => {
@@ -73,7 +77,7 @@ const updateItem = async (req, res) => {
 
     const user = await UserModel.findById(userId);
     const targetItems = user.store.items.filter(item => item.itemId == itemId);
-    
+
     if (targetItems.length === 0) {
         res.status(404).json({
             message: 'Item not found'
