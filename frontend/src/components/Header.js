@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import KebabMenu from './KebabMenu';
 
 
-class Header extends React.Component {
+export class Header extends React.Component {
 
     constructor(props) {
         super(props);
@@ -43,5 +43,3 @@ class Header extends React.Component {
         );
     }
 };
-
-export default withRouter(Header);
