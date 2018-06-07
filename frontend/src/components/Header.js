@@ -4,8 +4,7 @@ import React from 'react';
 import { Toolbar, Button, Drawer } from 'react-md';
 import { withRouter } from 'react-router-dom'
 
-
-import KebabMenu from './KebabMenu';
+import UserService from '../services/UserService';
 
 
 class Header extends React.Component {
@@ -14,7 +13,16 @@ class Header extends React.Component {
         super(props);
 
         this.state = {
-            drawerVisible: false
+            drawerVisible: false,
+            actionComponent: <Button flat primary onClick={this.toLogin}>Login</Button>
+        }
+    }
+
+    componentDidMount() {
+        if (UserService.isAuthenticated()) {
+            this.setState({
+                actionComponent: <Button flat primary onClick={this.logout}>Logout</Button>
+            })
         }
     }
 
@@ -22,7 +30,19 @@ class Header extends React.Component {
         this.setState({ drawerVisible });
     };
 
- 
+    toHome = () => {
+        this.props.history.push('/');
+    }
+
+    toLogin = () => {
+        this.props.history.push('/login');
+    }
+
+    logout = () => {
+        UserService.logout();
+        location.reload();
+    }
+
     render() {
         return (
             <div>
@@ -37,8 +57,17 @@ class Header extends React.Component {
                 <Toolbar
                     colored
                     nav={<Button onClick={() => this.setState({ drawerVisible: !this.state.drawerVisible })} icon>menu</Button>}
-                    title={this.props.title}
-                    actions={<Button flat primary>Login</Button>}>
+                    children={
+                        <Button
+                            flat 
+                            onClick={this.toHome}
+                            style={{
+                                fontSize: '25px',
+                                padding: '0'
+                            }}
+                        >{this.props.title}</Button>
+                    }
+                    actions={this.state.actionComponent}>
                 </Toolbar>
             </div>
         );

@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Header from './Header';
-import { Footer } from './Footer';
+import Footer from './Footer';
 
 
 export default class Page extends React.Component {
@@ -16,10 +16,10 @@ export default class Page extends React.Component {
         }
     }
 
-    componentDidMount(){
-       this.setState({
-           title: document.title
-       });
+    componentDidMount() {
+        this.setState({
+            title: document.title
+        });
     }
 
     render() {
