@@ -3,7 +3,7 @@
 import React from 'react';
 import { Toolbar, Button, Drawer } from 'react-md';
 import { withRouter } from 'react-router-dom'
-
+import DrawerHeader from './DrawerHeader';
 import UserService from '../services/UserService';
 
 
@@ -52,7 +52,7 @@ class Header extends React.Component {
                     visible={this.state.drawerVisible}
                     position='left'
                     onVisibilityChange={this.handleVisibility}
-
+                    header={<DrawerHeader history={this.props.history} />}
                 />
                 <Toolbar
                     colored
