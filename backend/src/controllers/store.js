@@ -73,61 +73,12 @@ const listItems = async (req, res) => {
     res.status(200).json(user.store.items);
 }
 
-const addItem = async (req, res) => {
-    const {
-        userId,
-        itemInfo,
-        stock
-    } = req.body;
 
-    const user = await UserModel.findById(userId);
-    const item = new ItemModel(itemInfo);
-
-    user.store.items.push({
-        item,
-        stock
-    });
-    user.save();
-
-    res.status(200).json(user.store);
-}
-
-const removeItem = async (req, res) => {
-    const {
-        userId,
-        itemId
-    } = req.body;
-
-    const user = await UserModel.findById(userId);
-    user.store.items.id(itemId).remove();
-    user.save();
-
-    res.status(200).json(user.store);
-}
-
-const updateItem = async (req, res) => {
-    const {
-        userId,
-        itemId,
-        itemInfo,
-        stock
-    } = req.body;
-
-    const user = await UserModel.findById(userId);
-    Object.assign(user.store.items.id(itemId).item, itemInfo);
-    Object.assign(user.store.items.id(itemId), {stock});
-    user.save();
-
-    res.status(200).json(user.store);
-}
 
 module.exports = {
     changeName,
     visit,
     addRevenue,
     rate,
-    addItem,
-    removeItem,
-    updateItem,
     listItems,
 };

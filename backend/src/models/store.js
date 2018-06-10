@@ -30,10 +30,11 @@ const StoreSchema = new mongoose.Schema({
     items: {
         type: [
             {
-                item: ItemSchema,
+                itemId: mongoose.SchemaTypes.ObjectId,
                 stock: Number,
+                _id: false
             }
-        ]
+        ],
     }
 });
 

@@ -4,11 +4,8 @@ const mongoose = require('mongoose');
 
 const Item = require('./item');
 const Store = require('./store');
-const Cart = require('./cart');
 
-const ItemSchema = Item.schema;
 const StoreSchema = Store.schema;
-const CartSchema = Cart.schema;
 
 // Define the user schema
 const UserSchema = new mongoose.Schema({
@@ -25,17 +22,13 @@ const UserSchema = new mongoose.Schema({
     gender: {
         type: String,
         enum: ['m', 'f'],
-        required: true,
+        // required: true,
     },
     age: Number,
     address: String,
     store: {
         type: StoreSchema,
         default: StoreSchema,
-    },
-    cart: {
-        type: CartSchema,
-        default: CartSchema,
     }
 });
 
