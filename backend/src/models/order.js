@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const mongoose = require('mongoose');
 
@@ -19,8 +19,8 @@ const OrderSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ['inCart', 'Paid', 'Delivered'],
-        default: 'inCart'
-    }
+        default: 'inCart',
+    },
 });
 
 OrderSchema.set('versionKey', false);
