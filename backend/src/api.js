@@ -6,7 +6,7 @@ const helmet     = require('helmet');
 
 const middlewares = require('./middlewares');
 
-const auth  = require('./routes/auth');
+const user  = require('./routes/user');
 const movie = require('./routes/movie');
 const cart = require('./routes/cart');
 const store = require('./routes/store');
@@ -30,7 +30,7 @@ api.get('/', (req, res) => {
 });
 
 // API routes
-api.use('/auth'  , auth);
+api.use('/user'  , user);
 api.use('/movies', movie);
 api.use('/cart', cart);
 api.use('/store', store);
