@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const mongoose = require('mongoose');
 
@@ -21,17 +21,17 @@ const ItemSchema = new mongoose.Schema({
     isPromoted: Boolean,
     printingSize: {
         type: String,
-        enum: ['12-inch', '24-inch', '36-inch', '48-inch']
+        enum: ['12-inch', '24-inch', '36-inch', '48-inch'],
     },
     comments: [String],
     ratingCount: {
         type: Number,
-        default: 0
+        default: 0,
     },
     totalRating: {
         type: Number,
-        default: 0
-    }
+        default: 0,
+    },
 });
 
 ItemSchema.set('versionKey', false);

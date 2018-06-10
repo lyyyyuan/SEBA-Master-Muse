@@ -2,7 +2,6 @@
 
 const mongoose = require('mongoose');
 
-const Item = require('./item');
 const Store = require('./store');
 
 const StoreSchema = Store.schema;
@@ -29,7 +28,7 @@ const UserSchema = new mongoose.Schema({
     store: {
         type: StoreSchema,
         default: StoreSchema,
-    }
+    },
 });
 
 UserSchema.set('versionKey', false);

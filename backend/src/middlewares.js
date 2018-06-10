@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const jwt    = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-const config = require ('./config');
+const config = require('./config');
 
 const allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -12,49 +12,48 @@ const allowCrossDomain = (req, res, next) => {
     // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
         res.status(200).send(200);
-    }
-    else {
+    } else {
         next();
     }
 };
 
 const checkAuthentication = (req, res, next) => {
-
     // check header or url parameters or post parameters for token
     const token = req.headers['x-access-token'];
 
-    if (!token)
-        return res.status(401).send({
+    if (!token) {
+return res.status(401).send({
             error: 'Unauthorized',
-            message: 'No token provided in the request'
+            message: 'No token provided in the request',
         });
+}
 
     // verifies secret and checks exp
     jwt.verify(token, config.JwtSecret, (err, decoded) => {
-        if (err) return res.status(401).send({
+        if (err) {
+return res.status(401).send({
             error: 'Unauthorized',
-            message: 'Failed to authenticate token.'
+            message: 'Failed to authenticate token.',
         });
+}
 
         // if everything is good, save to request for use in other routes
         req.userId = decoded.id;
         next();
     });
-
-
 };
 
 const errorHandler = (err, req, res, next) => {
     if (res.headersSent) {
-        return next(err)
+        return next(err);
     }
     res.status(500);
-    res.render('error', { error: err })
+    res.render('error', {error: err});
 };
 
 
 module.exports = {
     allowCrossDomain,
     checkAuthentication,
-    errorHandler
+    errorHandler,
 };

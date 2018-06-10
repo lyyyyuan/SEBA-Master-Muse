@@ -1,27 +1,27 @@
-"use strict";
+'use strict';
 
 const mongoose = require('mongoose');
 
 // Define the movie schema
 
-const MovieSchema  = new mongoose.Schema({
+const MovieSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
     },
     synopsis: String,
     runtime: Number,
     mpaa_rating: String,
     year: {
         type: Number,
-        required: true
+        required: true,
     },
     posters: {
             thumbnail: String,
             profile: String,
             detailed: String,
-            original: String
-        }
+            original: String,
+        },
 });
 
 MovieSchema.set('versionKey', false);
