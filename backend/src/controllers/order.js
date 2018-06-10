@@ -23,7 +23,7 @@ const removeItemFromCart = async (req, res) => {
 }
 
 const listCart = async (req, res) => {
-    const { buyerId } = req.body;
+    const { buyerId } = req.query;
     const orders = await OrderModel.find({
         buyerId,
         status: 'inCart'
@@ -33,7 +33,7 @@ const listCart = async (req, res) => {
 }
 
 const listOrderHistory = async (req, res) => {
-    const { buyerId } = req.body;
+    const { buyerId } = req.query;
     const orders = await OrderModel.find({
         buyerId,
     });

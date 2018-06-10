@@ -8,9 +8,9 @@ const middlewares = require('./middlewares');
 
 const auth  = require('./routes/auth');
 const movie = require('./routes/movie');
-const cart = require('./routes/cart');
 const store = require('./routes/store');
 const item = require('./routes/item');
+const order = require('./routes/order');
 
 const api = express();
 
@@ -32,10 +32,9 @@ api.get('/', (req, res) => {
 // API routes
 api.use('/auth'  , auth);
 api.use('/movies', movie);
-api.use('/cart', cart);
 api.use('/store', store);
 api.use('/item', item);
-
+api.use('/order', order);
 
 
 
