@@ -19,6 +19,7 @@ const ItemSchema = new mongoose.Schema({
     thumbnail: String,
     isDigital: Boolean,
     isPromoted: Boolean,
+    promotionEndDate: Date,
     printingSize: {
         type: String,
         enum: ['12-inch', '24-inch', '36-inch', '48-inch'],
