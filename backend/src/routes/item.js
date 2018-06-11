@@ -5,9 +5,10 @@ const router = express.Router();
 
 const ItemController = require('../controllers/item');
 
-router.get('/', ItemController.getItems);
+router.get('/:id', ItemController.getItems);
 router.delete('/', ItemController.removeItem);
 router.post('/', ItemController.addItem);
 router.put('/', ItemController.updateItem);
+router.get('/', ItemController.findItems);
 
 module.exports = router;

@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('../config');
 const UserModel = require('../models/user');
-const ItemModel = require('../models/item');
 
 const login = (req, res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'password')) {
@@ -108,28 +107,10 @@ const logout = (req, res) => {
     res.status(200).send({token: null});
 };
 
-const findItemsByName = (req, res) => {
-    const name = req.query.name;
-    const nameRegex = new RegExp(name, 'g');
-    const items = ItemModel.find({name: nameRegex});
-    res.status(200).json(items);
-};
-
-const findItemsByCategory = (req, res) => {
-    const category = req.params.category;
-    const items = ItemModel.find({
-        'categories.type': {
-            $in: [category],
-        },
-    });
-    res.status(200).json(items);
-};
 
 module.exports = {
     login,
     register,
     logout,
     me,
-    findItemsByName,
-    findItemsByCategory,
 };

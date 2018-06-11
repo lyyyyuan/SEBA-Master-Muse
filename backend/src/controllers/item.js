@@ -6,7 +6,7 @@ const UserModel = require('../models/user');
 const getItems = async (req, res) => {
     const {
         itemIds,
-    } = req.query;
+    } = req.params;
 
     if (!!itemIds) {
         const items = await ItemModel.find({
@@ -89,9 +89,33 @@ const updateItem = async (req, res) => {
     }
 };
 
+const findItems = async (req, res) => {
+    const {names, categories} = req.params;
+    const promises = names.map((name) => findItemsByName(name));
+    let items = await Promise.all(promises);
+    items = items.concat(await findItemsByCategories(categories));
+    res.status(200).json(items);
+};
+
+const findItemsByName = async (name) => {
+    const nameRegex = new RegExp(name, 'g');
+    const items = await ItemModel.find({name: nameRegex});
+    return items;
+};
+
+const findItemsByCategories = async (categories) => {
+    const items = await ItemModel.find({
+        'categories.type': {
+            $in: categories,
+        },
+    });
+    return items;
+};
+
 module.exports = {
     getItems,
     removeItem,
     updateItem,
     addItem,
+    findItems,
 };
