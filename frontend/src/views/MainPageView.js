@@ -14,7 +14,11 @@ export class MainPageView extends React.Component {
         return (
             <div>
                 <Page>
-                    <Carousel>
+                    <Carousel
+                        autoplay={true}
+                        cellAlign='center'
+                        wrapAround={true}
+                    >
                         <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide1" />
                         <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide2" />
                         <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide3" />
