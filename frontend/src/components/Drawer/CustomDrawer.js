@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Drawer, FontIcon, List, ListItem, Avatar, Divider } from 'react-md';
-import DrawerHeader from './DrawerHeader';
+import DrawerHeader from '../Drawer/DrawerHeader';
 
 
 class CustomDrawer extends Component {

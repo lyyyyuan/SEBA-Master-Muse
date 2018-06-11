@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Page from '../components/Page'
+import Page from '../components/Common/Page'
 
 export class MainPageView extends React.Component {
     constructor(props) {

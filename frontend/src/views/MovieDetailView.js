@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { MovieDetail } from '../components/MovieDetail';
+import { MovieDetail } from '../components/Movie/MovieDetail';
 
 import MovieService from '../services/MovieService';
 

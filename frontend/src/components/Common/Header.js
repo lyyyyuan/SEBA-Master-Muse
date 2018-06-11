@@ -3,8 +3,8 @@
 import React from 'react';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
-import CustomDrawer from './CustomDrawer';
-import UserService from '../services/UserService';
+import CustomDrawer from '../Drawer/CustomDrawer';
+import UserService from '../../services/UserService';
 
 
 class Header extends React.Component {

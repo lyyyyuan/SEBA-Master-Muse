@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Avatar, FontIcon, Toolbar, Button } from 'react-md';
-import UserService from '../services/UserService';
+import UserService from '../../services/UserService';
 
 
 class DrawerHeader extends Component {
