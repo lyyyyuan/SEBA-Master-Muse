@@ -1,13 +1,14 @@
 "use strict";
 
 import React from 'react';
+import Styled from 'styled-components';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
 import CustomDrawer from '../Drawer/CustomDrawer';
 import UserService from '../../services/UserService';
 import SearchBar from "../SearchBar/SearchBar";
 
-class Header extends React.Component {
+class PlainHeader extends React.Component {
 
     constructor(props) {
         super(props);
@@ -77,5 +78,12 @@ class Header extends React.Component {
         );
     }
 };
+
+const Header = Styled(PlainHeader)`
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+`;
 
 export default withRouter(Header);
