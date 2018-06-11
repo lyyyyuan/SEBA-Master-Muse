@@ -5,7 +5,7 @@ import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
 import CustomDrawer from '../Drawer/CustomDrawer';
 import UserService from '../../services/UserService';
-
+import SearchBar from "../SearchBar/SearchBar";
 
 class Header extends React.Component {
 
@@ -45,23 +45,31 @@ class Header extends React.Component {
     render() {
         return (
             <div>
-                <CustomDrawer 
-                visibility={this.state.drawerVisible}
-                onVisibilityChange={this.toggleDrawer}
-                history={this.props.history}
+                <CustomDrawer
+                    visibility={this.state.drawerVisible}
+                    onVisibilityChange={this.toggleDrawer}
+                    history={this.props.history}
                 />
                 <Toolbar
                     colored
                     nav={<Button onClick={this.toggleDrawer} icon>menu</Button>}
                     children={
-                        <Button
-                            flat 
-                            onClick={this.toHome}
-                            style={{
-                                fontSize: '25px',
-                                padding: '0'
-                            }}
-                        >{this.props.title}</Button>
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            width: '100%'
+                        }}>
+                            <Button
+                                flat
+                                onClick={this.toHome}
+                                style={{
+                                    fontSize: '25px',
+                                    padding: '0'
+                                }}
+                            >{this.props.title}</Button>
+
+                            <SearchBar />
+                        </div>
                     }
                     actions={this.state.actionComponent}>
                 </Toolbar>
