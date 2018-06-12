@@ -30,11 +30,12 @@ class ProductCard extends Component {
                     <Media
                         onMouseEnter={this.onMouseEnter}
                         onMouseLeave={this.onMouseLeave}
+                        aspectRatio='1-1'
                     >
                         <img src={this.props.productImage} alt="Nature from lorempixel" style={{
                             objectFit: 'cover',
                             width: '100%',
-                            height: '300px'
+                            height: '100%'
                         }} />
                         {
                             this.state.isMouseHover &&

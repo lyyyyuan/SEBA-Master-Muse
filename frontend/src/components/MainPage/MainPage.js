@@ -10,7 +10,7 @@ import Images from '../../Data/images';
 class MainPage extends Component {
     componentWillMount() {
         this.setState({
-            data: Items,
+            data: [...Items, ...Items],
             images: Images,
         })
     }
@@ -20,7 +20,8 @@ class MainPage extends Component {
             <div>
                 <Page>
                     <div style={{
-                        marginTop: '64px'
+                        marginTop: '64px',
+                        marginBottom: '24px'
                     }}>
                         <Carousel
                             autoplay={true}
@@ -35,12 +36,11 @@ class MainPage extends Component {
 
                         </Carousel>
                     </div>
-
+                    <h3>Featured Art</h3>
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(5, 1fr)',
-                        gridGap: '10px',
-                        marginTop: '24px',
+                        gridGap: '10px'
                     }}>
                         {this.state.data.map((data, index) => <ProductCard {...data} key={index} />)}
                     </div>
