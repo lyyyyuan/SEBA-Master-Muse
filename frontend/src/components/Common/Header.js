@@ -1,14 +1,13 @@
 "use strict";
 
 import React from 'react';
-import Styled from 'styled-components';
 import { Toolbar, Button } from 'react-md';
 import { withRouter } from 'react-router-dom'
 import CustomDrawer from '../Drawer/CustomDrawer';
 import UserService from '../../services/UserService';
 import SearchBar from "../SearchBar/SearchBar";
 
-class PlainHeader extends React.Component {
+class Header extends React.Component {
 
     constructor(props) {
         super(props);
@@ -45,7 +44,13 @@ class PlainHeader extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                right: '0',
+                zIndex: 9999
+            }}>
                 <CustomDrawer
                     visibility={this.state.drawerVisible}
                     onVisibilityChange={this.toggleDrawer}
@@ -60,7 +65,7 @@ class PlainHeader extends React.Component {
                             flexDirection: 'row',
                             width: '100%'
                         }}>
-                            <Button
+                        <Button
                                 flat
                                 onClick={this.toHome}
                                 style={{
@@ -78,12 +83,5 @@ class PlainHeader extends React.Component {
         );
     }
 };
-
-const Header = Styled(PlainHeader)`
-    position:fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-`;
 
 export default withRouter(Header);

@@ -24,11 +24,17 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <section>
+            <div>
                 <Header title={this.state.title} />
-                {this.props.children}
+                <div style={{
+                    overflowY: 'auto',
+                    overflowX: 'hidden',
+                }}>
+
+                    {this.props.children}
+                </div>
                 <Footer />
-            </section>
+            </div>
         );
     }
 }
