@@ -1,0 +1,14 @@
+.header {
+    color: #ff4411;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+
+.display-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}

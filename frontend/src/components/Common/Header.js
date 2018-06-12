@@ -70,6 +70,7 @@ class Header extends React.Component {
                                 onClick={this.toHome}
                                 style={{
                                     fontSize: '25px',
+                                    fontFamily: 'Merienda One',
                                     padding: '0'
                                 }}
                             >{this.props.title}</Button>
