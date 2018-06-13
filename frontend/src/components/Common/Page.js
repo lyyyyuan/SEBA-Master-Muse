@@ -29,6 +29,8 @@ export default class Page extends React.Component {
                 <div style={{
                     overflowY: 'auto',
                     overflowX: 'hidden',
+                    marginTop: '80px',
+                    marginBottom: '40px'
                 }}>
 
                     {this.props.children}

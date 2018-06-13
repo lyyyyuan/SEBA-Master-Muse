@@ -10,6 +10,8 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { MainPageView } from './views/MainPageView';
 
+import SearchPageView from "./views/SearchPageView";
+
 import UserService from "./services/UserService";
 
 
@@ -44,7 +46,8 @@ export default class App extends React.Component {
                     }, path: '/add',
                 },
                 { component: UserLoginView, path: '/login' },
-                { component: UserSignupView, path: '/register' }
+                { component: UserSignupView, path: '/register' },
+                { component: SearchPageView, path: '/search' }
             ]
         };
     }

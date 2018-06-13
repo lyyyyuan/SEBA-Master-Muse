@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../Common/Page'
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard from "../ProductCard/FrontPageProductCard";
 import Items from '../../Data/mockItem';
 import Images from '../../Data/images';
 import MyCarousel from '../CustomCarousel/MyCarousel';
@@ -20,7 +20,6 @@ class MainPage extends Component {
             <div>
                 <Page>
                     <div style={{
-                        marginTop: '64px',
                         marginBottom: '24px'
                     }}>
                         <MyCarousel images={this.state.images} />

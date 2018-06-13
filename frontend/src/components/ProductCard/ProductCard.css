@@ -1,0 +1,15 @@
+.card-div {
+    max-width: 500px;
+}
+
+.card-title {
+    background-color: #f44336;
+}
+
+.card-title h2 {
+    color: white;
+}
+
+.card-title h3 {
+    color: white;
+}
