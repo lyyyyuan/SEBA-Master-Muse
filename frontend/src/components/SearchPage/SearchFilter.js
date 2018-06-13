@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Checkbox, Divider} from 'react-md';
+import { Checkbox, Divider, Slider} from 'react-md';
 import './SearchFilter.css'
 
 const categories = {
@@ -7,6 +7,8 @@ const categories = {
     Medium: ['oil', 'acrylic', 'Pastel'],
     "Art Style": ['classical', 'abstract', 'western']
 }
+const minValue = 10;
+const maxValue = 1000;
 
 
 class SearchFilter extends Component {
@@ -41,6 +43,11 @@ class SearchFilter extends Component {
         return (
             <div className='filter-container'>
                 {this.renderCheckboxes(categories)}
+                <h3 className='filter-header'>Minimum Price</h3>
+                <Slider editable defaultValue={minValue} min={minValue} max={maxValue} id="continuous-plain-slider" />
+                <Divider />
+                <h3 className='filter-header'>Maximum Price</h3>
+                <Slider defaultValue={maxValue} min={minValue} max={maxValue} editable id="continuous-plain-slider" />
             </div>
         );
     }

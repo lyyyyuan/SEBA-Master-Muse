@@ -26,7 +26,7 @@ class SearchPage extends Component {
             <Page>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '20vh auto',
+                    gridTemplateColumns: 'auto 1fr',
                     gridGap: '10px'
                 }}>
                     <div style={{
@@ -34,13 +34,10 @@ class SearchPage extends Component {
                         position: 'relative'
                     }}>
                         <div style={{
-                            position: 'absolute',
-                            top: '0',
-                            right: '5px',
-                            width: '100%',
                             display: 'flex',
                             flexDirection: 'row-reverse',
-                            paddingRight: '10px'
+                            paddingRight: '10px',
+                            paddingLeft: '10px'
                         }}>
                             <SearchFilter />
                         </div>
