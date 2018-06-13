@@ -26,16 +26,21 @@ class SearchPage extends Component {
             <Page>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: '40vh auto',
-                    gridGap: '50px'
+                    gridTemplateColumns: '20vh auto',
+                    gridGap: '10px'
                 }}>
                     <div style={{
                         borderRight: '3px solid grey',
                         position: 'relative'
                     }}>
                         <div style={{
-                            position: 'fixed',
-                            top: '50%',
+                            position: 'absolute',
+                            top: '0',
+                            right: '5px',
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'row-reverse',
+                            paddingRight: '10px'
                         }}>
                             <SearchFilter />
                         </div>
