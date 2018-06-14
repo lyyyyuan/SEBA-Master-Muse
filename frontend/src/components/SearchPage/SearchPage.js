@@ -5,7 +5,8 @@ import SearchFilter from './SearchFilter';
 
 import Images from "../../Data/images";
 
-const testCard = <AvatarProductCard
+const testCard = (key) => <AvatarProductCard
+    key={key}
     avatar='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg'
     img={Images[0]}
     rating='3.5'
@@ -18,7 +19,7 @@ const testCard = <AvatarProductCard
 class SearchPage extends Component {
     constructor(props) {
         super(props);
-        this.testCards = Array.from(Array(8)).map(i => testCard);
+        this.testCards = Array.from(Array(8)).map((_, i) => testCard(i));
     }
 
     render() {

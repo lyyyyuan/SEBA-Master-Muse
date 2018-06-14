@@ -33,7 +33,7 @@ class SearchFilter extends Component {
                     value={subcategory}
                 />)
             }
-            rendered.push(<Divider />)
+            rendered.push(<Divider key={key++} />)
         }
 
         return rendered;
