@@ -44,7 +44,7 @@ class SearchPage extends Component {
                     </div>
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
+                        gridTemplateColumns: 'repeat(5, 1fr)',
                         gridGap: '10px',
                     }}>
                         {this.testCards}

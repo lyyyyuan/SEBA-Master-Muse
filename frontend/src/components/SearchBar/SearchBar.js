@@ -5,6 +5,33 @@ class SearchBar extends Component {
     // placeholder
     data = ['abc', 'bcd'];
 
+    componentWillMount = () => {
+        this.setState({
+            searchKeyword: ''
+        })
+    }
+
+    onComplete = (suggestion, suggestionIndex, matches) => {
+        this.search(suggestion);
+    }
+
+    onKeydown = (event) => {
+        if (event.nativeEvent.key === 'Enter') {
+            this.search(this.state.searchKeyword);
+        }
+    }
+
+    onChange = (value, event) => {
+        this.setState({
+            searchKeyword: value
+        })
+    }
+
+    search = (keyword) => {
+        console.log(keyword);
+        
+    }
+
     render() {
         return (
             <div style={{
@@ -24,6 +51,9 @@ class SearchBar extends Component {
                     placeholder='Search Here'
                     data={this.data}
                     filter={Autocomplete.caseInsensitiveFilter}
+                    onAutocomplete={this.onComplete}
+                    onKeyDown={this.onKeydown}
+                    onChange={this.onChange}
                 />
             </div>
         );
