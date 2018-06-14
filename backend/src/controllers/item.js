@@ -89,6 +89,19 @@ const updateItem = async (req, res) => {
     }
 };
 
+const promoteItem = async (req, res) => {
+    const {promotionEndDate, itemId} = req.body;
+
+    const item = await ItemModel.findByIdAndUpdate(itemId, {
+        isPromoted: true,
+        promotionEndDate: promotionEndDate,
+    }, {
+            new: true,
+        });
+
+    res.status(200).json(item);
+};
+
 const findItems = async (req, res) => {
     const {names, categories} = req.params;
     const promises = names.map((name) => findItemsByName(name));
@@ -118,4 +131,5 @@ module.exports = {
     updateItem,
     addItem,
     findItems,
+    promoteItem,
 };

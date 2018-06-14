@@ -10,5 +10,6 @@ router.delete('/', ItemController.removeItem);
 router.post('/', ItemController.addItem);
 router.put('/', ItemController.updateItem);
 router.get('/', ItemController.findItems);
+router.post('/promote', ItemController.promoteItem);
 
 module.exports = router;
