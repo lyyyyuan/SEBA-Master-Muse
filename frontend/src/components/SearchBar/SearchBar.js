@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Autocomplete, FontIcon } from "react-md";
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends Component {
     // placeholder
@@ -28,8 +29,7 @@ class SearchBar extends Component {
     }
 
     search = (keyword) => {
-        console.log(keyword);
-        
+        this.props.history.push(`/search?keyword=${keyword}`);
     }
 
     render() {
@@ -60,4 +60,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
