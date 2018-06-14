@@ -17,8 +17,14 @@ const ItemSchema = new mongoose.Schema({
     },
     description: String,
     thumbnail: String,
-    isDigital: Boolean,
-    isPromoted: Boolean,
+    isDigital: {
+        type: Boolean,
+        default: true,
+    },
+    isPromoted: {
+        type: Boolean,
+        default: false,
+    },
     promotionEndDate: Date,
     printingSize: {
         type: String,
