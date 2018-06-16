@@ -33,7 +33,6 @@ class MainPage extends Component {
                         {this.state.data.map((data, index) => <ProductCard {...data} key={index} />)}
                     </div>
                 </Page>
-
             </div>
         );
     }
