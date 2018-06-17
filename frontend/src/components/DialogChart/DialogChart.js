@@ -5,14 +5,13 @@ export default class DialogChart extends PureComponent {
     constructor(props){
         super(props)
     }
-    state = { visible: true };
 
     hide = () => {
-        this.setState({ visible: false });
-    };
+        this.props.onChange(false);
+    }
 
     render() {
-        const { visible } = this.state;
+        const { visible } = this.props;
         const actions = [{
             onClick: this.hide,
             primary: true,

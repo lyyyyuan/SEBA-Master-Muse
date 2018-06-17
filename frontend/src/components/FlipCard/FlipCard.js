@@ -15,12 +15,12 @@ class FlipCard extends Component {
         super(props);
         this.handlePromote = this.handlePromote.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.state = {dialog: null}
+        this.state = {dialogVisible: false}
 
     }
 
     handlePromote() {
-        this.setState({dialog: <DialogChart/>})
+        this.setState({dialogVisible: true})
     }
 
     handleEdit() {
@@ -53,7 +53,7 @@ class FlipCard extends Component {
                         </div>
                     </CardText>
                 </Card>
-                {this.state.dialog}
+                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => {this.setState({dialogVisible})}}/>
             </div>
 
 
