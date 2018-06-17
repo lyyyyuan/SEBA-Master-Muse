@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 class SearchBar extends Component {
     // placeholder
     data = ['abc', 'bcd'];
-
+    constructor(props){
+        super(props)
+    }
     componentWillMount = () => {
         this.setState({
             searchKeyword: ''
@@ -29,7 +31,7 @@ class SearchBar extends Component {
     }
 
     search = (keyword) => {
-        this.props.history.push(`/search?keyword=${keyword}`);
+        this.props.history.push(this.props.location.pathname+`?keyword=${keyword}`);
     }
 
     render() {
