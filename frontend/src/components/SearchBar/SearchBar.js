@@ -31,7 +31,7 @@ class SearchBar extends Component {
     }
 
     search = (keyword) => {
-        this.props.history.push(this.props.location.pathname+`?keyword=${keyword}`);
+        this.props.history.push(`/search?keyword=${keyword}`);
     }
 
     render() {

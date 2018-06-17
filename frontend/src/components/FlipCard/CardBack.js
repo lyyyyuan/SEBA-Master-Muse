@@ -12,7 +12,7 @@ export default class CardBack extends Component {
                 <VictoryLegend standalone={false}
                                colorScale={["tomato", "orange", "gold", "red", "pink"]}
                                x={0} y={180}
-                               gutter={5}
+                               gutter={9}
                                orientation="horizontal"
                                data={this.props.legendData}
                     //labelComponent={<VictoryLabel angle={45}/>}
@@ -20,7 +20,7 @@ export default class CardBack extends Component {
                 />
                 <VictoryPie standalone={false}
                             animate={{duration: 500, onLoad: {duration: 500}}}
-                            width={175} height={175}
+                            width={185} height={185}
                             padding={{
                                 bottom: 20, top: 20, left: 20, right: 20
                             }}

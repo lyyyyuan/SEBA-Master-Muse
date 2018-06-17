@@ -11,7 +11,7 @@ class StorePageView extends Component {
     render() {
         return (
             <div>
-                <Store location={this.props.location} query={queryString.parse(this.props.location.search)}/>
+                <Store query={queryString.parse(this.props.location.search)}/>
             </div>
         )
     }

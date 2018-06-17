@@ -11,7 +11,7 @@ class SearchPageView extends Component {
     render() {
         return (
             <div>
-                <SearchPage location={this.props.location} query={queryString.parse(this.props.location.search)}/>
+                <SearchPage query={queryString.parse(this.props.location.search)}/>
             </div>
         );
     }
