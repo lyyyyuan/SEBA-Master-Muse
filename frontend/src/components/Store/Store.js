@@ -12,7 +12,7 @@ const legendData = [
 
 const card = (key) => <FlipCard key={key} title='Title'
                                 category='Category'
-                                text='Artist Name'
+                                stock='10 in stock'
                                 rating='3.5'
                                 price='600' data={data} legenddata={legendData}/>;
 export default class Store extends Component {
@@ -35,18 +35,22 @@ export default class Store extends Component {
                              style={{width: '80%', height: '40%', paddingTop: '70px', paddingLeft: '10px'}}/>
                         <p style={{
                             paddingLeft: '10px',
+                            fontFamily:'Pacifico',
                             fontSize: 'medium'
                         }}>{'Items sold: ' + this.state.store.ratingCount}</p>
                         <p style={{
                             paddingLeft: '10px',
+                            fontFamily:'Pacifico',
                             fontSize: 'medium'
                         }}>{'Revenue: ' + this.state.store.revenue}</p>
                         <p style={{
                             paddingLeft: '10px',
+                            fontFamily:'Pacifico',
                             fontSize: 'medium'
                         }}>{'Store visits: ' + this.state.store.visits}</p>
                         <p style={{
                             paddingLeft: '10px',
+                            fontFamily:'Pacifico',
                             fontSize: 'medium'
                         }}>{'Overall rating: ' + this.state.store.totalRating}</p>
                     </div>
