@@ -13,7 +13,7 @@ import { MainPageView } from './views/MainPageView';
 import SearchPageView from "./views/SearchPageView";
 
 import UserService from "./services/UserService";
-import ItemPage from "./components/ItemPage/ItemPage";
+import { ItemPageView } from "./views/ItemPageView";
 
 
 export default class App extends React.Component {
@@ -25,7 +25,7 @@ export default class App extends React.Component {
             title: 'MUSE',
             routes: [
                 { component: MainPageView, path: '/', exact: true },
-                { component: ItemPage, path: '/item-details/:id' },
+                { component: ItemPageView, path: '/item-details/:id' },
                 { component: MovieDetailView, path: '/show/:id' },
                 {
                     render: (props) => {
