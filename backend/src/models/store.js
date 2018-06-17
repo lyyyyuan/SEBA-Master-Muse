@@ -2,10 +2,6 @@
 
 const mongoose = require('mongoose');
 
-const Item = require('./item');
-
-const ItemSchema = Item.schema;
-
 const StoreSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -30,11 +26,12 @@ const StoreSchema = new mongoose.Schema({
     items: {
         type: [
             {
-                item: ItemSchema,
+                itemId: mongoose.SchemaTypes.ObjectId,
                 stock: Number,
-            }
-        ]
-    }
+                _id: false,
+            },
+        ],
+    },
 });
 
 StoreSchema.set('versionKey', false);
