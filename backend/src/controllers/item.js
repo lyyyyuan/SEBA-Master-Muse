@@ -125,6 +125,17 @@ const findItemsByCategories = async (categories) => {
     return items;
 };
 
+const getPromotedItems = async () => {
+    const items = await ItemModel.find({
+        isPromoted: true,
+        promotionEndDate: {
+            $gte: new Date(),
+        },
+    });
+
+    return items;
+};
+
 module.exports = {
     getItems,
     removeItem,
@@ -132,4 +143,5 @@ module.exports = {
     addItem,
     findItems,
     promoteItem,
+    getPromotedItems,
 };

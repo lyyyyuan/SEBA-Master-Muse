@@ -11,5 +11,6 @@ router.post('/', ItemController.addItem);
 router.put('/', ItemController.updateItem);
 router.get('/', ItemController.findItems);
 router.post('/promote', ItemController.promoteItem);
+router.get('/promote', ItemController.getPromotedItems);
 
 module.exports = router;
