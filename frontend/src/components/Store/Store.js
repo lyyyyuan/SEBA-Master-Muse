@@ -49,7 +49,11 @@ export default class Store extends Component {
                             <Media aspectRatio='1-1'>
                                 <img
                                     src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg'
-                                    role="presentation"/>
+                                    role="presentation"
+                                    style={{
+                                        borderRadius: '50%'
+                                    }}
+                                    />
                             </Media>
                         </div>
                         <div style={{
