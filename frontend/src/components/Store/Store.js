@@ -1,25 +1,32 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import './Store.css';
 import Page from '../Common/Page';
-import FlipCard from '../FlipCard/FlipCard'
-import { Media } from 'react-md'
+import StoreCard from '../StoreCard/StoreCard'
+import {Media} from 'react-md'
 import Images from '../../Data/images';
 
-const data = [
-    { x: 1, y: 2 }, { x: 2, y: 2 }, { x: 3, y: 3 }, { x: 4, y: 4 }, { x: 5, y: 5 }
-];
-const legendData = [
-    { name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }, { name: "5" }
-];
+const data = {
+    labels: ['1 star', '2 star', '3 star', '4 star', '5 star'],
+    datasets: [
+        {
+            label: 'total number',
+            backgroundColor: 'rgba(192,192,192,0.5)',
+            borderColor: 'rgba(192,192,192,1)',
+            borderWidth: 1,
+            hoverBackgroundColor: 'rgba(192,192,192,0.8)',
+            hoverBorderColor: 'rgba(192,192,192,1)',
+            data: [65, 10, 80, 81, 56]
+        }
+    ]
+};
 
-const card = (key, image) => <FlipCard key={key} title='Title' image={image}
-    category='Category'
-    stock='10 in stock'
-    rating='3.5'
-    price='600' data={data} legenddata={legendData} />;
+const card = (key, image) => <StoreCard key={key} title='Title' image={image}
+                                        category='Category'
+                                        stock='10 in stock'
+                                        rating='3.5'
+                                        price='600' data={data}/>;
 
 export default class Store extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -39,9 +46,11 @@ export default class Store extends Component {
                             textAlign: 'center',
                             padding: '5%'
                         }}>
-                        <Media aspectRatio='1-1'>
-                            <img src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg' role="presentation" />
-                        </Media>
+                            <Media aspectRatio='1-1'>
+                                <img
+                                    src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg'
+                                    role="presentation"/>
+                            </Media>
                         </div>
                         <div style={{
                             display: 'flex',

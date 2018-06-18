@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import CardFront from './CardFront'
-import CardBack from './CardBack'
-import { Card, CardText, CardTitle, Media, Button, DialogContainer } from 'react-md';
+import HorizontalChart from './HorizontalChart'
+import {Card, CardText, CardTitle, Media, Button, DialogContainer} from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import DialogChart from '../DialogChart/DialogChart'
 
-class FlipCard extends Component {
+class StoreCard extends Component {
     constructor(props) {
         super(props);
         this.handlePromote = this.handlePromote.bind(this);
@@ -15,11 +15,10 @@ class FlipCard extends Component {
             dialogVisible: false,
             chartVisible: false,
         }
-
     }
 
     handlePromote() {
-        this.setState({ dialogVisible: true })
+        this.setState({dialogVisible: true})
     }
 
     handleEdit() {
@@ -27,16 +26,14 @@ class FlipCard extends Component {
     }
 
     hideDialog = () => {
-        this.setState({ chartVisible: false });
+        this.setState({chartVisible: false});
     }
 
     showDialog = () => {
-        this.setState({ chartVisible: true });
+        this.setState({chartVisible: true});
     }
 
     render() {
-        const back = <CardBack data={this.props.data} legendData={this.props.legenddata} />;
-        const front = <CardFront />;
         return (
             <div style={{
                 borderStyle: 'solid',
@@ -47,10 +44,9 @@ class FlipCard extends Component {
                     id="static-dialog"
                     visible={this.state.chartVisible}
                     onHide={this.hideDialog}
-                    title="Statistics"
                     focusOnMount={false}
                 >
-                    <CardBack data={this.props.data} legendData={this.props.legenddata} />
+                    <HorizontalChart data={this.props.data}/>
                 </DialogContainer>
 
                 <Card raise>
@@ -67,19 +63,19 @@ class FlipCard extends Component {
                             <Button icon iconClassName='fa fa-rocket' style={{
                                 color: 'white'
                             }}
-                                tooltipLabel='Promote'
-                                onClick={this.handlePromote}
+                                    tooltipLabel='Promote'
+                                    onClick={this.handlePromote}
                             />
                         </div>
                     </CardTitle>
                     <Media aspectRatio='1-1'>
                         <img src={this.props.image} style={{
                             objectFit: 'cover',
-                        }} />
+                        }}/>
                     </Media>
                     <CardText>
 
-                        <RatingStar rating={this.props.rating} />
+                        <RatingStar rating={this.props.rating}/>
 
 
                         <div style={{
@@ -92,13 +88,16 @@ class FlipCard extends Component {
                                 <div>{this.props.price}€</div>
                             </span>
                             <span>
-                                <Button icon onClick={this.showDialog} tooltipLabel='show statistics'>trending_up</Button>
+                                <Button icon onClick={this.showDialog}
+                                        tooltipLabel='show statistics'>trending_up</Button>
                                 <Button icon onClick={this.handleEdit}>edit</Button>
                             </span>
                         </div>
                     </CardText>
                 </Card>
-                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => { this.setState({ dialogVisible }) }} />
+                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => {
+                    this.setState({dialogVisible})
+                }}/>
             </div>
 
 
@@ -106,4 +105,4 @@ class FlipCard extends Component {
     }
 }
 
-export default withRouter(FlipCard)
+export default withRouter(StoreCard)
