@@ -3,24 +3,13 @@
 const ItemModel = require('../models/item');
 const UserModel = require('../models/user');
 
-const getItems = async (req, res) => {
+const getItem = async (req, res) => {
     const {
-        itemIds,
+        id,
     } = req.params;
 
-    if (!!itemIds) {
-        const items = await ItemModel.find({
-            _id: {
-                $in: itemIds,
-            },
-        });
-
-        res.status(200).json(items);
-    } else {
-        res.status(404).json({
-            message: 'item id required',
-        });
-    }
+    const item = await ItemModel.findById(id);
+    res.status(200).json(item);
 };
 
 const addItem = async (req, res) => {
@@ -125,7 +114,7 @@ const findItemsByCategories = async (categories) => {
     return items;
 };
 
-const getPromotedItems = async () => {
+const getPromotedItems = async (req, res) => {
     const items = await ItemModel.find({
         isPromoted: true,
         promotionEndDate: {
@@ -133,11 +122,11 @@ const getPromotedItems = async () => {
         },
     });
 
-    return items;
+    res.status(200).json(items);
 };
 
 module.exports = {
-    getItems,
+    getItem,
     removeItem,
     updateItem,
     addItem,

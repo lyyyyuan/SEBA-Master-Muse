@@ -2,14 +2,16 @@
 
 import HttpService from './HttpService';
 import defer from 'defer-promise';
-import qs from 'query-string';
+import queryString from 'query-string';
 
 // a httpservice wrap to support async/await
 export default class AsyncHttpService {
     static get = async (url, params) => {
+        params = params || {};
+
         const deferred = defer();
         HttpService.get(
-            `${url}?${qs.stringify(params)}`,
+            `${url}?${queryString.stringify(params)}`,
             res => deferred.resolve(res),
             err => deferred.reject(err)
         );
