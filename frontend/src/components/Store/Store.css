@@ -16,14 +16,10 @@
 
 }
 
-.flipcard-div {
-    position: relative;
-    width: 200px;
-    height: 400px;
-}
 
 .card-title {
     background-color: #f44336;
+
 }
 
 .card-title h2 {
@@ -40,21 +36,11 @@
     margin: 0px;
 }
 
-.card-text {
-    background-color: #ffffff;
-    height: 23%;
-    margin-bottom: 0px;
-}
 
-.icon {
-    height: 17%;
-    background-color: #f44336;
-}
 
-.icon1 {
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
+
+.promote-icon {
+    color: 'white'
 }
 
 .icon2 {

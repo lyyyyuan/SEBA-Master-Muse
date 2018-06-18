@@ -1,13 +1,12 @@
-import React, {Component} from 'react'
-import {pencil} from 'react-icons-kit/icomoon/pencil'
+import React, { Component } from 'react'
+import { pencil } from 'react-icons-kit/icomoon/pencil'
 import Icon from 'react-icons-kit';
-import {rocket} from 'react-icons-kit/icomoon/rocket'
 import CardFlippable from 'react-card-flippable';
 import CardFront from './CardFront'
 import CardBack from './CardBack'
-import {Card, CardText, CardTitle,Media} from 'react-md';
+import { Card, CardText, CardTitle, Media, Button } from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import DialogChart from '../DialogChart/DialogChart'
 
 class FlipCard extends Component {
@@ -15,12 +14,12 @@ class FlipCard extends Component {
         super(props);
         this.handlePromote = this.handlePromote.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.state = {dialogVisible: false}
+        this.state = { dialogVisible: false }
 
     }
 
     handlePromote() {
-        this.setState({dialogVisible: true})
+        this.setState({ dialogVisible: true })
     }
 
     handleEdit() {
@@ -28,32 +27,53 @@ class FlipCard extends Component {
     }
 
     render() {
-        const back = <CardBack data={this.props.data} legendData={this.props.legenddata}/>;
-        const front = <CardFront/>;
+        const back = <CardBack data={this.props.data} legendData={this.props.legenddata} />;
+        const front = <CardFront />;
         return (
-            <div className='flipcard-div' style={{
+            <div style={{
                 borderStyle: 'solid',
                 borderColor: 'coral',
             }}>
-                <Card style={{width: '100%', height: '100%'}} raise>
-                    <div className='icon'>
-                        <Icon className='icon1' onClick={this.handlePromote} icon={rocket} size={22}/>
-                        <CardTitle
-                            className='card-title'
-                            title={this.props.title}
-                            subtitle={this.props.category}
-                        />
-                    </div>
-                    <CardFlippable disableFlip={false} frontContent={front} backContent={back}/>
-                    <CardText className='card-text'>
-                        <RatingStar rating={this.props.rating}/>
-                        <div>{this.props.stock}</div>
-                        <div>{this.props.price}€
-                            <Icon className='icon2' icon={pencil} size={22} onClick={this.handleEdit}/>
+                <Card raise>
+                    <CardTitle
+                        className='card-title'
+                        title={this.props.title}
+                        subtitle={this.props.category}
+                    >
+                        <div style={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'row-reverse'
+                        }}>
+                            <Button icon iconClassName='fa fa-rocket' style={{
+                                color: 'white'
+                            }}
+                            tooltipLabel='Promote'
+                            onClick={this.handlePromote}
+                            />
+                        </div>
+                    </CardTitle>
+                    <Media aspectRatio='1-1'>
+                        <CardFront />
+                    </Media>
+                    <CardText>
+                        <RatingStar rating={this.props.rating} />
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between'
+                        }}>
+                            <span>
+                                <div>{this.props.stock}</div>
+                                <div>{this.props.price}€</div>
+                            </span>
+                            <span>
+                                <Button icon >edit</Button>
+                            </span>
                         </div>
                     </CardText>
                 </Card>
-                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => {this.setState({dialogVisible})}}/>
+                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => { this.setState({ dialogVisible }) }} />
             </div>
 
 
