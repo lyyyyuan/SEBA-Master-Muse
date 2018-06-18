@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { pencil } from 'react-icons-kit/icomoon/pencil'
-import Icon from 'react-icons-kit';
-import CardFlippable from 'react-card-flippable';
 import CardFront from './CardFront'
 import CardBack from './CardBack'
-import { Card, CardText, CardTitle, Media, Button } from 'react-md';
+import { Card, CardText, CardTitle, Media, Button, Dialog } from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
 import { withRouter } from 'react-router-dom'
 import DialogChart from '../DialogChart/DialogChart'
@@ -14,7 +11,10 @@ class FlipCard extends Component {
         super(props);
         this.handlePromote = this.handlePromote.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
-        this.state = { dialogVisible: false }
+        this.state = {
+            dialogVisible: false,
+            chartVisible: false,
+        }
 
     }
 
@@ -48,16 +48,39 @@ class FlipCard extends Component {
                             <Button icon iconClassName='fa fa-rocket' style={{
                                 color: 'white'
                             }}
-                            tooltipLabel='Promote'
-                            onClick={this.handlePromote}
+                                tooltipLabel='Promote'
+                                onClick={this.handlePromote}
                             />
                         </div>
                     </CardTitle>
                     <Media aspectRatio='1-1'>
-                        <CardFront />
+                        <img src={this.props.image} style={{
+                            objectFit: 'cover',
+                        }} />
                     </Media>
                     <CardText>
-                        <RatingStar rating={this.props.rating} />
+                        <div
+                            onMouseEnter={() => { this.setState({ chartVisible: true }) }}
+                            onMouseLeave={() => { this.setState({ chartVisible: false }) }}
+                        >
+                            <RatingStar rating={this.props.rating} />
+                        </div>
+                        <div style={{
+                            position: 'relative',
+                            zIndex: 10
+                        }}>
+                            {this.state.chartVisible &&
+                                <Dialog
+                                    style={{position: 'absolute'}}
+                                    id="static-dialog"
+                                    containFocus={false}
+                                    aria-labelledby="static-dialog-title"
+                                    className="md-background--card"
+                                >
+                                    <CardBack data={this.props.data} legendData={this.props.legenddata} />
+                                </Dialog>
+                            }
+                        </div>
                         <div style={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -68,7 +91,7 @@ class FlipCard extends Component {
                                 <div>{this.props.price}€</div>
                             </span>
                             <span>
-                                <Button icon >edit</Button>
+                                <Button icon onClick={this.handleEdit}>edit</Button>
                             </span>
                         </div>
                     </CardText>
