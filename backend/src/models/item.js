@@ -30,7 +30,7 @@ const ItemSchema = new mongoose.Schema({
         type: String,
         enum: ['12-inch', '24-inch', '36-inch', '48-inch'],
     },
-    comments: [String],
+    comments: [mongoose.SchemaTypes.ObjectId],
     ratingCount: {
         type: Number,
         default: 0,
