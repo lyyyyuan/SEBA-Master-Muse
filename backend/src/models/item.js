@@ -27,7 +27,7 @@ const ItemSchema = new mongoose.Schema({
     },
     promotionEndDate: Date,
     printingSize: {
-        type: String,
+        type: [String],
         enum: ['12-inch', '24-inch', '36-inch', '48-inch'],
     },
     comments: [mongoose.SchemaTypes.ObjectId],
