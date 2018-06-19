@@ -23,9 +23,10 @@ class ItemPage extends React.Component {
                 "the corresponding size options below.",
                 thumbnail: "Original HD photo file of the featured wallpaper of macOS Mojave.",
                 isDigital: true,
+                hasPrintingOption: true,
                 isPromoted: true,
                 promotionEndDate: "2018-09-16",
-                printingSize: ["12-inch", "24-inch", "36-inch", "48-inch"],
+                printingSize: ["12", "24", "36", "48"],
                 ratingCount: 4,
                 totalRating: 4,
                 comments: [
