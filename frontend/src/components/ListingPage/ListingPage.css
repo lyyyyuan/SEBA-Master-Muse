@@ -1,0 +1,15 @@
+.size-buttons {
+    margin-right: 5px;
+}
+
+.label {
+    color: grey;
+}
+
+.selector {
+    padding-left: 10px;
+}
+
+.checkbox {
+    margin: 15px 0;
+}

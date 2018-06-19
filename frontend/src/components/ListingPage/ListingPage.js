@@ -4,6 +4,7 @@ import ListingProductCard from '../ProductCard/ListingProductCard';
 import PropTypes from 'prop-types';
 import { TextField } from 'react-md';
 import { Button, SelectionControl, FontIcon } from 'react-md';
+import './ListingPage.css';
 
 
 class ListingPage extends Component {
@@ -12,7 +13,9 @@ class ListingPage extends Component {
         this.itemInfoRef = {};
         this.availableSizes = ['48 inch', '36 inch', '24 inch', '12 inch'];
         this.printingSizes = [];
-        this.state = {};
+        this.state = {
+            isDigital: false
+        };
     }
 
     getItemInfo = () => {
@@ -64,55 +67,60 @@ class ListingPage extends Component {
                     </div>
                     <div>
                         <h2>Details</h2>
-                        <form>
+                        <div>
                             <TextField
                                 id="floating-center-title"
                                 label="Title"
                                 lineDirection="center"
-                                placeholder="Hello World"
                                 className="md-cell md-cell--bottom"
                                 ref={title => this.itemInfoRef.title = title}
                             />
-                        </form>
-                        <form>
+                        </div>
+                        <div>
                             <TextField
                                 id="floating-center-title"
                                 label="Description"
                                 lineDirection="center"
-                                placeholder="Hello World"
+                                rows={1}
                                 className="md-cell md-cell--bottom"
                                 ref={desc => this.itemInfoRef.description = desc}
                             />
-                        </form>
-                        <div style={{
-                            marginBottom: '20px'
-                        }}>
-
+                        </div>
+                        <div className='checkbox'>
                             <SelectionControl
                                 type='checkbox'
                                 id="checkbox-read-material-design-spec"
                                 name="simple-checkboxes[]"
                                 label="Digital Product"
+                                value={this.state.isDigital}
                                 ref={isDigital => this.itemInfoRef.isDigital = isDigital}
+                                onChange={change => this.setState({isDigital: change})}
                             />
                         </div>
-                        <h3>Printing Size Available</h3>
-                        {this.availableSizes.map((size, i) => <Button
-                            raised
-                            onClick={() => this.toggleButton(size)}
-                            key={i}
-                            primary={this.state[size]}
-                        >{size}</Button>)}
-                        <form className="md-grid">
+                        {this.state.isDigital &&
+                            <div className='selector'>
+
+                                <p className='label'>Printing Size Available</p>
+                                {this.availableSizes.map((size, i) => <Button
+                                    raised
+                                    onClick={() => this.toggleButton(size)}
+                                    key={i}
+                                    primary={this.state[size]}
+                                    className='size-buttons'
+                                >{size}</Button>)}
+
+                            </div>
+                        }
+                        <div>
                             <TextField
                                 id="floating-center-title"
                                 label="Price"
                                 lineDirection="center"
-                                placeholder="Hello World"
                                 className="md-cell md-cell--bottom"
                                 leftIcon={<FontIcon>euro_symbol</FontIcon>}
+                                ref={price => this.itemInfoRef.price = price}
                             />
-                        </form>
+                        </div>
                         <div style={{
                             marginTop: '20px'
                         }}>
