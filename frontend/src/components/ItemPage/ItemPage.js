@@ -31,12 +31,12 @@ class ItemPage extends React.Component {
                 totalRating: 4,
                 comments: [
                     {
-                        comment: "I love this wallpaper and the hard copy I requested.",
+                        content: "I love this wallpaper and the hard copy I requested.",
                         username: "Captain America",
                         timestamp: "2018-06-15"
                     },
                     {
-                        comment: "The printout looks good in my dorm room.",
+                        content: "The printout looks good in my dorm room.",
                         username: "Iron Man",
                         timestamp: "2018-07-12"
                     }
@@ -54,17 +54,20 @@ class ItemPage extends React.Component {
                 {
                     id: 2,
                     name: "MacOS High Sierra",
-                    price: 10
+                    price: 10,
+                    url:"http://cdn.osxdaily.com/wp-content/uploads/2017/06/macos-high-sierra-default-wallpaper-fall-mountain-scene-1.jpg"
                 },
                 {
                     id: 3,
                     name: "MacOS Sierra",
-                    price: 10
+                    price: 10,
+                    url: "https://9to5mac.files.wordpress.com/2016/06/sierra.jpg"
                 },
                 {
                     id: 4,
                     name: "MacOS El Capitan",
-                    price: 10
+                    price: 10,
+                    url: "http://bdfjade.com/data/out/63/5696281-el-capitan-wallpaper.jpg"
                 }
             ],
             MockItemPicsData: [
@@ -90,9 +93,11 @@ class ItemPage extends React.Component {
                     <ItemPageTop itemPics={this.state.MockItemPicsData}
                                  itemInfo={this.state.MockItemData}
                                  artistInfo={this.state.MockArtistData}
-                                 basePrintingCostData={this.state.MockBasePrintingCostData}/>
+                                 basePrintingCostData={this.state.MockBasePrintingCostData} />
+                    <ItemPageDetails otherArtworksInfo={this.state.MockOtherArtworksData}
+                                     itemInfo={this.state.MockItemData}
+                                     artistInfo={this.state.MockArtistData} />
                 </div>
-                <ItemPageDetails />
             </div>
         )
     }

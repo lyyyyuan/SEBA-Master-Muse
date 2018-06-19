@@ -9,8 +9,13 @@ class ItemPageDetails extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="horizontalFlex">
+                <div>
 
+                </div>
+                <div>
+                    
+                </div>
             </div>
         )
     }
