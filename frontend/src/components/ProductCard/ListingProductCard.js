@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card, CardTitle, Media, FileInput } from 'react-md';
-import Images from '../../Data/images';
-
-
-const image = Images[0];
 
 class ListingProductCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            image: ''
+        }
+    }
 
 
     render() {
@@ -30,21 +32,24 @@ class ListingProductCard extends Component {
                             </span>
                         </div>
                     </CardTitle>
-                    <Media aspectRatio='1-1'>
-                        <img src={image} style={{
-                            objectFit: 'cover',
-                            width: '100%',
-                            height: '100%'
-                        }} />
-                        <div style={{
-                            position: 'absolute',
-                            right: '10px',
-                            bottom: '10px'
-                        }}>
-                            <Button primary floating>cancel</Button>
-                        </div>
+                    {
+                        this.state.image &&
+                        <Media aspectRatio='1-1'>
+                            <img src={this.state.image} style={{
+                                objectFit: 'cover',
+                                width: '100%',
+                                height: '100%'
+                            }} />
+                            <div style={{
+                                position: 'absolute',
+                                right: '10px',
+                                bottom: '10px'
+                            }}>
+                                <Button primary floating>cancel</Button>
+                            </div>
 
-                    </Media>
+                        </Media>
+                    }
                 </Card>
             </div>
         );

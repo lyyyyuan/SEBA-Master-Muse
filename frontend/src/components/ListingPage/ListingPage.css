@@ -10,6 +10,18 @@
     padding-left: 10px;
 }
 
-.checkbox {
+.push-vertical {
     margin: 15px 0;
 }
+
+.category-selector {
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    align-items: center;
+}
+
+.category-label {
+    line-height: 48px;
+}
+

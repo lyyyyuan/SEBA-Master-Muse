@@ -86,7 +86,12 @@ class ListingPage extends Component {
                                 ref={desc => this.itemInfoRef.description = desc}
                             />
                         </div>
-                        <div className='checkbox'>
+                        <div className='selector category-selector push-vertical'>
+                            <div className='label category-label'>Categories</div>
+                            <Button icon>add</Button>
+                            
+                        </div>
+                        <div className='push-vertical'>
                             <SelectionControl
                                 type='checkbox'
                                 id="checkbox-read-material-design-spec"
