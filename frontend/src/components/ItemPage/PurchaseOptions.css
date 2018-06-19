@@ -107,8 +107,9 @@ input.printingSizeItem.selected:-moz-placeholder {
     height: 32px;
     color: #fff;
     border-radius: 2px;
-    margin-right: 10px;
+    margin-right: 15px;
     outline: none;
+    min-width: 120px;
 }
 
 .buy button:hover {
