@@ -97,7 +97,7 @@ class PurchaseOptions extends React.Component {
 
     handleInputBlur(event) {
         const target = event.target;
-        if (!target.value.isNumber() && target.classList.contains('selected')) {
+        if (target.classList.contains('selected')) {
             target.focus();
         }
     }
@@ -146,17 +146,17 @@ class PurchaseOptions extends React.Component {
                                    onBlur={this.handleInputBlur}/>
                         </div>
                     </div>
-                    {/*<div className="subSegment quantity">*/}
-                        {/*<div className="optionHeader">Quantity</div>*/}
-                        {/*<div className="optionBody">asaf</div>*/}
-                    {/*</div>*/}
+                    <div className="subSegment quantity">
+                        <div className="optionHeader">Quantity</div>
+                        <div className="optionBody"> </div>
+                    </div>
                     <div className="subSegment buy">
-                        <div className="addToCart">
+                        <button className="addToCart">
                             Add to cart
-                        </div>
-                        <div className="buyNow">
+                        </button>
+                        <button className="buyNow">
                             Buy now
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
