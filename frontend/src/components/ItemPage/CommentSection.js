@@ -6,6 +6,9 @@ import './CommentSection.css'
 class CommentSection extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            comments: this.props.comments
+        }
     }
 
     render() {
