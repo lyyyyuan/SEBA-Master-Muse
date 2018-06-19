@@ -41,7 +41,7 @@ class ListingProductCard extends Component {
                             right: '10px',
                             bottom: '10px'
                         }}>
-                            <Button icon primary floating>cancel</Button>
+                            <Button primary floating>cancel</Button>
                         </div>
 
                     </Media>
