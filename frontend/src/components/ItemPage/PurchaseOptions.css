@@ -1,0 +1,103 @@
+.purchaseOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchaseOptions > .segment {
+    border-bottom: 1px dashed #e7e7e7;
+    padding-bottom: 20px;
+    padding-top: 12px;
+}
+
+.purchaseOptions > .segment:first-child {
+    padding-top: unset;
+}
+
+.purchaseOptions > .segment:last-child {
+    border-bottom: none;
+    padding-bottom: auto;
+}
+
+.purchaseOptions > .segment > .subSegment {
+    margin-top: 20px;
+    color: #757575;
+}
+
+.purchaseOptions > .segment > .subSegment:first-child {
+    margin-top: 5px;
+}
+
+.purchaseOptions > .segment > .subSegment {
+    display: flex;
+}
+
+.itemCost {
+    color: #f54336;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.optionHeader {
+    width: 15%;
+    margin-top: 2%;
+}
+
+.optionBody {
+    width: 85%;
+}
+
+.printingSizeItem {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+    overflow: hidden;
+    min-width: 60px;
+    height: 32px;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    background: #fff;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+}
+
+.printingSizeItem:hover {
+    border: 1px solid #f54336;
+}
+
+input.printingSizeItem {
+    min-width: 100px;
+    margin-top: 0px;
+}
+
+input.printingSizeItem:focus {
+    outline: none;
+}
+
+.printingSizeItem.selected {
+    border: 1px solid #f54336;
+    color: #f54336;
+}
+
+input.printingSizeItem.selected {
+    caret-color: black;
+}
+
+input.printingSizeItem.selected:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input.printingSizeItem.selected:focus::-moz-placeholder {
+    color: transparent;
+}
+
+input.printingSizeItem.selected:-moz-placeholder {
+    color: transparent;
+}

@@ -7,7 +7,9 @@ class ItemPicsCarouselElement extends Component {
 
     render() {
         let itemPicsStyle = {
-            backgroundImage: `url(${this.props.url})`,
+            background: `url(${this.props.url}) no-repeat center`,
+            backgroundSize: '100%',
+            height: '500px'
         };
 
         return (

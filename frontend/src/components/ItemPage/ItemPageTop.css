@@ -4,9 +4,10 @@
     height: 500px;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2), 0 3px 12px 0 rgba(0,0,0,0.19);
     overflow: hidden;
+    display: inherit;
 }
 
-.topSection {
+.horizontalFlex {
     display: flex;
 }
 
@@ -18,12 +19,13 @@
     justify-content: flex-start;
 }
 
-.sectionRight .segment {
-    border-bottom: 0.01em solid #e7e7e7;
-    padding-bottom: 12px;
+.sectionRight > .segment {
+    border-bottom: 1px dashed #e7e7e7;
+    padding-bottom: 20px;
+    padding-top: 12px;
 }
 
-.sectionRight .segment:last-child {
+.sectionRight > .segment:last-child {
     border-bottom: none;
     padding-bottom: auto;
 }
@@ -33,7 +35,7 @@
 }
 
 .artistIcon {
-    color: #333;
+    color: #3B3B3B;
 }
 
 .artistText {
@@ -51,4 +53,19 @@
     font-size: 13px;
     top: 15%;
     position: relative;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.itemTitle {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.itemDescription {
+    font-size: 13px;
+    margin-top: 1.5%;
 }

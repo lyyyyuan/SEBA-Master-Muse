@@ -14,12 +14,12 @@ class ItemPage extends React.Component {
             MockItemData: {
                 id: 1,
                 name: "MacOS Mojave Wallpaper",
-                price: 10,
+                price: 10.00,
                 categories: ["Photography"],
                 description: "This is the original HD photo file of the featured wallpaper " +
                 "of Apple's latest installation of macOS Mojave, coming this September. " +
                 "You're buying a copy of the original digital photo file. But you can also " +
-                "have the photo printed out for you in the size that you prefer by selecting among" +
+                "have the photo printed out for you in the size that you prefer by selecting among " +
                 "the corresponding size options below.",
                 thumbnail: "Original HD photo file of the featured wallpaper of macOS Mojave.",
                 isDigital: true,
@@ -69,7 +69,11 @@ class ItemPage extends React.Component {
             MockItemPicsData: [
                 "https://9to5mac.files.wordpress.com/2018/06/mojave-day.jpg?quality=82&strip=all&w=981&h=552&zoom=2",
                 "https://9to5mac.files.wordpress.com/2018/06/mojave-night.jpg?quality=82&strip=all&w=981&h=552&zoom=2"
-            ]
+            ],
+            MockBasePrintingCostData: { // €1.00 per 12-inch (diagonal) for dummy e.g.
+                basePrice: 1.00,
+                baseDimension: 12
+            }
         }
 
     }
@@ -81,9 +85,12 @@ class ItemPage extends React.Component {
         return (
             <div className="spacing">
                 <ItemPageHeader />
-                <ItemPageTop itemPics={this.state.MockItemPicsData}
-                             itemInfo={this.state.MockItemPicsData}
-                             artistInfo={this.state.MockArtistData}/>
+                <div style={{width: '1117px', margin: '0 auto' }}>
+                    <ItemPageTop itemPics={this.state.MockItemPicsData}
+                                 itemInfo={this.state.MockItemData}
+                                 artistInfo={this.state.MockArtistData}
+                                 basePrintingCostData={this.state.MockBasePrintingCostData}/>
+                </div>
                 <ItemPageDetails />
             </div>
         )

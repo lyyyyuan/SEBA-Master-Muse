@@ -13,13 +13,14 @@ class ItemPageTop extends React.Component {
         this.state = {
             itemPics: this.props.itemPics,
             itemInfo: this.props.itemInfo,
-            artistInfo: this.props.artistInfo
+            artistInfo: this.props.artistInfo,
+            basePrintingCostData: this.props.basePrintingCostData
         }
     }
 
     render() {
         return (
-            <div className="topSection">
+            <div className="horizontalFlex">
                 <div className="sectionLeft">
                     <ItemPicsCarousel itemPics={this.state.itemPics}/>
                 </div>
@@ -35,11 +36,17 @@ class ItemPageTop extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="segment itemTitle">
-
+                    <div className="segment itemInfo">
+                        <div className="itemTitle">
+                            {this.state.itemInfo.name}
+                        </div>
+                        <div className="itemDescription">
+                            {this.state.itemInfo.description}
+                        </div>
                     </div>
                     <div className="segment purchaseOptions">
-                        <PurchaseOptions />
+                        <PurchaseOptions itemInfo={this.state.itemInfo}
+                                         basePrintingCostData={this.state.basePrintingCostData}/>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ class ItemPageHeader extends React.Component {
 
     render() {
         return (
-            <div style={{ minHeight: '64px' }}>
+            <div style={{ minHeight: '80px' }}>
                 <Header title={document.title} />
             </div>
         )
