@@ -14,7 +14,7 @@ class ListingPage extends Component {
         this.availableSizes = ['48 inch', '36 inch', '24 inch', '12 inch'];
         this.printingSizes = [];
         this.state = {
-            isDigital: false
+            isDigital: true
         };
     }
 
@@ -92,7 +92,7 @@ class ListingPage extends Component {
                                 id="checkbox-read-material-design-spec"
                                 name="simple-checkboxes[]"
                                 label="Digital Product"
-                                value={this.state.isDigital}
+                                defaultChecked
                                 ref={isDigital => this.itemInfoRef.isDigital = isDigital}
                                 onChange={change => this.setState({isDigital: change})}
                             />
