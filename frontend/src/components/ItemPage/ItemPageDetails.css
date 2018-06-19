@@ -1,3 +1,12 @@
 .horizontalFlex {
     display: flex;
 }
+
+.horizontalFlex > div.recommendationsWrapper {
+    width: 25%;
+}
+
+.horizontalFlex > div.itemDetailsWrapper {
+    width: 70%;
+    margin-left: 5%;
+}

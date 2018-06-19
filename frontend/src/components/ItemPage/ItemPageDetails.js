@@ -3,6 +3,7 @@
 import React from 'react';
 import Recommendations from "./Recommendations";
 import ItemDetails from "./ItemDetails";
+import './ItemPageDetails.css';
 
 class ItemPageDetails extends React.Component {
     constructor(props) {
@@ -17,8 +18,12 @@ class ItemPageDetails extends React.Component {
     render() {
         return (
             <div className="horizontalFlex">
-                <Recommendations artistInfo={this.state.artistInfo} otherArtworksInfo={this.state.otherArtworksInfo} />
-                <ItemDetails itemInfo={this.state.itemInfo} />
+                <div className="recommendationsWrapper">
+                    <Recommendations artistInfo={this.state.artistInfo} otherArtworksInfo={this.state.otherArtworksInfo} />
+                </div>
+                <div className="itemDetailsWrapper">
+                    <ItemDetails itemInfo={this.state.itemInfo} />
+                </div>
             </div>
         )
     }

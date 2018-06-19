@@ -1,0 +1,60 @@
+.recommendationsContainer .artistInfo {
+    display: flex;
+    background-color: #f5f5f5;
+}
+
+.recommendationsContainer .artistIcon {
+    color: #3B3B3B;
+}
+
+.recommendationsContainer .artistText {
+    margin-left: 20px;
+}
+
+.recommendationsContainer .artistName {
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+}
+
+.recommendationsContainer .artistName:hover {
+    cursor: pointer;
+    color: #f54c1a;
+}
+
+.recommendationsContainer .artistIcon:hover {
+    cursor: pointer;
+}
+
+.recommendationsContainer .artistTitle {
+    font-size: 12px;
+    color: #4e4e4e;
+    top: 4%;
+    position: relative;
+}
+
+.recommendationsContainer .artistSummary > .segment {
+    border-bottom: 1px dashed #e7e7e7;
+    padding: 12px 18px 14px 18px;
+}
+
+.recommendationsContainer .artistSummary > .segment.aboutArtist {
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 13px;
+}
+
+.recommendationsContainer .artistSummary > .segment:last-child {
+    border-bottom: none;
+    padding-bottom: auto;
+}
+
+.recommendationsContainer .artistSummary {
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+}
+
+.recommendationsContainer .divider {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

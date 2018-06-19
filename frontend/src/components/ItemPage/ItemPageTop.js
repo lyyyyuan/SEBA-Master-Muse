@@ -32,7 +32,7 @@ class ItemPageTop extends React.Component {
 
     render() {
         return (
-            <div className="horizontalFlex">
+            <div className="horizontalFlex itemPageTopContainer">
                 <div className="sectionLeft">
                     <ItemPicsCarousel itemPics={this.state.itemPics}/>
                 </div>

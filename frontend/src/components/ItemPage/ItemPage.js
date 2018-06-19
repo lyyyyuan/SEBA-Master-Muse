@@ -45,7 +45,7 @@ class ItemPage extends React.Component {
             MockArtistData: {
                 artistName: "Apple",
                 artistTitle: "Freelance photographer",
-                artistInfo: "Apple Inc. is an American multinational technology company " +
+                aboutArtist: "Apple Inc. is an American multinational technology company " +
                 "headquartered in Cupertino, California, that designs, develops, " +
                 "and sells consumer electronics, computer software, and online services.",
                 otherArtworksIds: [2, 3, 4]

@@ -1,4 +1,4 @@
-.sectionLeft {
+.itemPageTopContainer .sectionLeft {
     width: 35%;
     border-radius: 3px;
     height: 500px;
@@ -7,11 +7,11 @@
     display: inherit;
 }
 
-.horizontalFlex {
+.itemPageTopContainer .horizontalFlex {
     display: flex;
 }
 
-.sectionRight {
+.itemPageTopContainer .sectionRight {
     margin-left: 3%;
     width: 62%;
     display: flex;
@@ -19,62 +19,63 @@
     justify-content: flex-start;
 }
 
-.sectionRight > .segment {
+.itemPageTopContainer .sectionRight > .segment {
     border-bottom: 1px dashed #e7e7e7;
     padding-bottom: 20px;
     padding-top: 12px;
 }
 
-.sectionRight > .segment:last-child {
+.itemPageTopContainer .sectionRight > .segment:last-child {
     border-bottom: none;
     padding-bottom: auto;
 }
 
-.artistInfo {
+.itemPageTopContainer .sectionRight .artistInfo {
     display: flex;
 }
 
-.artistIcon {
+.itemPageTopContainer .sectionRight .artistIcon {
     color: #3B3B3B;
 }
 
-.artistText {
+.itemPageTopContainer .sectionRight .artistText {
     margin-left: 20px;
 }
 
-.artistName {
+.itemPageTopContainer .sectionRight .artistName {
     font-size: 18px;
     font-weight: 600;
     top: 8%;
     position: relative;
 }
 
-.artistName:hover {
+.itemPageTopContainer .sectionRight .artistName:hover {
     cursor: pointer;
     color: #f54c1a;
 }
 
-.artistIcon:hover {
+.itemPageTopContainer .sectionRight .artistIcon:hover {
     cursor: pointer;
 }
 
-.artistTitle {
+.itemPageTopContainer .sectionRight .artistTitle {
     font-size: 13px;
+    color: #818181;
     top: 15%;
     position: relative;
 }
 
-.itemInfo {
+.itemPageTopContainer .itemInfo {
     display: flex;
     flex-direction: column;
 }
 
-.itemTitle {
+.itemPageTopContainer .itemTitle {
     font-weight: 600;
     font-size: 20px;
 }
 
-.itemDescription {
+.itemPageTopContainer .itemDescription {
     font-size: 13px;
     margin-top: 1.5%;
 }
