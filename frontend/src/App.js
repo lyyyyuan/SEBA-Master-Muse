@@ -11,9 +11,10 @@ import { UserSignupView } from "./views/UserSignupView";
 import { MainPageView } from './views/MainPageView';
 
 import SearchPageView from "./views/SearchPageView";
-
+import StorePageView from './views/StorePageView';
 import UserService from "./services/UserService";
 import { ItemPageView } from "./views/ItemPageView";
+import ListingPageView from "./views/ListingPageView";
 
 
 export default class App extends React.Component {
@@ -47,9 +48,11 @@ export default class App extends React.Component {
                         }
                     }, path: '/add',
                 },
+                { component: ListingPageView, path: '/list' },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' },
-                { component: SearchPageView, path: '/search' }
+                { component: SearchPageView, path: '/search' },
+                { component: StorePageView, path: '/store' },
             ]
         };
     }
