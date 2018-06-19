@@ -49,6 +49,15 @@
     position: relative;
 }
 
+.artistName:hover {
+    cursor: pointer;
+    color: #f54c1a;
+}
+
+.artistIcon:hover {
+    cursor: pointer;
+}
+
 .artistTitle {
     font-size: 13px;
     top: 15%;

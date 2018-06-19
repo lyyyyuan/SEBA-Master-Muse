@@ -38,12 +38,12 @@
 }
 
 .optionHeader {
-    width: 15%;
+    width: 20%;
     margin-top: 2%;
 }
 
-.optionBody {
-    width: 85%;
+.optionBody.printingSizeOptions {
+    width: 80%;
 }
 
 .printingSizeItem {
@@ -102,12 +102,16 @@ input.printingSizeItem.selected:-moz-placeholder {
     color: transparent;
 }
 
+.purchaseOptions > .segment > div.buy.subSegment {
+    margin-top: 34px;
+}
+
 .buy button {
     font-size: 14px;
     height: 32px;
     color: #fff;
     border-radius: 2px;
-    margin-right: 15px;
+    margin-right: 19px;
     outline: none;
     min-width: 120px;
 }
@@ -134,4 +138,77 @@ input.printingSizeItem.selected:-moz-placeholder {
 .buy > button.buyNow:hover {
     background: #ebab27;
     border: 1px solid #ebab27;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantityPickerCenter > input {
+    outline: none;
+    height: 30px;
+    width: 35px;
+    text-align: center;
+    border: none;
+    font-size: 14px;
+}
+
+.quantityPickerLeft, .quantityPickerRight {
+    padding-left: 7px;
+    padding-top: 5px;
+    height: 30px;
+    width: 30px;
+    background-color: #eff0f5;
+    color: #818181;
+    border: none;
+    outline: none;
+}
+
+.quantityPickerLeft:disabled, .quantityPickerRight:disabled {
+    cursor: not-allowed;
+}
+
+.quantityPickerLeft {
+    border-radius: 2px 0 0 2px;
+}
+
+.quantityPickerRight {
+    border-radius: 0 2px 2px 0;
+}
+
+.quantityPickerLeft:hover, .quantityPickerRight:hover {
+    background-color: #dadada;
+    color: #fff;
+    cursor: pointer;
+}
+
+.quantityPickerLeft:disabled:hover, .quantityPickerRight:disabled:hover {
+    background-color: #eff0f5;
+    color: #818181;
+    cursor: not-allowed;
+}
+
+.quantity > .optionBody {
+    display: flex;
+    margin-top: 8px;
+}
+
+.quantity > .optionBody > span > div {
+    text-align: center;
+}
+
+Button.customizeTooltip {
+    height: 30px;
+    width: 30px;
+    margin-bottom: 3px;
+    margin-left: -12px;
+}
+
+Button.customizeTooltip:hover {
+    background: transparent;
+}
+
+Button.customizeTooltip i {
+    font-size: 14px !important;
 }
