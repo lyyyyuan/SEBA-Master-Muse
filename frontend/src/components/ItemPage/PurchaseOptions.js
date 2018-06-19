@@ -1,7 +1,10 @@
 "use strict";
 
 import React from 'react';
-import './PurchaseOptions.css'
+import { Button } from 'react-md';
+import './PurchaseOptions.css';
+import { Icon } from 'react-icons-kit';
+import { plusRound, minusRound } from 'react-icons-kit/ionicons/';
 
 class PurchaseOptions extends React.Component {
     constructor(props) {
@@ -10,7 +13,8 @@ class PurchaseOptions extends React.Component {
             itemInfo: this.props.itemInfo,
             selectedPrintingSize: false,
             basePrintingCostData: this.props.basePrintingCostData,
-            printingCost: 0
+            printingCost: 0,
+            quantity: 1
         };
         this.setPrintingSizeItemsRef = element => {
             this.printingSizeItemsRef  = element;
@@ -19,18 +23,21 @@ class PurchaseOptions extends React.Component {
         this.handleClickPrintingSize = this.handleClickPrintingSize.bind(this);
         this.calculatePrintingCost = this.calculatePrintingCost.bind(this);
         this.handleActivePrintingSizeItem = this.handleActivePrintingSizeItem.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleInputBlur = this.handleInputBlur.bind(this);
+        this.handleInputChangePrintingSize = this.handleInputChangePrintingSize.bind(this);
+        this.handleInputBlurPrintingSize = this.handleInputBlurPrintingSize.bind(this);
         this.isNumeric = this.isNumeric.bind(this);
+        this.handleClickQuantityMinus = this.handleClickQuantityMinus.bind(this);
+        this.handleClickQuantityPlus = this.handleClickQuantityPlus.bind(this);
+        this.handleClickAddToCart = this.handleClickAddToCart.bind(this);
+        this.handleClickBuyNow = this.handleClickBuyNow.bind(this);
     }
 
     handleClickPrintingSize(event) {
         const target = event.target;
         if (target.tagName.toLowerCase() !== 'input') {
-            const endIndex = target.textContent.match(/\D/).index;
             this.setState({
                 selectedPrintingSize: target.textContent.toLowerCase() === 'none' ? false : target.textContent,
-                printingCost: target.textContent.toLowerCase() === 'none' ? 0 : this.calculatePrintingCost(target.textContent.substring(0, endIndex))
+                printingCost: target.textContent.toLowerCase() === 'none' ? 0 : this.calculatePrintingCost(target.textContent)
             });
         } else {
             this.setState(prevState => ({
@@ -65,7 +72,7 @@ class PurchaseOptions extends React.Component {
         }
     }
 
-    handleInputChange(event) {
+    handleInputChangePrintingSize(event) {
         const target = event.target;
 
         let value;
@@ -105,13 +112,8 @@ class PurchaseOptions extends React.Component {
 
     }
 
-    handleInputBlur(event) {
-        console.dir(event.target);
+    handleInputBlurPrintingSize(event) {
         const target = event.target;
-        const value = target.value;
-        console.log(value);
-        target.value = value;
-        console.log(target.value);
         if (this.isNumeric(target.value)) {
 
             if (target.value < 6) {
@@ -123,10 +125,8 @@ class PurchaseOptions extends React.Component {
                 })
             }
 
-            // console.log(target.value.charAt(target.value.length - 1));
             if (target.value.charAt(target.value.length - 1) === '.') {
                 target.value = target.value.substring(0, target.value.length - 1);
-                console.log(this.state.selectedPrintingSize);
             }
 
         } else {
@@ -142,8 +142,28 @@ class PurchaseOptions extends React.Component {
         return !isNaN(parseFloat(number)) && isFinite(number);
     }
 
+    handleClickQuantityPlus() {
+        this.setState(prevState => ({
+            quantity: prevState.quantity + 1
+        }))
+    }
+
+    handleClickQuantityMinus() {
+        this.setState(prevState => ({
+            quantity: prevState.quantity - 1
+        }))
+    }
+
     calculatePrintingCost(printingSize) {
         return this.state.basePrintingCostData.basePrice * ( +printingSize / this.state.basePrintingCostData.baseDimension );
+    }
+
+    handleClickAddToCart() {
+        // TO-DO: Create an order object and pass to whatever global object
+    }
+
+    handleClickBuyNow() {
+        // TO-DO: Redirect to order summary page
     }
 
     render() {
@@ -182,22 +202,36 @@ class PurchaseOptions extends React.Component {
                             </span>
                             {printingSizeOptions}
                             <input type="number" name="customizePrintingSize" placeholder="Customize"
-                                   min="0" max="100" title="Enter a number up to 2 d.p. in inches"
-                                   className="printingSizeItem"
-                                   onClick={this.handleClickPrintingSize} onChange={this.handleInputChange}
-                                   onBlur={this.handleInputBlur}/>
+                                   min="0" max="100" className="printingSizeItem" onClick={this.handleClickPrintingSize}
+                                   onChange={this.handleInputChangePrintingSize} onBlur={this.handleInputBlurPrintingSize}/>
+                            <Button icon className="customizeTooltip" tooltipPosition="top"
+                                    tooltipLabel="Enter a number 6 - 100, in up to 2 decimal places">
+                                help
+                            </Button>
                         </div>
                     </div>
                     }
                     <div className="subSegment quantity">
                         <div className="optionHeader">Quantity</div>
-                        <div className="optionBody"> </div>
+                        <div className="optionBody">
+                            <button className="quantityPickerLeft" disabled={this.state.quantity <= 1}
+                                    onClick={this.handleClickQuantityMinus}>
+                            <Icon icon={minusRound}/>
+                            </button>
+                            <span className="quantityPickerCenter">
+                                <input type="number" name="quantityPicker" min="1" max="5" value={this.state.quantity} readOnly="true"/>
+                            </span>
+                            <button className="quantityPickerRight" disabled={this.state.quantity >= 5}
+                                    onClick={this.handleClickQuantityPlus}>
+                                <Icon icon={plusRound}/>
+                            </button>
+                        </div>
                     </div>
                     <div className="subSegment buy">
-                        <button className="addToCart">
+                        <button className="addToCart" onClick={this.handleClickAddToCart}>
                             Add to cart
                         </button>
-                        <button className="buyNow">
+                        <button className="buyNow" onClick={this.handleClickBuyNow}>
                             Buy now
                         </button>
                     </div>
