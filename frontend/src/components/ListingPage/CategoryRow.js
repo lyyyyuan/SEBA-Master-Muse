@@ -20,7 +20,7 @@ class CategoryRow extends Component {
         this.setState({ category: value });
         const category = {};
         category[this.state.categoryClass] = value;
-        this.props.onChange(category);
+        this.props.onChange(category, this.props.index);
     }
 
     render() {

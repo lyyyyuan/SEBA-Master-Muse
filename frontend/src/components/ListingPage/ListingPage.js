@@ -20,16 +20,16 @@ class ListingPage extends Component {
         this.state = {
             isDigital: true,
             imageUrl: '',
-            categories: {},
+            categories: [],
             categoryRows: [],
         };
 
     }
 
-    onCategroyChange = (category) => {
-        this.setState({
-            categories: Object.assign(this.state.categories, category),
-        });
+    onCategroyChange = (category, index) => {
+        const { categories } = this.state;
+        categories[index] = category;
+        this.setState({ categories });
     };
 
     getItemInfo = () => {
@@ -104,7 +104,11 @@ class ListingPage extends Component {
         const { stock, ...itemInfo } = this.getItemInfo();
         itemInfo.printingSizes = this.printingSizes;
         itemInfo.thumbnail = this.state.imageUrl;
-        itemInfo.categories = Object.values(this.state.categories);
+        itemInfo.categories = this.state.categories.reduce((prev, next) => {
+            return !!next ? [...prev, ...Object.values(next)] : prev;
+        }, []);
+        itemInfo.categories = [...new Set(itemInfo.categories)];
+
         await ItemService.addItem(
             UserService.getCurrentUser().id,
             itemInfo,
