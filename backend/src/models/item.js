@@ -26,7 +26,7 @@ const ItemSchema = new mongoose.Schema({
         default: false,
     },
     promotionEndDate: Date,
-    printingSize: {
+    printingSizes: {
         type: [String],
     },
     comments: [mongoose.SchemaTypes.ObjectId],

@@ -7,6 +7,9 @@ import { Button, SelectionControl, FontIcon } from 'react-md';
 import './ListingPage.css';
 import CategoryRow from './CategoryRow';
 import categories from '../../Data/categories';
+import ItemService from '../../services/ItemService';
+import UserService from '../../services/UserService';
+import { withRouter } from 'react-router-dom';
 
 class ListingPage extends Component {
     constructor(props) {
@@ -20,7 +23,7 @@ class ListingPage extends Component {
             categories: {},
             categoryRows: [],
         };
-        
+
     }
 
     onCategroyChange = (category) => {
@@ -82,12 +85,12 @@ class ListingPage extends Component {
         const rows = this.state.categoryRows;
 
         rows.push(
-            <CategoryRow 
-            categories={categories} 
-            key={rows.length} 
-            index={rows.length}
-            onCancel={this.removeCategory}
-            onChange={this.onCategroyChange}
+            <CategoryRow
+                categories={categories}
+                key={rows.length}
+                index={rows.length}
+                onCancel={this.removeCategory}
+                onChange={this.onCategroyChange}
             />
         )
 
@@ -97,8 +100,17 @@ class ListingPage extends Component {
     }
 
 
-    onSubmit = () => {
-        console.log(this.state);
+    onSubmit = async () => {
+        const { stock, ...itemInfo } = this.getItemInfo();
+        itemInfo.printingSizes = this.printingSizes;
+        itemInfo.thumbnail = this.state.imageUrl;
+        itemInfo.categories = Object.values(this.state.categories);
+        await ItemService.addItem(
+            UserService.getCurrentUser.id,
+            itemInfo,
+            stock
+        );
+        this.props.push('/store');
     }
 
     render() {
@@ -149,7 +161,7 @@ class ListingPage extends Component {
                                 label="Digital Product"
                                 defaultChecked
                                 ref={isDigital => this.itemInfoRef.isDigital = isDigital}
-                                onChange={change => this.setState({isDigital: change})}
+                                onChange={change => this.setState({ isDigital: change })}
                             />
                         </div>
                         {this.state.isDigital &&
@@ -177,6 +189,17 @@ class ListingPage extends Component {
                                 ref={price => this.itemInfoRef.price = price}
                             />
                         </div>
+                        <div>
+                            <TextField
+                                id="floating-center-title"
+                                label="Stock"
+                                type='number'
+                                lineDirection="center"
+                                className="md-cell md-cell--bottom"
+                                leftIcon={<FontIcon iconClassName='fa fa-warehouse'></FontIcon>}
+                                ref={stock => this.itemInfoRef.stock = stock}
+                            />
+                        </div>
                         <div style={{
                             marginTop: '20px'
                         }}>
@@ -194,4 +217,4 @@ class ListingPage extends Component {
 
 ListingPage.propTypes = {};
 
-export default ListingPage;
+export default withRouter(ListingPage);
