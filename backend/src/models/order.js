@@ -16,6 +16,7 @@ const OrderSchema = new mongoose.Schema({
         required: true,
     },
     deliveryMethod: String,
+    printingSize: String,
     status: {
         type: String,
         enum: ['inCart', 'Paid', 'Delivered'],

@@ -76,7 +76,6 @@ class ListingPage extends Component {
         this.setState({
             categoryRows: rows
         });
-        console.log(rows);
     }
 
     addCategory = () => {
@@ -171,6 +170,7 @@ class ListingPage extends Component {
                             <TextField
                                 id="floating-center-title"
                                 label="Price"
+                                type='number'
                                 lineDirection="center"
                                 className="md-cell md-cell--bottom"
                                 leftIcon={<FontIcon>euro_symbol</FontIcon>}
