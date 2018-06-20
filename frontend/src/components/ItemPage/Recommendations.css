@@ -53,8 +53,67 @@
     border-radius: 3px;
 }
 
-.recommendationsContainer .divider {
-    text-align: center;
+.recommendationsContainer .divider > .dividerText {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.recommendationsContainer .divider > .dividerText > div {
+    text-align: center;
+    background-color: #fafafa;
+    width: 52%;
+    color: #4e4e4e;
+}
+
+.recommendationsContainer .divider > .dividerDecoration {
+    height: 10px;
+    width: 268px;
+    border-top: 1px #c9c9c9 dotted;
+    margin-top: -19px;
+    margin-left: 5px;
+    position: absolute;
+    z-index: -1;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem {
+    margin-bottom: 20px;
+    position: relative; /*VERY IMPORTANT TO .artworkPrice's width*/
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkImage {
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0), 0 0 1px 0 rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: inherit;
+    z-index: -99;
+    border-radius: 2px;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle {
+    position: absolute;
+    background-color: rgba(255,255,255,0.66);
+    width: 100%;
+    text-align: center;
+    font-family: Arial;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 2px 2px 0 0;
+    /*visibility: hidden;*/
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice {
+    margin-top: -25px;
+    position: absolute;
+    background-color: rgba(255,255,255,0.66);
+    width: 100%;
+    text-align: center;
+    font-family: Arial;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 0 0 2px 2px;
+    /*visibility: hidden;*/
+    /*background-color: rgba(245, 245, 245, 0.69);*/
 }

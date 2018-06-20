@@ -44,13 +44,28 @@ class Recommendations extends React.Component {
                         {this.state.artistInfo.aboutArtist}
                     </div>
                     <div className="segment artistRating">
-                        <span style={{color: 'red'}}>Rating Placeholder</span>
+                        <span style={{color: '#03a9f4'}}>Rating Placeholder</span>
                     </div>
                 </div>
-                <div className="divider">—&nbsp;&nbsp;Also from this artist&nbsp;&nbsp;—
+                <div className="divider">
+                    <div className="dividerText">
+                        <div>Also from this Artist</div>
+                    </div>
+                    <span className="dividerDecoration"> </span>
                 </div>
                 <div className="otherArtworks">
-
+                    {this.state.otherArtworksInfo.map(
+                        (artwork, index) =>
+                            <div className="otherArtworksItem" key={index}>
+                                <div className="artworkTitle">{artwork.name}</div>
+                                <div className="artworkImage"
+                                     style={{ background: `url(${artwork.url}) no-repeat center`,
+                                              backgroundSize: '100%', height: '279px',
+                                              backgroundColor: 'rgba(245, 245, 245, 0.69)'}}>
+                                </div>
+                                <p className="artworkPrice">€{artwork.price.toFixed(2)}</p>
+                            </div>
+                    )}
                 </div>
 
             </div>

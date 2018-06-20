@@ -178,15 +178,15 @@ class PurchaseOptions extends React.Component {
             <div className="purchaseOptions">
                 <div className="segment price">
                     <div className="itemCost">
-                        €{parseFloat(this.state.itemInfo.price.toString()).toFixed(2)}
+                        €{this.state.itemInfo.price.toFixed(2)}
                     </div>
                     {this.state.itemInfo.isDigital && this.state.selectedPrintingSize &&
                     <div className="printingCost">
-                        + €{parseFloat(this.state.printingCost.toString()).toFixed(2)} printing cost
+                        + €{this.state.printingCost.toFixed(2)} printing cost
                     </div>
                     }
                     <div className="shippingCost">
-                        + €{parseFloat('3.00').toFixed(2)} shipping cost
+                        + €{3.00.toFixed(2)} shipping cost
                     </div>
                     <div className="totalPrice">
 
@@ -229,10 +229,10 @@ class PurchaseOptions extends React.Component {
                     </div>
                     <div className="subSegment buy">
                         <button className="addToCart" onClick={this.handleClickAddToCart}>
-                            Add to cart
+                            ADD TO CART
                         </button>
                         <button className="buyNow" onClick={this.handleClickBuyNow}>
-                            Buy now
+                            BUY NOW
                         </button>
                     </div>
                 </div>

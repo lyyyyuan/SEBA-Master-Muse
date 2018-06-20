@@ -67,7 +67,7 @@ class ItemPage extends React.Component {
                     id: 4,
                     name: "MacOS El Capitan",
                     price: 10,
-                    url: "http://bdfjade.com/data/out/63/5696281-el-capitan-wallpaper.jpg"
+                    url: "https://i0.wp.com/512pixels.net/downloads/macos-wallpapers-thumbs/10-11--thumb.jpg?zoom=2&w=640"
                 }
             ],
             MockItemPicsData: [
