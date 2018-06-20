@@ -15,7 +15,19 @@ class ItemPageTop extends React.Component {
             itemInfo: this.props.itemInfo,
             artistInfo: this.props.artistInfo,
             basePrintingCostData: this.props.basePrintingCostData
-        }
+        };
+
+        this.handleClickGoToArtistHomepage = this.handleClickGoToArtistHomepage.bind(this);
+        this.handleClickOpenArtistPic = this.handleClickOpenArtistPic.bind(this);
+    }
+
+
+    handleClickGoToArtistHomepage() {
+        //TO-DO: Redirect to artist's homepage
+    }
+
+    handleClickOpenArtistPic() {
+        //TO-DO: Open artist's pic
     }
 
     render() {
@@ -26,9 +38,9 @@ class ItemPageTop extends React.Component {
                 </div>
                 <div className="sectionRight">
                     <div className="segment artistInfo">
-                        <Icon className="artistIcon" size={56} icon={user_circle}/>
+                        <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
                         <div className="artistText">
-                            <div className="artistName">
+                            <div className="artistName" onClick={this.handleClickGoToArtistHomepage}>
                                 {this.state.artistInfo.artistName}
                             </div>
                             <div className="artistTitle">
