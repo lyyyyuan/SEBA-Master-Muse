@@ -1,15 +1,46 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, CardTitle, Media, FileInput } from 'react-md';
+import { Button, Card, CardTitle, Media, FontIcon, DialogContainer, TextField } from 'react-md';
 
 class ListingProductCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: ''
+            image: '',
+            dialogVisible: false,
+            addPhotoDiabled: false,
         }
     }
 
+    showDialog = () => {
+        this.setState({ dialogVisible: true });
+    }
+
+    hideDialog = () => {
+        this.setState({ dialogVisible: false });
+    }
+
+    onImageSet = () => {
+        this.setState({ 
+            image: this.imageRef.value, 
+            dialogVisible: false,
+        });
+
+        
+
+        if (this.imageRef.value !== '') {
+            this.setState({
+                addPhotoDiabled: true,
+            })
+        }
+    }
+
+    resetImage = () => {
+        this.setState({
+            image: '',
+            addPhotoDiabled: false,
+        })
+    }
 
     render() {
         return (
@@ -27,8 +58,7 @@ class ListingProductCard extends Component {
                             <span style={{
                                 backgroundColor: 'white'
                             }}>
-
-                                <FileInput id="image-input-1" label="Add Photo" accept="image/*" name="images" />
+                                <Button flat primary onClick={this.showDialog} disabled={this.state.addPhotoDiabled}>Add Photo</Button>
                             </span>
                         </div>
                     </CardTitle>
@@ -45,11 +75,28 @@ class ListingProductCard extends Component {
                                 right: '10px',
                                 bottom: '10px'
                             }}>
-                                <Button primary floating>cancel</Button>
+                                <Button primary floating onClick={this.resetImage}>cancel</Button>
                             </div>
 
                         </Media>
                     }
+                    <DialogContainer
+                        id="simple-action-dialog"
+                        visible={this.state.dialogVisible}
+                        onHide={this.hideDialog}
+                        actions={[
+                            <Button flat secondary onClick={this.onImageSet}>Confirm</Button>,
+                            <Button flat primary onClick={this.hideDialog}>Cancel</Button>
+                        ]}
+                        title="Change something?"
+                    >
+                        <TextField
+                            id="simple-action-dialog-field"
+                            label="Thumbnail"
+                            placeholder="Enter Image URL"
+                            ref={ref => this.imageRef = ref}
+                        />
+                    </DialogContainer>
                 </Card>
             </div>
         );
