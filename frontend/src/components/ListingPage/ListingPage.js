@@ -227,6 +227,4 @@ class ListingPage extends Component {
     }
 }
 
-ListingPage.propTypes = {};
-
 export default withRouter(ListingPage);

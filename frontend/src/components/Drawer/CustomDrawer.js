@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
 import { Drawer, FontIcon, List, ListItem, Avatar, Divider } from 'react-md';
 import DrawerHeader from '../Drawer/DrawerHeader';
+import { withRouter } from 'react-router-dom';
 
 
 class CustomDrawer extends Component {
     itemList = [
         <ListItem
             key='1'
-            leftAvatar={<Avatar icon={<FontIcon>folder</FontIcon>} />}
-            primaryText="Photos"
-        />,
-        <ListItem
+            leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>} />}
+            primaryText="List New Items"
+            onClick={() => { this.props.history.push('/list') }}
+            />,
+            <ListItem
             key='2'
-            leftAvatar={<Avatar icon={<FontIcon>folder</FontIcon>} />}
-            primaryText="Recipes"
+            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-store'></FontIcon>} />}
+            primaryText="My Store"
+            onClick={() => { this.props.history.push('/store') }}
         />,
-        <ListItem
-            key='3'
-            leftAvatar={<Avatar icon={<FontIcon>folder</FontIcon>} />}
-            primaryText="Work"
-        />,
-        <Divider key='d' inset />,
-        <ListItem
-            key='4'
-            leftAvatar={<Avatar suffix="blue" icon={<FontIcon>insert_drive_file</FontIcon>} />}
-            primaryText="Vacation itinerary"
-        />,
-        <ListItem
-            key='5'
-            leftAvatar={<Avatar suffix="amber" icon={<FontIcon>insert_photo</FontIcon>} />}
-            primaryText="Kitchen remodel"
-        />
     ]
 
 
@@ -54,4 +41,4 @@ class CustomDrawer extends Component {
     }
 }
 
-export default CustomDrawer;
+export default withRouter(CustomDrawer);
