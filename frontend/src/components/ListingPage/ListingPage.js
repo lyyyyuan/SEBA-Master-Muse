@@ -106,7 +106,7 @@ class ListingPage extends Component {
         itemInfo.thumbnail = this.state.imageUrl;
         itemInfo.categories = Object.values(this.state.categories);
         await ItemService.addItem(
-            UserService.getCurrentUser.id,
+            UserService.getCurrentUser().id,
             itemInfo,
             stock
         );
