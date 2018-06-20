@@ -31,7 +31,8 @@ class ListingProductCard extends Component {
         if (this.imageRef.value !== '') {
             this.setState({
                 addPhotoDiabled: true,
-            })
+            });
+            this.props.onImageChange(this.imageRef.value);
         }
     }
 

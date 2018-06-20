@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Checkbox, Divider, Slider} from 'react-md';
 import './SearchFilter.css'
+import categories from '../../Data/categories';
 
-const categories = {
-    Subject: ['portrait', 'landscape'],
-    Medium: ['oil', 'acrylic', 'Pastel'],
-    "Art Style": ['classical', 'abstract', 'western']
-}
 const minValue = 10;
 const maxValue = 1000;
 

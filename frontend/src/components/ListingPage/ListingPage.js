@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { TextField } from 'react-md';
 import { Button, SelectionControl, FontIcon } from 'react-md';
 import './ListingPage.css';
-
+import CategoryRow from './CategoryRow';
+import categories from '../../Data/categories';
 
 class ListingPage extends Component {
     constructor(props) {
@@ -14,9 +15,19 @@ class ListingPage extends Component {
         this.availableSizes = ['48 inch', '36 inch', '24 inch', '12 inch'];
         this.printingSizes = [];
         this.state = {
-            isDigital: true
+            isDigital: true,
+            imageUrl: '',
+            categories: {},
+            categoryRows: [],
         };
+        
     }
+
+    onCategroyChange = (category) => {
+        this.setState({
+            categories: Object.assign(this.state.categories, category),
+        });
+    };
 
     getItemInfo = () => {
         const itemInfo = {};
@@ -53,6 +64,43 @@ class ListingPage extends Component {
         }
     }
 
+    onImageChange = (imageUrl) => {
+        this.setState({
+            imageUrl,
+        });
+    }
+
+    removeCategory = (key) => {
+        const rows = this.state.categoryRows;
+        rows.splice(key, 1);
+        this.setState({
+            categoryRows: rows
+        });
+    }
+
+    addCategory = () => {
+        const rows = this.state.categoryRows;
+
+        rows.push(
+            <CategoryRow 
+            categories={categories} 
+            key={rows.length} 
+            index={rows.length}
+            onCancel={this.removeCategory}
+            onChange={this.onCategroyChange}
+            />
+        )
+
+        this.setState({
+            categoryRows: rows,
+        });
+    }
+
+
+    onSubmit = () => {
+        console.log(this.state);
+    }
+
     render() {
         return (
             <Page>
@@ -63,7 +111,7 @@ class ListingPage extends Component {
                     <div style={{
                         padding: '0 100px'
                     }}>
-                        <ListingProductCard />
+                        <ListingProductCard onImageChange={this.onImageChange} />
                     </div>
                     <div>
                         <h2>Details</h2>
@@ -88,8 +136,10 @@ class ListingPage extends Component {
                         </div>
                         <div className='selector category-selector push-vertical'>
                             <div className='label category-label'>Categories</div>
-                            <Button icon>add</Button>
-                            
+                            <Button icon onClick={this.addCategory}>add</Button>
+                        </div>
+                        <div>
+                            {this.state.categoryRows}
                         </div>
                         <div className='push-vertical'>
                             <SelectionControl
@@ -130,9 +180,7 @@ class ListingPage extends Component {
                             marginTop: '20px'
                         }}>
                             <Button raised primary
-                                onClick={() => {
-                                    console.log(this.getItemInfo());
-                                }}
+                                onClick={this.onSubmit}
                             >Submit</Button>
                         </div>
 

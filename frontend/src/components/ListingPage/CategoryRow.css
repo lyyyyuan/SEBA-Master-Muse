@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.select-field {
+    min-width: 100px;
+    margin-right: 10px;
+}
+
+.select-div {
+    margin-left: 10px;
+}
