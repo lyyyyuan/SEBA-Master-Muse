@@ -67,7 +67,7 @@ class ListingProductCard extends Component {
                         this.state.image &&
                         <Media aspectRatio='1-1'>
                             <img src={this.state.image} style={{
-                                objectFit: 'cover',
+                                objectFit: 'contain',
                                 width: '100%',
                                 height: '100%'
                             }} />

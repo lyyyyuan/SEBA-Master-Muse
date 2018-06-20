@@ -70,7 +70,7 @@ class StoreCard extends Component {
                     </CardTitle>
                     <Media aspectRatio='1-1'>
                         <img src={this.props.image} style={{
-                            objectFit: 'cover',
+                            objectFit: 'contain',
                         }}/>
                     </Media>
                     <CardText>

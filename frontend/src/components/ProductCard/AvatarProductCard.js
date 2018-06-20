@@ -25,7 +25,7 @@ class AvatarProductCard extends Component {
                     />
                     <Media aspectRatio='1-1'>
                         <img src={this.props.img} style={{
-                            objectFit: 'cover',
+                            objectFit: 'contain',
                             width: '100%',
                             height: '100%'
                         }} />

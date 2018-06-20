@@ -33,7 +33,7 @@ class ProductCard extends Component {
                         aspectRatio='1-1'
                     >
                         <img src={this.props.productImage} alt="Nature from lorempixel" style={{
-                            objectFit: 'cover',
+                            objectFit: 'contain',
                             width: '100%',
                             height: '100%'
                         }} />
