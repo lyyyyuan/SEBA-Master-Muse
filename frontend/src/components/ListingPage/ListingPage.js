@@ -110,7 +110,7 @@ class ListingPage extends Component {
             itemInfo,
             stock
         );
-        this.props.push('/store');
+        this.props.history.push('/store');
     }
 
     render() {
