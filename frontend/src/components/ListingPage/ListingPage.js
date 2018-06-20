@@ -72,10 +72,11 @@ class ListingPage extends Component {
 
     removeCategory = (key) => {
         const rows = this.state.categoryRows;
-        rows.splice(key, 1);
+        rows[key] = undefined;
         this.setState({
             categoryRows: rows
         });
+        console.log(rows);
     }
 
     addCategory = () => {
