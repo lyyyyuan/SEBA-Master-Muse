@@ -23,23 +23,16 @@ export default class UserService {
         });
     }
 
-    // static login(user, pass) {
-    //     return new Promise((resolve, reject) => {
-    //         HttpService.post(`${UserService.baseURL()}/login`, {
-    //             username: user,
-    //             password: pass
-    //         }, function(data) {
-    //             resolve(data);
-    //         }, function(textStatus) {
-    //             reject(textStatus);
-    //         });
-    //     });
-    // }
-
-    static async login(user, pass) {
-        return await AsyncHttpService.post(`${UserService.baseURL()}/login`, {
-            username: user,
-            password: pass
+    static login(user, pass) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${UserService.baseURL()}/login`, {
+                username: user,
+                password: pass
+            }, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
         });
     }
 

@@ -27,7 +27,7 @@ export default class Page extends React.Component {
             <div>
                 <Header title={this.state.title} />
                 <div style={{
-                    overflowY: 'auto',
+                    overflowY: 'scroll',
                     overflowX: 'hidden',
                     marginTop: '80px',
                     marginBottom: '40px'
