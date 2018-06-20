@@ -133,6 +133,8 @@ class ListingPage extends Component {
                         <h2>Details</h2>
                         <div>
                             <TextField
+                                required
+                                errorText="This field is required."
                                 id="floating-center-title"
                                 label="Title"
                                 lineDirection="center"
@@ -142,6 +144,8 @@ class ListingPage extends Component {
                         </div>
                         <div>
                             <TextField
+                                required
+                                errorText="This field is required."
                                 id="floating-center-title"
                                 label="Description"
                                 lineDirection="center"
@@ -184,6 +188,8 @@ class ListingPage extends Component {
                         }
                         <div>
                             <TextField
+                                required
+                                errorText="This field is required."
                                 id="floating-center-title"
                                 label="Price"
                                 type='number'
@@ -195,6 +201,8 @@ class ListingPage extends Component {
                         </div>
                         <div>
                             <TextField
+                                required
+                                errorText="This field is required."
                                 id="floating-center-title"
                                 label="Stock"
                                 type='number'
