@@ -37,5 +37,10 @@ export default class StoreService {
         );
     }
 
+    static getStats = async (userId) => {
+        return await AsyncHttpService.get(
+            `${StoreService.baseURL()}/stats/${userId}`
+        );
+    }
 
 }

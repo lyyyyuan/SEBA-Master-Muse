@@ -36,8 +36,6 @@ export default class Store extends Component {
     }
 
     componentWillReceiveProps(props) {
-        console.log(props);
-        
         const storeCards = props.items.map((item, i) => card(i, item));
         this.setState({ storeCards });
     }
