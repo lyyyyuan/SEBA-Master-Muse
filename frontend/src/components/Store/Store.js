@@ -21,11 +21,14 @@ const data = {
 };
 
 const card = (key, item) =>
-    <StoreCard key={key} title={item.title} image={item.thumbnail}
+    <StoreCard key={key} id={item._id} title={item.title} image={item.thumbnail}
         category={Object.values(item.categories).toString()}
         stock={`${item.stock} in Stock`}
         rating={item.rating}
-        price={item.price} data={data} />;
+        price={item.price} data={data}
+        isPromoted={item.isPromoted}
+        promotionEndDate={item.promotionEndDate}
+        />;
 
 export default class Store extends Component {
     constructor(props) {

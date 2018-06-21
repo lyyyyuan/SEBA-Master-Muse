@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import CardFront from './CardFront'
 import HorizontalChart from './HorizontalChart'
-import { Card, CardText, CardTitle, Media, Button, DialogContainer } from 'react-md';
+import { Card, CardText, CardTitle, Media, Button, DialogContainer, FontIcon } from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
-import { withRouter } from 'react-router-dom'
-import DialogChart from '../DialogChart/DialogChart'
+import { withRouter } from 'react-router-dom';
+import DialogChart from '../DialogChart/DialogChart';
+import ItemService from '../../services/ItemService';
 
 class StoreCard extends Component {
     constructor(props) {
@@ -15,6 +16,13 @@ class StoreCard extends Component {
             dialogVisible: false,
             chartVisible: false,
         }
+    }
+
+    promote = () => {
+        ItemService.promoteItem(
+            Date.now() + 86400000,
+            this.props.id
+        );
     }
 
     handlePromote() {
@@ -42,6 +50,7 @@ class StoreCard extends Component {
 
                 <DialogContainer
                     id="static-dialog"
+                    title='chart'
                     visible={this.state.chartVisible}
                     onHide={this.hideDialog}
                     focusOnMount={false}
@@ -63,12 +72,20 @@ class StoreCard extends Component {
                             position: 'absolute',
                             right: '10px'
                         }}>
-                            <Button icon iconClassName='fa fa-rocket' style={{
-                                color: 'white'
-                            }}
-                                tooltipLabel='Promote'
-                                onClick={this.handlePromote}
-                            />
+                            {
+                                this.props.isPromoted
+                                    ? <Button icon iconClassName='fa fa-fire' 
+                                    style={{color: 'white'}}
+                                    tooltipLabel={`Promotion Ends: ${this.props.promotionEndDate.toLocaleString()}`}
+                                    />
+                                    :
+                                    <Button icon iconClassName='fa fa-rocket' style={{
+                                        color: 'white'
+                                    }}
+                                        tooltipLabel='Promote'
+                                        onClick={this.handlePromote}
+                                    />
+                            }
                         </div>
                     </CardTitle>
                     <Media aspectRatio='1-1'>
@@ -100,9 +117,12 @@ class StoreCard extends Component {
                         </div>
                     </CardText>
                 </Card>
-                <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => {
-                    this.setState({ dialogVisible })
-                }} />
+                <DialogChart visible={this.state.dialogVisible}
+                    onChange={(dialogVisible) => {
+                        this.setState({ dialogVisible })
+                    }}
+                    onConfirm={this.promote}
+                />
             </div>
 
 

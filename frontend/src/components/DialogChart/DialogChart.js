@@ -10,10 +10,15 @@ export default class DialogChart extends PureComponent {
         this.props.onChange(false);
     }
 
+    confirm = () => {
+        this.props.onConfirm();
+        this.hide();
+    }
+
     render() {
         const { visible } = this.props;
         const actions = [{
-            onClick: this.hide,
+            onClick: this.confirm,
             primary: true,
             children: 'Turn on promotion',
         }, {
@@ -34,7 +39,9 @@ export default class DialogChart extends PureComponent {
                     actions={actions}
                 >
                     <p id="speed-boost-description" className="md-color--secondary-text">
-                        Let Muse help promote your artwork. This means listing art pieces at the top of searching result.
+                        Let Muse help promote your artwork.<br/>
+                        This means listing art pieces at the top of searching result.<br/>
+                        Promote your item for 1 day for 3€
                     </p>
                 </DialogContainer>
             </div>
