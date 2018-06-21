@@ -14,7 +14,7 @@ class ItemDetails extends React.Component {
                 backgroundColor: '#f56d60',
                 bottom: '0',
                 height: '2px',
-                width: '150px',
+                width: '149px',
                 left: '0',
                 position: 'absolute',
                 transitionTimingFunction: 'cubic-bezier(.4,0,.2,1)',

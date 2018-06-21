@@ -14,8 +14,15 @@ class ProductDetails extends React.Component {
     render() {
 
         return (
-            <div>
-                Product Details
+            <div className="productDetailsContainer">
+                <div>
+                    <div>Category:</div>
+                    <div>{this.state.itemInfo.categories.join(', ')}</div>
+                </div>
+                <div>
+                    <div>A few words from the artist:</div>
+                    <div className="otherInfoText" dangerouslySetInnerHTML={{__html: this.state.itemInfo.otherInfo}}/>
+                </div>
             </div>
         )
     }
