@@ -83,7 +83,7 @@ class Recommendations extends React.Component {
                         {this.state.artistInfo.aboutArtist}
                     </div>
                     <div className="segment artistRating">
-                        <span style={{color: '#03a9f4'}}>Rating Placeholder</span>
+                        <span>Rating Placeholder</span>
                     </div>
                 </div>
                 <div className="divider">

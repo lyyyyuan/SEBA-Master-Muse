@@ -17,7 +17,7 @@ class ItemPageDetails extends React.Component {
 
     render() {
         return (
-            <div className="horizontalFlex">
+            <div className="itemPageDetailsContainer horizontalFlex">
                 <div className="recommendationsWrapper">
                     <Recommendations artistInfo={this.state.artistInfo} otherArtworksInfo={this.state.otherArtworksInfo} />
                 </div>

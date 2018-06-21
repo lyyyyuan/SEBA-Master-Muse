@@ -193,7 +193,7 @@ class PurchaseOptions extends React.Component {
                     </div>
                 </div>
                 <div className="segment options">
-                    {this.state.itemInfo.hasPrintingOption &&
+                    {this.state.itemInfo.isDigital &&
                     <div className="subSegment printing">
                         <div className="optionHeader">Printing Size (inch)</div>
                         <div className="optionBody printingSizeOptions" ref={this.setPrintingSizeItemsRef}>
