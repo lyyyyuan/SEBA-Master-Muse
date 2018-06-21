@@ -1,9 +1,11 @@
 "use strict";
 
 import React from 'react';
-import './Recommendations.css'
-import { Icon } from 'react-icons-kit'
-import { user_circle } from 'react-icons-kit/ikons/user_circle'
+import './Recommendations.css';
+import { Icon } from 'react-icons-kit';
+import { user_circle } from 'react-icons-kit/ikons/user_circle';
+import { arrowForward } from 'react-icons-kit/typicons/arrowForward';
+
 class Recommendations extends React.Component {
     constructor(props) {
         super(props);
@@ -13,6 +15,9 @@ class Recommendations extends React.Component {
         }
         this.handleClickGoToArtistHomepage = this.handleClickGoToArtistHomepage.bind(this);
         this.handleClickOpenArtistPic = this.handleClickOpenArtistPic.bind(this);
+        this.handleMouseEnterArtworkItem = this.handleMouseEnterArtworkItem.bind(this);
+        this.handleMouseLeaveArtworkItem = this.handleMouseLeaveArtworkItem.bind(this);
+        this.openInNewTab = this.openInNewTab.bind(this);
     }
 
 
@@ -22,6 +27,40 @@ class Recommendations extends React.Component {
 
     handleClickOpenArtistPic() {
         //TO-DO: Open artist's pic
+    }
+
+    handleMouseEnterArtworkItem(event) {
+        let target = event.target;
+        if (target.className !== 'otherArtworksItem') {
+            target = target.parentElement;
+        }
+        let children = target.children;
+        for (let i = 0; i < children.length; i++) {
+            if (i !== 2) {
+                if (children[i].classList.contains('onRender')) {
+                    children[i].classList.remove('onRender');
+                }
+                children[i].classList.add('visible');
+            }
+        }
+    }
+
+    handleMouseLeaveArtworkItem(event) {
+        let target = event.target;
+        if (target.className !== 'otherArtworksItem') {
+            target = target.parentElement;
+            let children = target.children;
+            for (let i = 0; i < children.length; i++) {
+                if (i !== 2) {
+                    children[i].classList.remove('visible');
+                }
+            }
+        }
+    }
+
+    openInNewTab(itemId) {
+        const url = '#/item-details/' + itemId;
+        window.open(url, "_blank");
     }
 
     render() {
@@ -56,14 +95,19 @@ class Recommendations extends React.Component {
                 <div className="otherArtworks">
                     {this.state.otherArtworksInfo.map(
                         (artwork, index) =>
-                            <div className="otherArtworksItem" key={index}>
-                                <div className="artworkTitle">{artwork.name}</div>
-                                <div className="artworkImage"
+                            <div className="otherArtworksItem" key={index}
+                                 onMouseEnter={this.handleMouseEnterArtworkItem}
+                                 onMouseLeave={this.handleMouseLeaveArtworkItem}>
+                                <div className="layer onRender" onClick={this.openInNewTab.bind(this, artwork.id)}>
+                                    <Icon className="extLinkToItem" size={35} icon={arrowForward} />
+                                </div>
+                                <div className="artworkTitle onRender">{artwork.name}</div>
+                                <div className="artworkImage" onClick={this.openInNewTab.bind(this, artwork.id)}
                                      style={{ background: `url(${artwork.url}) no-repeat center`,
-                                              backgroundSize: '100%', height: '279px',
+                                              backgroundSize: '100%', height: '210px',
                                               backgroundColor: 'rgba(245, 245, 245, 0.69)'}}>
                                 </div>
-                                <p className="artworkPrice">€{artwork.price.toFixed(2)}</p>
+                                <div className="artworkPrice onRender">€{artwork.price.toFixed(2)}</div>
                             </div>
                     )}
                 </div>

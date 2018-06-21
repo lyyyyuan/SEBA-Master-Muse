@@ -32,7 +32,7 @@
 }
 
 .itemCost {
-    color: #f54336;
+    color: #ff6e40;
     font-weight: 400;
     font-size: 30px;
 }
@@ -69,7 +69,7 @@
 }
 
 .printingSizeItem:hover {
-    border: 1px solid #f54336;
+    border: 1px solid #ff6e40;
 }
 
 input.printingSizeItem {
@@ -82,8 +82,8 @@ input.printingSizeItem:focus {
 }
 
 .printingSizeItem.selected {
-    border: 1px solid #f54336;
-    color: #f54336;
+    border: 1px solid #ff6e40;
+    color: #ff6e40;
 }
 
 input.printingSizeItem.selected {

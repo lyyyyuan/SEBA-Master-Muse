@@ -1,3 +1,11 @@
+.recommendationsContainer > div {
+    margin-bottom: 15px;
+}
+
+.recommendationsContainer > div:last-child {
+    margin-bottom: 0;
+}
+
 .recommendationsContainer .artistInfo {
     display: flex;
     background-color: #f5f5f5;
@@ -19,7 +27,7 @@
 
 .recommendationsContainer .artistName:hover {
     cursor: pointer;
-    color: #f54c1a;
+    color: #ff6e40;
 }
 
 .recommendationsContainer .artistIcon:hover {
@@ -78,42 +86,104 @@
 }
 
 .recommendationsContainer .otherArtworks > .otherArtworksItem {
+    cursor: pointer;
     margin-bottom: 20px;
-    position: relative; /*VERY IMPORTANT TO .artworkPrice's width*/
+    position: relative; /*VERY IMPORTANT TO .artworkPrice's and artworkTitle's width*/
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer {
+    background-color: transparent;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fade-out 0.5s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer.onRender {
+    animation: none;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer.visible {
+    background-color: rgba(45, 52, 65, 0.7);
+    opacity: 1;
+    animation: fade-in 0.15s ease;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer > .extLinkToItem {
+    color: #f0f0f0;
+    border: solid 3px #f0f0f0;
+    border-radius: 50%;
+    padding-left: 3px;
+    padding-bottom: 3px;
 }
 
 .recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkImage {
     box-shadow: 0 0 1px 0 rgba(0,0,0,0), 0 0 1px 0 rgba(0,0,0,0.1);
     overflow: hidden;
     display: inherit;
-    z-index: -99;
+    z-index: -1;
     border-radius: 2px;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle {
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle,
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice {
     position: absolute;
     background-color: rgba(255,255,255,0.66);
     width: 100%;
     text-align: center;
-    font-family: Arial;
-    font-size: 12px;
-    height: 25px;
-    line-height: 25px;
+    font-family: Arial, "Roboto",sans-serif;
+    z-index: 2;
+    opacity: 0;
+    cursor: auto;
+    animation: fade-out 0.07s ease;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle.onRender,
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice.onRender {
+    animation: none;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle.visible,
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice.visible {
+    visibility: visible;
+    animation: fade-in 0.15s ease;
+    opacity: 1;
+}
+
+.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle {
     border-radius: 2px 2px 0 0;
-    /*visibility: hidden;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13px;
+    height: 35px;
+    line-height: 35px;
 }
 
 .recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice {
-    margin-top: -25px;
-    position: absolute;
-    background-color: rgba(255,255,255,0.66);
-    width: 100%;
-    text-align: center;
-    font-family: Arial;
     font-size: 12px;
     height: 25px;
     line-height: 25px;
+    margin-top: -25px;
     border-radius: 0 0 2px 2px;
-    /*visibility: hidden;*/
-    /*background-color: rgba(245, 245, 245, 0.69);*/
+}
+
+@keyframes fade-in {
+    0% {opacity: 0.3;}
+    20% {opacity: 0.75;}
+    100% {opacity: 1;}
+}
+
+@keyframes fade-out {
+    0% {opacity: 1;}
+    20% {opacity: 0.5;}
+    100% {opacity: 0; visibility: hidden;}
 }
