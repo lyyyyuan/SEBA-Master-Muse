@@ -26,3 +26,13 @@
     color: #f54336;
     font-weight: 600;
 }
+
+.itemDetailsContainer > .wrapper {
+    visibility: hidden;
+    height: 0;
+}
+
+.itemDetailsContainer > .wrapper.visible {
+    visibility: visible;
+    height: auto;
+}

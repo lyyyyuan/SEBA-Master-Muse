@@ -15,7 +15,7 @@ class CommentSection extends React.Component {
 
         return (
             <div>
-
+                Comment Section
             </div>
         )
     }

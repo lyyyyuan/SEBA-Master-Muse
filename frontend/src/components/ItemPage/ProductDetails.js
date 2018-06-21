@@ -15,7 +15,7 @@ class ProductDetails extends React.Component {
 
         return (
             <div>
-
+                Product Details
             </div>
         )
     }

@@ -25,16 +25,16 @@ class ItemDetails extends React.Component {
     }
 
     handleClickTabSelection(index, event) {
+        // move the tab indication slider
         const presetWidth = 150;
         const translateX = presetWidth * index;
-
         let sliderStyleCopy = JSON.parse(JSON.stringify(this.state.sliderStyle));
         sliderStyleCopy.transform = 'translateX(' + translateX + 'px)';
-
         this.setState({
             sliderStyle: sliderStyleCopy
         });
 
+        // change the active tab style
         const target = event.target;
         const tabParent = target.parentElement;
         for (let i = 0; i < tabParent.children.length; i++) {
@@ -43,6 +43,18 @@ class ItemDetails extends React.Component {
                     tabParent.children[i].classList.add('active');
                 } else {
                     tabParent.children[i].classList.remove('active');
+                }
+            }
+        }
+
+        // show the active tab's content
+        const itemDetailsContainerNode = tabParent.parentElement.parentElement;
+        for (let i = 0; i < itemDetailsContainerNode.children.length; i++) {
+            if (itemDetailsContainerNode.children[i].classList.contains('wrapper')) {
+                if (i === index + 1) {
+                    itemDetailsContainerNode.children[i].classList.add('visible');
+                } else {
+                    itemDetailsContainerNode.children[i].classList.remove('visible');
                 }
             }
         }
@@ -63,8 +75,12 @@ class ItemDetails extends React.Component {
                         <span className="tabIndicationSlider" style={this.state.sliderStyle} />
                     </div>
                 </div>
-                <ProductDetails itemInfo={this.state.itemInfo} />
-                <CommentSection comments={this.state.itemInfo.comments} />
+                <div className="wrapper productDetailsWrapper visible">
+                    <ProductDetails itemInfo={this.state.itemInfo} />
+                </div>
+                <div className="wrapper commentSectionWrapper">
+                    <CommentSection comments={this.state.itemInfo.comments} />
+                </div>
             </div>
         )
     }
