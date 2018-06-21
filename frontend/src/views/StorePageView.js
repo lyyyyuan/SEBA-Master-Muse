@@ -9,16 +9,21 @@ class StorePageView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            stats: {}
         };
     }
 
     async componentDidMount() {
+        const userId = UserService.getCurrentUser().id;
         const items = await StoreService.listItems(
-            UserService.getCurrentUser().id
+            userId
         );
+        const stats = await StoreService.getStats(
+            userId
+        )
 
-        this.setState({ items });
+        this.setState({ items, stats });
     }
 
     render() {
@@ -27,6 +32,7 @@ class StorePageView extends Component {
                 <Store
                     query={queryString.parse(this.props.location.search)}
                     items={this.state.items}
+                    stats={this.state.stats}
                 />
             </div>
         )

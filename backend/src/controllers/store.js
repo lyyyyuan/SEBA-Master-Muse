@@ -83,11 +83,12 @@ const storeStats = async (req, res) => {
     const {userId} = req.params;
     const user = await UserModel.findById(userId);
     const itemIds = user.store.items.map((item) => item.itemId);
-    const orders = await Promise.all(
-        itemIds.map((id)=>OrderModel.find({itemId: id}))
+    let orders = await Promise.all(
+        itemIds.map((id) => OrderModel.find({itemId: id}))
     );
-
+    orders = orders.reduce((prev, next) => [...prev, ...next], []);
     const itemSold = orders.reduce((prev, next) => prev + next.quantity, 0);
+
     res.status(200).json({
         itemSold,
         revenue: user.store.revenue,

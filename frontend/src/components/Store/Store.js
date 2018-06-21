@@ -73,10 +73,10 @@ export default class Store extends Component {
                                 <p>Overall Rating:</p>
                             </div>
                             <div>
-                                <p><b>50</b></p>
-                                <p><b>200€</b></p>
-                                <p><b>100</b></p>
-                                <p><b>4.0</b></p>
+                                <p><b>{this.props.stats.itemSold}</b></p>
+                                <p><b>{this.props.stats.revenue}</b></p>
+                                <p><b>{this.props.stats.visits}</b></p>
+                                <p><b>{this.props.stats.rating}</b></p>
                             </div>
                         </div>
                     </div>
