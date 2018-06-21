@@ -1,6 +1,7 @@
 'use strict';
 
 const UserModel = require('../models/user');
+const ItemModel = require('../models/item');
 
 const changeName = async (req, res) => {
     const {
@@ -65,10 +66,16 @@ const rate = async (req, res) => {
 };
 
 const listItems = async (req, res) => {
-    const {userId} = req.params;
+    const { userId } = req.params;
 
     const user = await UserModel.findById(userId);
-    res.status(200).json(user.store.items);
+    const itemIds = user.store.items.map((item) => item.itemId);
+    const items = await Promise.all(
+        itemIds.map((id) => ItemModel.findById(id))
+    );
+    
+    const result = user.store.items.map((item, i) => Object.assign(item.toObject(), items[i].toObject()));
+    res.status(200).json(result);
 };
 
 

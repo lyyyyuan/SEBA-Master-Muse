@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import CardFront from './CardFront'
 import HorizontalChart from './HorizontalChart'
-import {Card, CardText, CardTitle, Media, Button, DialogContainer} from 'react-md';
+import { Card, CardText, CardTitle, Media, Button, DialogContainer } from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import DialogChart from '../DialogChart/DialogChart'
 
 class StoreCard extends Component {
@@ -18,7 +18,7 @@ class StoreCard extends Component {
     }
 
     handlePromote() {
-        this.setState({dialogVisible: true})
+        this.setState({ dialogVisible: true })
     }
 
     handleEdit() {
@@ -26,11 +26,11 @@ class StoreCard extends Component {
     }
 
     hideDialog = () => {
-        this.setState({chartVisible: false});
+        this.setState({ chartVisible: false });
     }
 
     showDialog = () => {
-        this.setState({chartVisible: true});
+        this.setState({ chartVisible: true });
     }
 
     render() {
@@ -46,7 +46,7 @@ class StoreCard extends Component {
                     onHide={this.hideDialog}
                     focusOnMount={false}
                 >
-                    <HorizontalChart data={this.props.data}/>
+                    <HorizontalChart data={this.props.data} />
                 </DialogContainer>
 
                 <Card raise>
@@ -54,28 +54,33 @@ class StoreCard extends Component {
                         className='card-title'
                         title={this.props.title}
                         subtitle={this.props.category}
+                        style={{
+                            position: 'relative'
+                        }}
                     >
                         <div style={{
-                            width: '100%',
-                            display: 'flex',
-                            flexDirection: 'row-reverse'
+                            width: '50px',
+                            position: 'absolute',
+                            right: '10px'
                         }}>
                             <Button icon iconClassName='fa fa-rocket' style={{
                                 color: 'white'
                             }}
-                                    tooltipLabel='Promote'
-                                    onClick={this.handlePromote}
+                                tooltipLabel='Promote'
+                                onClick={this.handlePromote}
                             />
                         </div>
                     </CardTitle>
                     <Media aspectRatio='1-1'>
                         <img src={this.props.image} style={{
                             objectFit: 'contain',
-                        }}/>
+                        }} />
                     </Media>
                     <CardText>
-
-                        <RatingStar rating={this.props.rating}/>
+                        {this.props.rating
+                            ? <RatingStar rating={this.props.rating} />
+                            : 'No Ratings'
+                        }
 
 
                         <div style={{
@@ -89,15 +94,15 @@ class StoreCard extends Component {
                             </span>
                             <span>
                                 <Button icon onClick={this.showDialog}
-                                        tooltipLabel='show statistics'>trending_up</Button>
+                                    tooltipLabel='show statistics'>trending_up</Button>
                                 <Button icon onClick={this.handleEdit}>edit</Button>
                             </span>
                         </div>
                     </CardText>
                 </Card>
                 <DialogChart visible={this.state.dialogVisible} onChange={(dialogVisible) => {
-                    this.setState({dialogVisible})
-                }}/>
+                    this.setState({ dialogVisible })
+                }} />
             </div>
 
 

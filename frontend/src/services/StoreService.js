@@ -8,32 +8,32 @@ export default class StoreService {
 
     static changeName = async (userId, storeName) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/changeName`,
+            `${StoreService.baseURL()}/changeName`,
             { userId, storeName }
         );
     }
     static visit = async (userId) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/visit`,
+            `${StoreService.baseURL()}/visit`,
             { userId }
         );
     }
     static addRevenue = async (userId, revenue) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/addRevenue`,
+            `${StoreService.baseURL()}/addRevenue`,
             { userId, revenue }
         );
     }
     static rate = async (userId, rating) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/rate`,
+            `${StoreService.baseURL()}/rate`,
             { userId, rating }
         );
     }
 
     static listItems = async (userId) => {
         return await AsyncHttpService.get(
-            `${this.baseURL()}/item/${userId}`
+            `${StoreService.baseURL()}/item/${userId}`
         );
     }
 

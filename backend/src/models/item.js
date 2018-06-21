@@ -12,8 +12,7 @@ const ItemSchema = new mongoose.Schema({
         required: true,
     },
     categories: {
-        type: Map,
-        of: String,
+        type: mongoose.SchemaTypes.Mixed,
         required: true,
     },
     description: String,

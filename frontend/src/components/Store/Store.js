@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './Store.css';
 import Page from '../Common/Page';
 import StoreCard from '../StoreCard/StoreCard'
-import {Media} from 'react-md'
+import { Media } from 'react-md'
 import Images from '../../Data/images';
 
 const data = {
@@ -20,20 +20,26 @@ const data = {
     ]
 };
 
-const card = (key, image) => <StoreCard key={key} title='Title' image={image}
-                                        category='Category'
-                                        stock='10 in stock'
-                                        rating='3.5'
-                                        price='600' data={data}/>;
+const card = (key, item) =>
+    <StoreCard key={key} title={item.title} image={item.thumbnail}
+        category={Object.values(item.categories).toString()}
+        stock={`${item.stock} in Stock`}
+        rating={item.rating}
+        price={item.price} data={data} />;
 
 export default class Store extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            store: [],
-            items: [],
+            storeCards: []
         };
-        this.card = Array.from(Array(12)).map((_, i) => card(i, Images[i % 5]))
+    }
+
+    componentWillReceiveProps(props) {
+        console.log(props);
+        
+        const storeCards = props.items.map((item, i) => card(i, item));
+        this.setState({ storeCards });
     }
 
     render() {
@@ -53,7 +59,7 @@ export default class Store extends Component {
                                     style={{
                                         borderRadius: '50%'
                                     }}
-                                    />
+                                />
                             </Media>
                         </div>
                         <div style={{
@@ -83,7 +89,7 @@ export default class Store extends Component {
                             gridTemplateColumns: 'repeat(4, 1fr)',
                             gridGap: '10px',
                         }}>
-                            {this.card}
+                            {this.state.storeCards}
                         </div>
                     </div>
                 </div>
