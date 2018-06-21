@@ -19,8 +19,8 @@ class CategoryRow extends Component {
     onCategoryChange = (value) => {
         this.setState({ category: value });
         const category = {};
-        category[this.state.categoryClass] = value;
-        this.props.onChange(category, this.props.index);
+        category[this.state.categoryClass] = [value];
+        this.props.onChange(category);
     }
 
     render() {
@@ -50,7 +50,11 @@ class CategoryRow extends Component {
                     }
                 </div>
                 <div>
-                    <Button icon onClick={() => this.props.onCancel(this.props.index)}>cancel</Button>
+                    <Button icon onClick={() => this.props.onCancel(
+                        this.props.index,
+                        this.state.categoryClass,
+                        this.state.category
+                    )}>cancel</Button>
                 </div>
 
             </div>

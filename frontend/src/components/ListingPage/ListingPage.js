@@ -11,74 +11,74 @@ import ItemService from '../../services/ItemService';
 import UserService from '../../services/UserService';
 import { withRouter } from 'react-router-dom';
 
+
 class ListingPage extends Component {
     constructor(props) {
         super(props);
-        this.itemInfoRef = {};
-        this.availableSizes = ['48 inch', '36 inch', '24 inch', '12 inch'];
-        this.printingSizes = [];
-        this.state = {
-            isDigital: true,
-            imageUrl: '',
-            categories: [],
-            categoryRows: [],
-        };
-
-    }
-
-    onCategroyChange = (category, index) => {
-        const { categories } = this.state;
-        categories[index] = category;
-        this.setState({ categories });
-    };
-
-    getItemInfo = () => {
-        const itemInfo = {};
-        for (const key of Object.keys(this.itemInfoRef)) {
-            const ref = this.itemInfoRef[key];
-            if (ref instanceof TextField) {
-                itemInfo[key] = ref.value;
-            } else if (ref instanceof SelectionControl) {
-                itemInfo[key] = ref.checked;
+        if (!!this.props.item) {
+            this.state = Object.assign({
+                stock: this.props.stock,
+                categoryRows: [],
+            }, this.props.item);
+        } else {
+            this.state = {
+                title: '',
+                description: '',
+                price: '',
+                stock: '',
+                thumbnail: '',
+                categoryRows: [],
+                categories: {},
+                printingSizes: [],
+                isDigital: true,
             }
         }
-        return itemInfo;
+
+        this.availableSizes = ['12 inch', '24 inch', '36 inch', '48 inch'];
     }
 
+
+
     addPrintingSize = (size) => {
-        this.printingSizes.push(size);
-        const newState = {};
-        newState[size] = true;
-        this.setState(newState);
+        this.state.printingSizes.push(size);
+        this.setState(this.state);
     }
 
     removePrintingSize = (size) => {
-        this.printingSizes.splice(this.printingSizes.indexOf(size), 1);
-        const newState = {};
-        newState[size] = false;
-        this.setState(newState);
+        const { printingSizes } = this.state;
+        printingSizes.splice(printingSizes.indexOf(size), 1);
+        this.setState({ printingSizes });
     }
 
     toggleButton = (size) => {
-        if (this.printingSizes.includes(size)) {
+        const { printingSizes } = this.state;
+        if (printingSizes.includes(size)) {
             this.removePrintingSize(size);
         } else {
             this.addPrintingSize(size);
         }
     }
 
-    onImageChange = (imageUrl) => {
+    onImageChange = (thumbnail) => {
         this.setState({
-            imageUrl,
+            thumbnail,
         });
     }
 
-    removeCategory = (key) => {
+    removeCategory = (index, categoryClass, category) => {
         const rows = this.state.categoryRows;
-        rows[key] = undefined;
+        rows[index] = undefined;
         this.setState({
             categoryRows: rows
         });
+
+        if (category !== '') {
+            const { categories } = this.state;
+            const categoryList = categories[categoryClass];
+            categoryList.splice(categoryList.indexOf(category), 1);
+            categories[categoryClass] = categoryList;
+            this.setState({ categories });
+        }
     }
 
     addCategory = () => {
@@ -99,22 +99,36 @@ class ListingPage extends Component {
         });
     }
 
+    onCategroyChange = (category) => {
+        const { categories } = this.state;
+        const key = Object.keys(category)[0];
+        categories[key] = categories[key] || [];
+        categories[key] = [...categories[key], ...category[key]];
+        this.setState({ categories });
+    };
+
 
     onSubmit = async () => {
-        const { stock, ...itemInfo } = this.getItemInfo();
-        itemInfo.printingSizes = this.printingSizes;
-        itemInfo.thumbnail = this.state.imageUrl;
-        itemInfo.categories = this.state.categories.reduce((prev, next) => {
-            return !!next ? [...prev, ...Object.values(next)] : prev;
-        }, []);
-        itemInfo.categories = [...new Set(itemInfo.categories)];
+        const {stock, categoryRows, ...itemInfo} = this.state;
+        const userId = UserService.getCurrentUser().id;
 
-        await ItemService.addItem(
-            UserService.getCurrentUser().id,
-            itemInfo,
-            stock
-        );
+        if (this.props.hasOwnProperty('itemId')) {
+            await ItemService.updateItem(
+                userId,
+                this.props.itemId,
+                itemInfo,
+                stock
+            );
+        } else {
+            await ItemService.addItem(
+                userId,
+                itemInfo,
+                stock
+            );
+        }
+
         this.props.history.push('/store');
+
     }
 
     render() {
@@ -139,7 +153,8 @@ class ListingPage extends Component {
                                 label="Title"
                                 lineDirection="center"
                                 className="md-cell md-cell--bottom"
-                                ref={title => this.itemInfoRef.title = title}
+                                value={this.state.title}
+                                onChange={(title) => { this.setState({ title }) }}
                             />
                         </div>
                         <div>
@@ -151,7 +166,8 @@ class ListingPage extends Component {
                                 lineDirection="center"
                                 rows={1}
                                 className="md-cell md-cell--bottom"
-                                ref={desc => this.itemInfoRef.description = desc}
+                                value={this.state.description}
+                                onChange={description => { this.setState({ description }) }}
                             />
                         </div>
                         <div className='selector category-selector push-vertical'>
@@ -168,8 +184,7 @@ class ListingPage extends Component {
                                 name="simple-checkboxes[]"
                                 label="Digital Product"
                                 defaultChecked
-                                ref={isDigital => this.itemInfoRef.isDigital = isDigital}
-                                onChange={change => this.setState({ isDigital: change })}
+                                onChange={isDigital => this.setState({ isDigital })}
                             />
                         </div>
                         {this.state.isDigital &&
@@ -180,7 +195,7 @@ class ListingPage extends Component {
                                     raised
                                     onClick={() => this.toggleButton(size)}
                                     key={i}
-                                    primary={this.state[size]}
+                                    primary={this.state.printingSizes.includes(size)}
                                     className='size-buttons'
                                 >{size}</Button>)}
 
@@ -196,7 +211,8 @@ class ListingPage extends Component {
                                 lineDirection="center"
                                 className="md-cell md-cell--bottom"
                                 leftIcon={<FontIcon>euro_symbol</FontIcon>}
-                                ref={price => this.itemInfoRef.price = price}
+                                value={this.state.price}
+                                onChange={price => { this.setState({ price }) }}
                             />
                         </div>
                         <div>
@@ -209,7 +225,8 @@ class ListingPage extends Component {
                                 lineDirection="center"
                                 className="md-cell md-cell--bottom"
                                 leftIcon={<FontIcon iconClassName='fa fa-warehouse'></FontIcon>}
-                                ref={stock => this.itemInfoRef.stock = stock}
+                                value={this.state.stock}
+                                onChange={stock => { this.setState({ stock }) }}
                             />
                         </div>
                         <div style={{

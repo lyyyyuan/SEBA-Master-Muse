@@ -34,7 +34,7 @@ export default class Page extends React.Component {
                 }}>
 
                     {this.props.children}
-                </div>
+                  </div>
                 <Footer />
             </div>
         );
