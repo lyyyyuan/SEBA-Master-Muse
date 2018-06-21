@@ -72,13 +72,13 @@
     text-align: center;
     background-color: #fafafa;
     width: 52%;
-    color: #4e4e4e;
+    color: #ff6e40;
 }
 
 .recommendationsContainer .divider > .dividerDecoration {
     height: 10px;
     width: 268px;
-    border-top: 1px #c9c9c9 dotted;
+    border-top: 1px #ff6e40 dotted;
     margin-top: -19px;
     margin-left: 5px;
     position: absolute;
