@@ -78,8 +78,8 @@ class ItemDetails extends React.Component {
                 <div className="wrapper productDetailsWrapper visible">
                     <ProductDetails itemInfo={this.state.itemInfo} />
                 </div>
-                <div className="wrapper commentSectionWrapper">
-                    <CustomerReviews comments={this.state.itemInfo.comments} />
+                <div className="wrapper customerReviewsWrapper">
+                    <CustomerReviews comments={this.state.itemInfo.comments} totalRating={this.state.itemInfo.totalRating}/>
                 </div>
             </div>
         )

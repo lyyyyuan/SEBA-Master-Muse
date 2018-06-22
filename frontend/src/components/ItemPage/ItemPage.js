@@ -27,7 +27,7 @@ class ItemPage extends React.Component {
                 promotionEndDate: "2018-09-16",
                 printingSize: ["12", "24", "36", "48"],
                 ratingCount: 4,
-                totalRating: 4,
+                totalRating: 3.8,
                 comments: [
                     {
                         content: "I love this wallpaper and the hard copy I requested.",
