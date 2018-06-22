@@ -11,12 +11,18 @@ class CustomDrawer extends Component {
             leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>} />}
             primaryText="List New Items"
             onClick={() => { this.props.history.push('/list') }}
-            />,
-            <ListItem
+        />,
+        <ListItem
             key='2'
             leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-store'></FontIcon>} />}
             primaryText="My Store"
             onClick={() => { this.props.history.push('/store') }}
+        />,
+        <ListItem
+            key='3'
+            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-shopping-cart'></FontIcon>} />}
+            primaryText="Shopping Cart"
+            onClick={() => { this.props.history.push('/cart') }}
         />,
     ]
 

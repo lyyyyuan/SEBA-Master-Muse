@@ -15,6 +15,7 @@ import StorePageView from './views/StorePageView';
 import UserService from "./services/UserService";
 import { ItemPageView } from "./views/ItemPageView";
 import ListingPageView from "./views/ListingPageView";
+import CartPageView from './views/CartPageView';
 
 
 export default class App extends React.Component {
@@ -54,6 +55,7 @@ export default class App extends React.Component {
                 { component: UserSignupView, path: '/register' },
                 { component: SearchPageView, path: '/search' },
                 { component: StorePageView, path: '/store' },
+                { component: CartPageView, path: '/cart'},
             ]
         };
     }

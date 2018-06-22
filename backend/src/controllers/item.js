@@ -10,6 +10,7 @@ const getItem = async (req, res) => {
     } = req.params;
 
     const item = await ItemModel.findById(id);
+
     res.status(200).json(item);
 };
 
@@ -135,7 +136,7 @@ const getBestSeller = async (req, res) => {
         if (rankObj.hasOwnProperty(itemId)) {
             rankObj[itemId] = order.quantity;
         } else {
-            rankObj[oitemId] += order.quantity;
+            rankObj[itemId] += order.quantity;
         }
     }
 

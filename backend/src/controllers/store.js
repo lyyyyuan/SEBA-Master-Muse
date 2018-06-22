@@ -71,9 +71,15 @@ const listItems = async (req, res) => {
 
     const user = await UserModel.findById(userId);
     const itemIds = user.store.items.map((item) => item.itemId);
-    const items = await Promise.all(
+    let items = await Promise.all(
         itemIds.map((id) => ItemModel.findById(id))
     );
+    items = items.map((item) => {
+        if (item.promotionEndDate < Date.now()) {
+            item.isPromoted = false;
+        }
+        return item;
+    });
 
     const result = user.store.items.map((item, i) => Object.assign(item.toObject(), items[i].toObject()));
     res.status(200).json(result);
