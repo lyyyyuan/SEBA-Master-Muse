@@ -15,14 +15,19 @@ class StoreCard extends Component {
         this.state = {
             dialogVisible: false,
             chartVisible: false,
+            isPromoted: props.isPromoted,
         }
     }
 
-    promote = () => {
-        ItemService.promoteItem(
+    promote = async () => {
+        await ItemService.promoteItem(
             Date.now() + 86400000,
             this.props.id
         );
+
+        this.setState({
+            isPromoted: true
+        })
     }
 
     handlePromote() {
@@ -73,7 +78,7 @@ class StoreCard extends Component {
                             right: '10px'
                         }}>
                             {
-                                this.props.isPromoted
+                                this.state.isPromoted
                                     ? <Button icon iconClassName='fa fa-fire' 
                                     style={{color: 'white'}}
                                     tooltipLabel={`Promotion Ends: ${this.props.promotionEndDate.toLocaleString()}`}
