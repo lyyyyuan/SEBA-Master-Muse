@@ -144,8 +144,8 @@ const getBestSeller = async (req, res) => {
         sortableRank.push([itemId, rankObj[itemId]]);
     }
     sortableRank.sort((x, y) => x[1] - y[1]);
-    const bestSellerIds = sortableRank.slice(0, quantity);
-    const bestSellers = ItemModel.find({
+    const bestSellerIds = sortableRank.slice(0, quantity).map((item) => item[0]);
+    const bestSellers = await ItemModel.find({
         _id: {
             $in: bestSellerIds,
         },

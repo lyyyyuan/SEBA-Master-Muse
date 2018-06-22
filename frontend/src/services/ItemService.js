@@ -49,13 +49,13 @@ export default class ItemService {
 
     static getPromotedItems = async () => {
         return await AsyncHttpService.get(
-            `${ItemService.baseURL()}/promote/all`
+            `${ItemService.baseURL()}/items/promoted`
         )
     }
 
     static getBestSellers = async (quantity) => {
         return await AsyncHttpService.get(
-            `${ItemService.baseURL()}/bestsellers`,
+            `${ItemService.baseURL()}/items/bestsellers`,
             { quantity }
         )
     }

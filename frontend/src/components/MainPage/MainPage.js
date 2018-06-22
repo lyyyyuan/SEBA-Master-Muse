@@ -12,17 +12,22 @@ class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
+            promotedItems: [],
+            bestSellers: [],
             images: []
         };
     }
     
 
     async componentWillMount() {
-        const items = await ItemService.getPromotedItems();
+        const [promotedItems, bestSellers] = await Promise.all([
+            ItemService.getPromotedItems(),
+            ItemService.getBestSellers(10)
+        ]);
 
         this.setState({
-            data: items,
+            promotedItems,
+            bestSellers,
             images: Images,
         })
     }
@@ -38,11 +43,11 @@ class MainPage extends Component {
                     </div>
                     <h3 className='header' >Featured Art</h3>
                     <div className='display-grid'>
-                        {this.state.data.map((data, index) => <ProductCard {...data} key={index} />)}
+                        {this.state.promotedItems.map((data, index) => <ProductCard {...data} key={index} />)}
                     </div>
                     <h3 className='header'>Best Seller</h3>
                     <div className='display-grid'>
-                        {this.state.data.map((data, index) => <ProductCard {...data} key={index} />)}
+                        {this.state.bestSellers.map((data, index) => <ProductCard {...data} key={index} />)}
                     </div>
                 </Page>
             </div>
