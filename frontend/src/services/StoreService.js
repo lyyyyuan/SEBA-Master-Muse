@@ -43,4 +43,11 @@ export default class StoreService {
         );
     }
 
+    static getStock = async (userId, itemId) => {
+        return await AsyncHttpService.get(
+            `${StoreService.baseURL()}/stock`,
+            { userId, itemId }
+        )
+    }
+
 }

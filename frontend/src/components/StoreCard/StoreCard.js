@@ -30,7 +30,7 @@ class StoreCard extends Component {
     }
 
     handleEdit() {
-        this.props.history.push('/list')
+        this.props.history.push(`/edit/${this.props.id}`)
     }
 
     hideDialog = () => {

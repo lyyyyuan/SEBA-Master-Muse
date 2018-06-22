@@ -12,6 +12,12 @@ class ListingProductCard extends Component {
         }
     }
 
+    componentWillReceiveProps(props) {
+        if (!!props.image) {
+            this.setState({ image: props.image })
+        }
+    }
+
     showDialog = () => {
         this.setState({ dialogVisible: true });
     }
@@ -21,12 +27,12 @@ class ListingProductCard extends Component {
     }
 
     onImageSet = () => {
-        this.setState({ 
-            image: this.imageRef.value, 
+        this.setState({
+            image: this.imageRef.value,
             dialogVisible: false,
         });
 
-        
+
 
         if (this.imageRef.value !== '') {
             this.setState({

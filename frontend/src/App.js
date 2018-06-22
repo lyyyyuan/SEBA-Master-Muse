@@ -28,16 +28,16 @@ export default class App extends React.Component {
                 { component: MainPageView, path: '/', exact: true },
                 { component: ItemPageView, path: '/item-details/:id' },
                 { component: MovieDetailView, path: '/show/:id' },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return (<MovieFormView {...props} />)
-                        }
-                        else {
-                            return (<Redirect to={'/login'} />)
-                        }
-                    }, path: '/edit/:id'
-                },
+                // {
+                //     render: (props) => {
+                //         if (UserService.isAuthenticated()) {
+                //             return (<MovieFormView {...props} />)
+                //         }
+                //         else {
+                //             return (<Redirect to={'/login'} />)
+                //         }
+                //     }, path: '/edit/:id'
+                // },
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
@@ -49,6 +49,7 @@ export default class App extends React.Component {
                     }, path: '/add',
                 },
                 { component: ListingPageView, path: '/list' },
+                { component: ListingPageView, path: '/edit/:id' },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' },
                 { component: SearchPageView, path: '/search' },

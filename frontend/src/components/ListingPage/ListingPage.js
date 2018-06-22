@@ -15,29 +15,33 @@ import { withRouter } from 'react-router-dom';
 class ListingPage extends Component {
     constructor(props) {
         super(props);
-        if (!!this.props.item) {
-            this.state = Object.assign({
-                stock: this.props.stock,
-                categoryRows: [],
-            }, this.props.item);
-        } else {
-            this.state = {
-                title: '',
-                description: '',
-                price: '',
-                stock: '',
-                thumbnail: '',
-                categoryRows: [],
-                categories: {},
-                printingSizes: [],
-                isDigital: true,
-            }
+        this.state = {
+            title: '',
+            description: '',
+            price: '',
+            stock: '',
+            thumbnail: '',
+            categoryRows: [],
+            categories: {},
+            printingSizes: [],
+            isDigital: true,
         }
-
         this.availableSizes = ['12 inch', '24 inch', '36 inch', '48 inch'];
     }
 
+    componentWillReceiveProps(props) {
+        if (!!props.item) {
+            const categories = props.item.categories;
 
+            for (const key of Object.keys(categories)) {
+                this.addCategory(key, categories[key]);
+            }
+
+            this.setState(Object.assign({
+                stock: props.stock,
+            }, props.item));
+        }
+    }
 
     addPrintingSize = (size) => {
         this.state.printingSizes.push(size);
@@ -81,7 +85,7 @@ class ListingPage extends Component {
         }
     }
 
-    addCategory = () => {
+    addCategory = (categoryClass, category) => {
         const rows = this.state.categoryRows;
 
         rows.push(
@@ -91,6 +95,8 @@ class ListingPage extends Component {
                 index={rows.length}
                 onCancel={this.removeCategory}
                 onChange={this.onCategroyChange}
+                categoryClass={categoryClass || ''}
+                category={category || ''}
             />
         )
 
@@ -109,7 +115,7 @@ class ListingPage extends Component {
 
 
     onSubmit = async () => {
-        const {stock, categoryRows, ...itemInfo} = this.state;
+        const { stock, categoryRows, ...itemInfo } = this.state;
         const userId = UserService.getCurrentUser().id;
 
         if (this.props.hasOwnProperty('itemId')) {
@@ -141,7 +147,7 @@ class ListingPage extends Component {
                     <div style={{
                         padding: '0 100px'
                     }}>
-                        <ListingProductCard onImageChange={this.onImageChange} />
+                        <ListingProductCard onImageChange={this.onImageChange} image={this.state.thumbnail}/>
                     </div>
                     <div>
                         <h2>Details</h2>

@@ -11,5 +11,6 @@ router.post('/addRevenue', StoreController.addRevenue);
 router.post('/rate', StoreController.rate);
 router.get('/item/:userId', StoreController.listItems);
 router.get('/stats/:userId', StoreController.storeStats);
+router.get('/stock', StoreController.getStock);
 
 module.exports = router;

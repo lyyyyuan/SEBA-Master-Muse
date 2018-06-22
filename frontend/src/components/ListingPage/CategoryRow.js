@@ -5,10 +5,11 @@ import './CategoryRow.css';
 class CategoryRow extends Component {
     constructor(props) {
         super(props);
+        
         this.state = {
-            categoryClass: '',
-            category: '',
-        };
+            categoryClass: props.categoryClass,
+            category: props.category
+        }
 
     }
 

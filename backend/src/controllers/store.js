@@ -97,6 +97,14 @@ const storeStats = async (req, res) => {
     });
 };
 
+const getStock = async (req, res) => {
+    const {userId, itemId} = req.query;
+    const user = await UserModel.findById(userId);
+    const items = user.store.items;
+    const {stock} = items.filter((item) => item.itemId.toString() === itemId.toString())[0];
+    res.status(200).json({stock});
+};
+
 
 module.exports = {
     changeName,
@@ -105,4 +113,5 @@ module.exports = {
     rate,
     listItems,
     storeStats,
+    getStock,
 };
