@@ -2,6 +2,7 @@
 
 const ItemModel = require('../models/item');
 const UserModel = require('../models/user');
+const OrderModel = require('../models/order');
 
 const getItem = async (req, res) => {
     const {
@@ -125,6 +126,34 @@ const getPromotedItems = async (req, res) => {
     res.status(200).json(items);
 };
 
+const getBestSeller = async (req, res) => {
+    const {quantity} = req.query;
+    const orders = await OrderModel.find({});
+    const rankObj = {};
+    for (const order of orders) {
+        const itemId = order.itemId.toString();
+        if (rankObj.hasOwnProperty(itemId)) {
+            rankObj[itemId] = order.quantity;
+        } else {
+            rankObj[oitemId] += order.quantity;
+        }
+    }
+
+    const sortableRank = [];
+    for (const itemId of Object.keys(rankObj)) {
+        sortableRank.push([itemId, rankObj[itemId]]);
+    }
+    sortableRank.sort((x, y) => x[1] - y[1]);
+    const bestSellerIds = sortableRank.slice(0, quantity);
+    const bestSellers = ItemModel.find({
+        _id: {
+            $in: bestSellerIds,
+        },
+    });
+
+    res.status(200).json(bestSellers);
+};
+
 module.exports = {
     getItem,
     removeItem,
@@ -133,4 +162,5 @@ module.exports = {
     findItems,
     promoteItem,
     getPromotedItems,
+    getBestSeller,
 };
