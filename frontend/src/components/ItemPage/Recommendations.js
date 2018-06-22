@@ -93,22 +93,21 @@ class Recommendations extends React.Component {
                     <span className="dividerDecoration"> </span>
                 </div>
                 <div className="otherArtworks">
-                    {this.state.otherArtworksInfo.map(
-                        (artwork, index) =>
-                            <div className="otherArtworksItem" key={index}
-                                 onMouseEnter={this.handleMouseEnterArtworkItem}
-                                 onMouseLeave={this.handleMouseLeaveArtworkItem}>
-                                <div className="layer onRender" onClick={this.openInNewTab.bind(this, artwork.id)}>
-                                    <Icon className="extLinkToItem" size={35} icon={arrowForward} />
-                                </div>
-                                <div className="artworkTitle onRender">{artwork.name}</div>
-                                <div className="artworkImage" onClick={this.openInNewTab.bind(this, artwork.id)}
-                                     style={{ background: `url(${artwork.url}) no-repeat center`,
-                                              backgroundSize: '100%', height: '210px',
-                                              backgroundColor: 'rgba(245, 245, 245, 0.69)'}}>
-                                </div>
-                                <div className="artworkPrice onRender">€{artwork.price.toFixed(2)}</div>
+                    {this.state.otherArtworksInfo.map((artwork, index) =>
+                        <div className="otherArtworksItem" key={index}
+                             onMouseEnter={this.handleMouseEnterArtworkItem}
+                             onMouseLeave={this.handleMouseLeaveArtworkItem}>
+                            <div className="layer onRender" onClick={this.openInNewTab.bind(this, artwork.id)}>
+                                <Icon className="extLinkToItem" size={35} icon={arrowForward} />
                             </div>
+                            <div className="artworkTitle onRender">{artwork.name}</div>
+                            <div className="artworkImage" onClick={this.openInNewTab.bind(this, artwork.id)}
+                                 style={{ background: `url(${artwork.url}) no-repeat center`,
+                                          backgroundSize: '100%', height: '210px',
+                                          backgroundColor: 'rgba(245, 245, 245, 0.69)'}}>
+                            </div>
+                            <div className="artworkPrice onRender">€{artwork.price.toFixed(2)}</div>
+                        </div>
                     )}
                 </div>
 

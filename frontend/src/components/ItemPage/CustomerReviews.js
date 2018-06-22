@@ -1,9 +1,9 @@
 "use strict";
 
 import React from 'react';
-import './CommentSection.css'
+import './CustomerReviews.css'
 
-class CommentSection extends React.Component {
+class CustomerReviews extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,9 +15,9 @@ class CommentSection extends React.Component {
 
         return (
             <div>
-                Comment Section
+                Customer Reviews
             </div>
         )
     }
 }
-export default CommentSection
+export default CustomerReviews

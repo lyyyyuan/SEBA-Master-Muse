@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import './ProductDetails.css'
+import './ProductDetails.css';
 
 class ProductDetails extends React.Component {
     constructor(props) {
@@ -15,12 +15,14 @@ class ProductDetails extends React.Component {
 
         return (
             <div className="productDetailsContainer">
-                <div>
-                    <div>Category:</div>
-                    <div>{this.state.itemInfo.categories.join(', ')}</div>
+                <div className="segment">
+                    <span className="segmentHeader">Category: </span>
+                    {this.state.itemInfo.categories.map((category, index) =>
+                        <button key={index} className="category">{category}</button>
+                    )}
                 </div>
-                <div>
-                    <div>A few words from the artist:</div>
+                <div className="segment">
+                    <div className="segmentHeader">A few words from the artist:</div>
                     <div className="otherInfoText" dangerouslySetInnerHTML={{__html: this.state.itemInfo.otherInfo}}/>
                 </div>
             </div>

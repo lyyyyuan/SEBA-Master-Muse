@@ -3,7 +3,7 @@
 import React from 'react';
 import './ItemDetails.css'
 import ProductDetails from "./ProductDetails";
-import CommentSection from "./CommentSection";
+import CustomerReviews from "./CustomerReviews";
 
 class ItemDetails extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ItemDetails extends React.Component {
                 backgroundColor: '#f56d60',
                 bottom: '0',
                 height: '2px',
-                width: '149px',
+                width: '159px',
                 left: '0',
                 position: 'absolute',
                 transitionTimingFunction: 'cubic-bezier(.4,0,.2,1)',
@@ -26,7 +26,7 @@ class ItemDetails extends React.Component {
 
     handleClickTabSelection(index, event) {
         // move the tab indication slider
-        const presetWidth = 150;
+        const presetWidth = 160;
         const translateX = presetWidth * index;
         let sliderStyleCopy = JSON.parse(JSON.stringify(this.state.sliderStyle));
         sliderStyleCopy.transform = 'translateX(' + translateX + 'px)';
@@ -70,7 +70,7 @@ class ItemDetails extends React.Component {
                             Product Details
                         </div>
                         <div className="tab" onClick={(e) => this.handleClickTabSelection(1, e)}>
-                            Buyer Comments
+                            Costumer Reviews
                         </div>
                         <span className="tabIndicationSlider" style={this.state.sliderStyle} />
                     </div>
@@ -79,7 +79,7 @@ class ItemDetails extends React.Component {
                     <ProductDetails itemInfo={this.state.itemInfo} />
                 </div>
                 <div className="wrapper commentSectionWrapper">
-                    <CommentSection comments={this.state.itemInfo.comments} />
+                    <CustomerReviews comments={this.state.itemInfo.comments} />
                 </div>
             </div>
         )

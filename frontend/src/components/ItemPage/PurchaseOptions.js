@@ -168,10 +168,10 @@ class PurchaseOptions extends React.Component {
 
     render() {
 
-        const printingSizeOptions = this.state.itemInfo.printingSize.map(
-            size => <span className="printingSizeItem" key={size} onClick={this.handleClickPrintingSize}>
-                          {size}
-                    </span>
+        const printingSizeOptions = this.state.itemInfo.printingSize.map(size =>
+            <span className="printingSizeItem" key={size} onClick={this.handleClickPrintingSize}>
+                {size}
+            </span>
         );
 
         return (
