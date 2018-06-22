@@ -80,7 +80,7 @@ const StarEmpty = () =>
                 <stop offset="0%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starEmpty)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -93,7 +93,7 @@ const StarPointOne = () =>
                 <stop offset="18%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointOne)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -105,7 +105,7 @@ const StarPointTwo = () =>
                 <stop offset="28%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointTwo)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -117,7 +117,7 @@ const StarPointThree = () =>
                 <stop offset="37%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointThree)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -129,7 +129,7 @@ const StarPointFour = () =>
                 <stop offset="45%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointFour)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -141,7 +141,7 @@ const StarPointFive = () =>
                 <stop offset="50%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointFive)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -153,7 +153,7 @@ const StarPointSix = () =>
                 <stop offset="55%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointSix)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -165,7 +165,7 @@ const StarPointSeven = () =>
                 <stop offset="63%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointSeven)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -177,7 +177,7 @@ const StarPointEight = () =>
                 <stop offset="72%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointEight)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -189,7 +189,7 @@ const StarPointNine = () =>
                 <stop offset="82%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starPointNine)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
 
@@ -201,6 +201,6 @@ const StarFull = () =>
                 <stop offset="100%" stopColor="transparent" stopOpacity="1" />
             </linearGradient>
         </defs>
-        <path d="M 20.000 25.000 L 25.878 28.090 L 24.755 21.545 L 29.511 16.910 L 22.939 15.955 L 20.000 10.000 L 17.061 15.955 L 10.489 16.910 L 15.245 21.545 L 14.122 28.090 L 20.000 25.000"
+        <path d="M 15.000 20.000 L 20.878 23.090 L 19.755 16.545 L 24.511 11.910 L 17.939 10.955 L 15.000 5.000 L 12.061 10.955 L 5.489 11.910 L 10.245 16.545 L 9.122 23.090 L 15.000 20.000"
               fill="url(#starFull)" strokeWidth="1" stroke="#faca51"/>
     </svg>;
