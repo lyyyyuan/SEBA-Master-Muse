@@ -28,7 +28,7 @@ class Header extends React.Component {
 
 
     toHome = () => {
-        this.props.history.push('/');
+        window.location = '/'
     }
 
     toLogin = () => {
