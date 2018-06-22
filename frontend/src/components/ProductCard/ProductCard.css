@@ -13,3 +13,7 @@
 .card-title h3 {
     color: white;
 }
+
+.clickables {
+    cursor: pointer ;
+}

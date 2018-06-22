@@ -5,12 +5,24 @@ import Items from '../../Data/mockItem';
 import Images from '../../Data/images';
 import MyCarousel from '../CustomCarousel/MyCarousel';
 import './MainPage.css';
+import ItemService from '../../services/ItemService';
 
 
 class MainPage extends Component {
-    componentWillMount() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            images: []
+        };
+    }
+    
+
+    async componentWillMount() {
+        const items = await ItemService.getPromotedItems();
+
         this.setState({
-            data: [...Items, ...Items],
+            data: items,
             images: Images,
         })
     }

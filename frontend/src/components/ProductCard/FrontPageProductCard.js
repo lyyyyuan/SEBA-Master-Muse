@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, Media, MediaOverlay, Button } from "react-md";
-
+import {withRouter} from 'react-router-dom';
 
 class ProductCard extends Component {
     constructor(props) {
@@ -25,14 +25,16 @@ class ProductCard extends Component {
 
     render() {
         return (
-            <div>
+            <div className='clickables' 
+            onClick={()=>{this.props.history.push(`/item-details/${this.props._id}`)}}
+            >
                 <Card>
                     <Media
                         onMouseEnter={this.onMouseEnter}
                         onMouseLeave={this.onMouseLeave}
                         aspectRatio='1-1'
                     >
-                        <img src={this.props.productImage} alt="Nature from lorempixel" style={{
+                        <img src={this.props.thumbnail} alt="Nature from lorempixel" style={{
                             objectFit: 'cover',
                             width: '100%',
                             height: '100%'
@@ -54,4 +56,4 @@ class ProductCard extends Component {
     }
 }
 
-export default ProductCard;
+export default withRouter(ProductCard);
