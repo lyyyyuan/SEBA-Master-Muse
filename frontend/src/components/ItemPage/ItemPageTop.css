@@ -93,6 +93,11 @@
     color: #3B3B3B;
 }
 
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon .md-avatar{
+    height: 50px;
+    width: 50px;
+}
+
 .itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon:hover {
     cursor: pointer;
 }

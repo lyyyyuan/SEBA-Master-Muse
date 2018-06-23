@@ -162,7 +162,9 @@ class ItemPage extends React.Component {
                 "headquartered in Cupertino, California, that designs, develops, " +
                 "and sells consumer electronics, computer software, and online services.",
                 totalRating: 4.3,
-                otherArtworksIds: [2, 3, 4]
+                otherArtworksIds: [2, 3, 4],
+                profilePicUrl: ""
+                // profilePicUrl: "https://s3.amazonaws.com/freebiesupply/large/2x/apple-logo-transparent.png"
             },
             MockOtherArtworksData: [
                 {

@@ -7,15 +7,17 @@ import RatingStars from "./RatingStars";
 import './ItemPageTop.css';
 import { Icon } from 'react-icons-kit';
 import { user_circle } from 'react-icons-kit/ikons/user_circle';
+import { Avatar, IconSeparator } from 'react-md';
 
 class ItemPageTop extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             itemPics: this.props.itemPics,
             itemInfo: this.props.itemInfo,
             artistInfo: this.props.artistInfo,
-            basePrintingCostData: this.props.basePrintingCostData
+            basePrintingCostData: this.props.basePrintingCostData,
         };
 
         this.handleClickGoToArtistHomepage = this.handleClickGoToArtistHomepage.bind(this);
@@ -32,6 +34,26 @@ class ItemPageTop extends React.Component {
     }
 
     render() {
+
+        const Item = ({ label, children }) => (
+            <IconSeparator label={label} iconBefore component="li" className="md-cell md-cell--12">
+                {children}
+            </IconSeparator>
+        );
+
+        let artistProfilePicAvatar;
+        if (this.state.artistInfo.profilePicUrl === '') {
+            artistProfilePicAvatar  =
+                <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+        } else {
+            artistProfilePicAvatar =
+                <div className="artistIcon">
+                    <Item label="">
+                        <Avatar src={this.props.artistInfo.profilePicUrl} role="presentation" />
+                    </Item>
+                </div>
+        }
+
         return (
             <div className="horizontalFlex itemPageTopContainer">
                 <div className="sectionLeft">
@@ -39,7 +61,7 @@ class ItemPageTop extends React.Component {
                 </div>
                 <div className="sectionRight">
                     <div className="segment artistInfo">
-                        <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+                        {artistProfilePicAvatar}
                         <div className="artistText">
                             <div className="artistName" onClick={this.handleClickGoToArtistHomepage}>
                                 {this.state.artistInfo.artistName}
