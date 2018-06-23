@@ -1,3 +1,39 @@
-.customerReviewsContainer {
-
+.customerReviewsContainer.verticalFlex {
+    display: flex;
+    flex-direction: column;
 }
+
+.customerReviewsContainer .verticalFlex { /* not a duplicate of prev */
+    display: flex;
+    flex-direction: column;
+}
+
+.customerReviewsContainer .horizontalFlex {
+    display: flex;
+}
+
+.customerReviewsContainer .commentContainer {
+    margin-top: 15px;
+    padding: 8px 12px 20px 12px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.customerReviewsContainer > .commentContainer > .commentHeader {
+    justify-content: space-between;
+    font-size: 12px;
+    color: #5e5e5e;
+    margin-bottom: 5px;
+}
+
+.customerReviewsContainer > .commentContainer > .commentHeader > .usernameWrapper {
+    position: relative;
+}
+
+.customerReviewsContainer > .commentContainer > .commentHeader > .usernameWrapper > .username {
+    position: absolute;
+    top: -1px;
+    left: 16px;
+    width: max-content;
+    color: #0494d7;
+}
+

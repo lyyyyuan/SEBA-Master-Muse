@@ -30,13 +30,113 @@ class ItemPage extends React.Component {
                 totalRating: 3.8,
                 comments: [
                     {
-                        content: "I love this wallpaper and the hard copy I requested.",
-                        username: "Captain America",
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
                         timestamp: "2018-06-15"
                     },
                     {
-                        content: "The printout looks good in my dorm room.",
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
                         username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
+                        timestamp: "2018-07-12"
+                    },
+                    {
+                        content: "Fast delivery. Good quality printout.",
+                        username: "Iron Man",
+                        timestamp: "2018-06-15"
+                    },
+                    {
+                        content: "The printout looks good in my dorm room. I love this wallpaper and the hard copy I requested. BTW, I can't wait for September when Apple rolls out Mojave to all MacBooks.",
+                        username: "Captain America",
                         timestamp: "2018-07-12"
                     }
                 ],

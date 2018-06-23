@@ -1,12 +1,12 @@
 "use strict";
-import './ItemPageTop.css'
-import { Icon } from 'react-icons-kit'
-import { user_circle } from 'react-icons-kit/ikons/user_circle'
 
 import React from 'react';
 import ItemPicsCarousel from "./ItemPicsCarousel";
 import PurchaseOptions from "./PurchaseOptions";
 import RatingStars from "./RatingStars";
+import './ItemPageTop.css';
+import { Icon } from 'react-icons-kit';
+import { user_circle } from 'react-icons-kit/ikons/user_circle';
 
 class ItemPageTop extends React.Component {
     constructor(props) {
