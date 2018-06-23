@@ -76,10 +76,10 @@ class ItemDetails extends React.Component {
                         <span className="tabIndicationSlider" style={this.state.sliderStyle} />
                     </div>
                 </div>
-                <div className="wrapper productDetailsWrapper">
+                <div className="wrapper productDetailsWrapper visible">
                     <ProductDetails itemInfo={this.state.itemInfo} artistInfo={this.state.artistInfo}/>
                 </div>
-                <div className="wrapper customerReviewsWrapper visible">
+                <div className="wrapper customerReviewsWrapper">
                     <CustomerReviews allComments={this.state.itemInfo.comments} totalRating={this.state.itemInfo.totalRating}/>
                 </div>
             </div>
