@@ -8,17 +8,34 @@ import { user_circle } from 'react-icons-kit/ikons/user_circle';
 class CustomerReviews extends React.Component {
     constructor(props) {
         super(props);
+
+        const displayedComments = this.changeDisplayedComments(1);
+
         this.state = {
-            comments: this.props.comments,
+            allComments: this.props.allComments,
+            displayedComments: displayedComments,
             totalRating: this.props.totalRating
         };
+
+        this.changeDisplayedComments = this.changeDisplayedComments.bind(this);
+    }
+
+    changeDisplayedComments(pageNumber) {
+        const MAX_COMMENT_DISPLAY_COUNT = 20;
+        const startIndex = (pageNumber - 1) * MAX_COMMENT_DISPLAY_COUNT;
+        const endIndex = Math.min(startIndex + 20, this.props.allComments.length);
+        let displayedComments = [];
+        for (let i = startIndex; i < endIndex; i++) {
+            displayedComments.push(this.props.allComments[i]);
+        }
+        return displayedComments;
     }
 
     render() {
 
         return (
             <div className="customerReviewsContainer verticalFlex">
-                {this.state.comments.map((comment, index) =>
+                {this.state.displayedComments.map((comment, index) =>
                     <div key={index} className="commentContainer verticalFlex">
                         <div className="commentHeader horizontalFlex">
                             <div className="usernameWrapper">
@@ -36,6 +53,9 @@ class CustomerReviews extends React.Component {
                         </div>
                     </div>
                 )}
+                <div className="commentPaginationWrapper">
+
+                </div>
             </div>
         )
     }

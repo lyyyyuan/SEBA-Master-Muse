@@ -29,6 +29,7 @@
 }
 
 .itemDetailsContainer > .wrapper {
+    overflow: hidden;
     visibility: hidden;
     height: 0;
 }

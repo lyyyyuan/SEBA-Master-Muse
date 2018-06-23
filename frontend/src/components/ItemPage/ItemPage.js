@@ -13,7 +13,7 @@ class ItemPage extends React.Component {
         this.state = {
             MockItemData: {
                 id: 1,
-                name: "This is the original HD photo file of the featured wallpaper This is thef Apple's latest installation of macOS Mojaveof Apple's latest installation of macOS Mojave",
+                name: "This is the original HD photo file of the featured wallpaper",
                 price: 10.00,
                 categories: ["Photography"],
                 description: "This is the original HD photo file of the featured wallpaper " +

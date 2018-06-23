@@ -80,7 +80,7 @@ class ItemDetails extends React.Component {
                     <ProductDetails itemInfo={this.state.itemInfo} artistInfo={this.state.artistInfo}/>
                 </div>
                 <div className="wrapper customerReviewsWrapper">
-                    <CustomerReviews comments={this.state.itemInfo.comments} totalRating={this.state.itemInfo.totalRating}/>
+                    <CustomerReviews allComments={this.state.itemInfo.comments} totalRating={this.state.itemInfo.totalRating}/>
                 </div>
             </div>
         )
