@@ -7,7 +7,8 @@ class ProductDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            itemInfo: this.props.itemInfo
+            itemInfo: this.props.itemInfo,
+            artistInfo: this.props.artistInfo
         }
     }
 
@@ -22,8 +23,14 @@ class ProductDetails extends React.Component {
                     )}
                 </div>
                 <div className="segment">
-                    <div className="segmentHeader">A few words from the artist:</div>
-                    <div className="otherInfoText" dangerouslySetInnerHTML={{__html: this.state.itemInfo.otherInfo}}/>
+                    <div className="segmentHeader">Product Description:</div>
+                    <div className="segmentBody">
+                        {this.state.itemInfo.description}
+                    </div>
+                </div>
+                <div className="segment">
+                    <div className="segmentHeader">A few words from {this.state.artistInfo.artistName}:</div>
+                    <div className="segmentBody" dangerouslySetInnerHTML={{__html: this.state.itemInfo.otherInfo}}/>
                 </div>
             </div>
         )

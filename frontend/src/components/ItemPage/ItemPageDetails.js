@@ -22,7 +22,7 @@ class ItemPageDetails extends React.Component {
                     <Recommendations artistInfo={this.state.artistInfo} otherArtworksInfo={this.state.otherArtworksInfo} />
                 </div>
                 <div className="itemDetailsWrapper">
-                    <ItemDetails itemInfo={this.state.itemInfo} />
+                    <ItemDetails itemInfo={this.state.itemInfo} artistInfo={this.state.artistInfo} />
                 </div>
             </div>
         )

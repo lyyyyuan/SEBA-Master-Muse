@@ -10,6 +10,7 @@ class ItemDetails extends React.Component {
         super(props);
         this.state = {
             itemInfo: this.props.itemInfo,
+            artistInfo: this.props.artistInfo,
             sliderStyle: {
                 backgroundColor: '#f56d60',
                 bottom: '0',
@@ -76,7 +77,7 @@ class ItemDetails extends React.Component {
                     </div>
                 </div>
                 <div className="wrapper productDetailsWrapper visible">
-                    <ProductDetails itemInfo={this.state.itemInfo} />
+                    <ProductDetails itemInfo={this.state.itemInfo} artistInfo={this.state.artistInfo}/>
                 </div>
                 <div className="wrapper customerReviewsWrapper">
                     <CustomerReviews comments={this.state.itemInfo.comments} totalRating={this.state.itemInfo.totalRating}/>

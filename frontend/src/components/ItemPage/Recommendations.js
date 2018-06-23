@@ -5,6 +5,7 @@ import './Recommendations.css';
 import { Icon } from 'react-icons-kit';
 import { user_circle } from 'react-icons-kit/ikons/user_circle';
 import { arrowForward } from 'react-icons-kit/typicons/arrowForward';
+import RatingStars from "./RatingStars";
 
 class Recommendations extends React.Component {
     constructor(props) {
@@ -83,7 +84,15 @@ class Recommendations extends React.Component {
                         {this.state.artistInfo.aboutArtist}
                     </div>
                     <div className="segment artistRating">
-                        <span>Rating Placeholder</span>
+                        <span className="ratingByStars">
+                            <RatingStars totalRating={this.state.artistInfo.totalRating}/>
+                        </span>
+                        <span className="ratingByScore">
+                            <span className="ratingScore">{this.state.artistInfo.totalRating.toFixed(1)}</span>
+                            <span className="ratingMaxScore">
+                                /5.0
+                            </span>
+                        </span>
                     </div>
                 </div>
                 <div className="divider">

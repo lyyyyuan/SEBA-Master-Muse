@@ -6,6 +6,7 @@ import { user_circle } from 'react-icons-kit/ikons/user_circle'
 import React from 'react';
 import ItemPicsCarousel from "./ItemPicsCarousel";
 import PurchaseOptions from "./PurchaseOptions";
+import RatingStars from "./RatingStars";
 
 class ItemPageTop extends React.Component {
     constructor(props) {
@@ -52,8 +53,19 @@ class ItemPageTop extends React.Component {
                         <div className="itemTitle">
                             {this.state.itemInfo.name}
                         </div>
-                        <div className="itemDescription">
-                            {this.state.itemInfo.description}
+                        <div className="itemRating">
+                            <span className="ratingByStars">
+                                <RatingStars totalRating={this.state.itemInfo.totalRating}/>
+                            </span>
+                            <span className="ratingByScore">
+                                <span className="ratingScore">{this.state.itemInfo.totalRating.toFixed(1)}</span>
+                                <span className="ratingMaxScore">
+                                    /5.0
+                                </span>
+                                <span className="ratingCount">
+                                    ({this.state.itemInfo.ratingCount} Ratings)
+                                </span>
+                            </span>
                         </div>
                     </div>
                     <div className="segment purchaseOptions">

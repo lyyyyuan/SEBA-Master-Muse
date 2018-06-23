@@ -17,7 +17,7 @@ class CustomerReviews extends React.Component {
 
         return (
             <div className="customerReviewsContainer">
-                <RatingStars totalRating={this.state.totalRating}/>
+
             </div>
         )
     }

@@ -13,7 +13,7 @@ class ItemPage extends React.Component {
         this.state = {
             MockItemData: {
                 id: 1,
-                name: "MacOS Mojave Wallpaper",
+                name: "This is the original HD photo file of the featured wallpaper This is thef Apple's latest installation of macOS Mojaveof Apple's latest installation of macOS Mojave",
                 price: 10.00,
                 categories: ["Photography"],
                 description: "This is the original HD photo file of the featured wallpaper " +
@@ -51,6 +51,7 @@ class ItemPage extends React.Component {
                 aboutArtist: "Apple Inc. is an American multinational technology company " +
                 "headquartered in Cupertino, California, that designs, develops, " +
                 "and sells consumer electronics, computer software, and online services.",
+                totalRating: 4.3,
                 otherArtworksIds: [2, 3, 4]
             },
             MockOtherArtworksData: [
@@ -90,7 +91,7 @@ class ItemPage extends React.Component {
 
     render() {
         return (
-            <div className="spacing">
+            <div className="verticalFlex itemPageContainer">
                 <ItemPageHeader />
                 <div style={{width: '1117px', margin: '0 auto' }}>
                     <ItemPageTop itemPics={this.state.MockItemPicsData}

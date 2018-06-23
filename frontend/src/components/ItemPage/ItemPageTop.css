@@ -1,4 +1,4 @@
-.itemPageTopContainer .sectionLeft {
+.itemPageTopContainer > .sectionLeft {
     width: 35%;
     height: 510px;
     border-radius: 3px;
@@ -12,7 +12,7 @@
     height: 560px;
 }
 
-.itemPageTopContainer .sectionRight {
+.itemPageTopContainer > .sectionRight {
     margin-left: 3%;
     width: 62%;
     display: flex;
@@ -26,57 +26,96 @@
     padding-top: 12px;
 }
 
+.itemPageTopContainer .sectionRight > .segment.itemInfo {
+    border-bottom: 1px dashed #e7e7e7;
+    padding-bottom: 45px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemTitle {
+    font-weight: 600;
+    font-size: 20px;
+    display: -webkit-box;
+    height: 55px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating {
+    padding-top: 15px;
+    bottom: 10px;
+    left: -27px;
+    position: absolute;
+    display: flex;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByStars {
+    transform: scale(0.68, 0.68);
+    margin-left: 7px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore {
+    margin-top: 3px;
+    margin-left: -15px;
+    font-size: 14px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingScore {
+    color: #ff6e40;
+    font-weight: 500;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingCount {
+    margin-left: 7px;
+    color: #3b3b3b;
+    position: absolute;
+    width: 70px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingMaxScore {
+    color: #3b3b3b;
+}
+
 .itemPageTopContainer .sectionRight > .segment:last-child {
     border-bottom: none;
     padding-bottom: auto;
 }
 
-.itemPageTopContainer .sectionRight .artistInfo {
+.itemPageTopContainer > .sectionRight > .artistInfo {
     display: flex;
 }
 
-.itemPageTopContainer .sectionRight .artistIcon {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon {
     color: #3B3B3B;
 }
 
-.itemPageTopContainer .sectionRight .artistText {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon:hover {
+    cursor: pointer;
+}
+
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText {
     margin-left: 20px;
 }
 
-.itemPageTopContainer .sectionRight .artistName {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistName {
     font-size: 18px;
     font-weight: 600;
     top: 8%;
     position: relative;
 }
 
-.itemPageTopContainer .sectionRight .artistName:hover {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistName:hover {
     cursor: pointer;
     color: #ff6e40;
 }
 
-.itemPageTopContainer .sectionRight .artistIcon:hover {
-    cursor: pointer;
-}
-
-.itemPageTopContainer .sectionRight .artistTitle {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistTitle {
     font-size: 13px;
     color: #4e4e4e;
     top: 15%;
     position: relative;
-}
-
-.itemPageTopContainer .itemInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.itemPageTopContainer .itemTitle {
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.itemPageTopContainer .itemDescription {
-    font-size: 13px;
-    margin-top: 1.5%;
 }

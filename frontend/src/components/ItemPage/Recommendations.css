@@ -6,76 +6,100 @@
     margin-bottom: 0;
 }
 
-.recommendationsContainer .artistInfo {
+.recommendationsContainer > .artistSummary > .artistInfo {
     display: flex;
     background-color: #f5f5f5;
 }
 
-.recommendationsContainer .artistIcon {
+.recommendationsContainer > .artistSummary > .artistInfo > .artistIcon {
     color: #3B3B3B;
+    cursor: pointer;
 }
 
-.recommendationsContainer .artistText {
+.recommendationsContainer > .artistSummary > .artistInfo > .artistText {
     margin-left: 20px;
 }
 
-.recommendationsContainer .artistName {
+.recommendationsContainer > .artistSummary > .artistInfo > .artistText > .artistName {
     font-size: 15px;
     font-weight: 600;
     position: relative;
 }
 
-.recommendationsContainer .artistName:hover {
+.recommendationsContainer > .artistSummary > .artistInfo > .artistText > .artistName:hover {
     cursor: pointer;
     color: #ff6e40;
 }
 
-.recommendationsContainer .artistIcon:hover {
-    cursor: pointer;
-}
-
-.recommendationsContainer .artistTitle {
+.recommendationsContainer > .artistSummary > .artistInfo > .artistText > .artistTitle {
     font-size: 12px;
     color: #4e4e4e;
     top: 4%;
     position: relative;
 }
 
-.recommendationsContainer .artistSummary > .segment {
+.recommendationsContainer > .artistSummary > .artistRating {
+    display: flex;
+}
+
+.recommendationsContainer > .artistSummary > .artistRating > .ratingByStars {
+    transform: scale(0.7, 0.7);
+}
+
+.recommendationsContainer > .artistSummary > .artistRating > .ratingByScore {
+    margin-top: 4px;
+    margin-left: -12px;
+    font-size: 14px;
+}
+
+.recommendationsContainer > .artistSummary > .artistRating > .ratingByScore >.ratingScore {
+    color: #ff6e40;
+    font-weight: 500;
+}
+
+.recommendationsContainer > .artistSummary > .artistRating > .ratingByScore > .ratingMaxScore {
+    color: #3b3b3b;
+}
+
+.recommendationsContainer > .artistSummary > .segment {
     border-bottom: 1px dashed #e7e7e7;
     padding: 12px 18px 14px 18px;
 }
 
-.recommendationsContainer .artistSummary > .segment.aboutArtist {
+.recommendationsContainer > .artistSummary > .segment.aboutArtist {
     border-bottom: 1px solid #e7e7e7;
     font-size: 13px;
 }
 
-.recommendationsContainer .artistSummary > .segment:last-child {
+.recommendationsContainer > .artistSummary > .segment.artistRating {
+    padding: 12px 0 14px 0;
+}
+
+.recommendationsContainer > .artistSummary > .segment:last-child {
     border-bottom: none;
     padding-bottom: auto;
 }
 
-.recommendationsContainer .artistSummary {
+.recommendationsContainer > .artistSummary {
     border: 1px solid #e7e7e7;
     border-radius: 3px;
 }
 
-.recommendationsContainer .divider > .dividerText {
+.recommendationsContainer > .divider > .dividerText {
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }
 
-.recommendationsContainer .divider > .dividerText > div {
+.recommendationsContainer > .divider > .dividerText > div {
     text-align: center;
     background-color: #fafafa;
     width: 52%;
     color: #4e4e4e;
 }
 
-.recommendationsContainer .divider > .dividerDecoration {
+.recommendationsContainer > .divider > .dividerDecoration {
     height: 10px;
     width: 268px;
     border-top: 1px #4e4e4e dotted;
@@ -91,7 +115,7 @@
     position: relative; /*VERY IMPORTANT TO .artworkPrice's and artworkTitle's width*/
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .layer {
     background-color: transparent;
     border-radius: 2px;
     position: absolute;
@@ -107,17 +131,17 @@
     z-index: 1;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer.onRender {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .layer.onRender {
     animation: none;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer.visible {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .layer.visible {
     background-color: rgba(255, 215, 205, 0.57);
     opacity: 1;
     animation: fade-in 0.15s ease;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .layer > .extLinkToItem {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .layer > .extLinkToItem {
     color: #ffffff;
     border: solid 3px #ffffff;
     border-radius: 50%;
@@ -125,7 +149,7 @@
     padding-bottom: 3px;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkImage {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkImage {
     box-shadow: 0 0 1px 0 rgba(0,0,0,0), 0 0 1px 0 rgba(0,0,0,0.1);
     overflow: hidden;
     display: inherit;
@@ -133,8 +157,8 @@
     border-radius: 2px;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle,
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkTitle,
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkPrice {
     position: absolute;
     background-color: rgba(255,255,255,0.75);
     width: 100%;
@@ -146,19 +170,19 @@
     animation: fade-out 0.07s ease;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle.onRender,
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice.onRender {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkTitle.onRender,
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkPrice.onRender {
     animation: none;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle.visible,
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice.visible {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkTitle.visible,
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkPrice.visible {
     visibility: visible;
     animation: fade-in 0.15s ease;
     opacity: 1;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkTitle {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkTitle {
     border-radius: 2px 2px 0 0;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -169,7 +193,7 @@
     line-height: 35px;
 }
 
-.recommendationsContainer .otherArtworks > .otherArtworksItem > .artworkPrice {
+.recommendationsContainer > .otherArtworks > .otherArtworksItem > .artworkPrice {
     font-size: 12px;
     height: 25px;
     line-height: 25px;
