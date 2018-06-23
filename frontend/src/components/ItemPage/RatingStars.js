@@ -11,9 +11,6 @@ class RatingStars extends React.Component {
         const tenths = this.props.totalRating * 10 % 10;
         const units = (this.props.totalRating - tenths / 10).toFixed(0);
 
-        console.log(units);
-        console.log(tenths);
-
         let starArray = [];
         for (let i = 0; i < units; i++) {
             starArray.push(10);

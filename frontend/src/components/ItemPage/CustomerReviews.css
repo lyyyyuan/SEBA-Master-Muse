@@ -37,3 +37,51 @@
     color: #0494d7;
 }
 
+.customerReviewsContainer > .commentPaginationWrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination{
+    display: flex;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > button.changePage {
+    margin-top: 2px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > button.changePage:hover {
+    color: #ff6e40;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > button.changePage:disabled {
+    cursor: not-allowed;
+    color: #acacac
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > .pagination {
+    margin-left: 4px;
+    margin-right: 5px;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > .pagination > input.pageNumber {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 1px 0 #e6e3e3;
+}
+
+.customerReviewsContainer > .commentPaginationWrapper > .commentPagination > .pagination > span.totalPageNumber {
+    margin-left: 8px;
+    cursor: default;
+}
+

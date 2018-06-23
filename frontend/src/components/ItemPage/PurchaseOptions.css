@@ -73,8 +73,8 @@
 }
 
 input.printingSizeItem {
-    min-width: 100px;
-    margin-top: 0px;
+    width: 75px;
+    margin-top: 0;
 }
 
 input.printingSizeItem:focus {

@@ -24,8 +24,9 @@ class PurchaseOptions extends React.Component {
         this.calculatePrintingCost = this.calculatePrintingCost.bind(this);
         this.handleActivePrintingSizeItem = this.handleActivePrintingSizeItem.bind(this);
         this.handleInputChangePrintingSize = this.handleInputChangePrintingSize.bind(this);
+        this.handleKeyPressPrintingSize = this.handleKeyPressPrintingSize.bind(this);
         this.handleInputBlurPrintingSize = this.handleInputBlurPrintingSize.bind(this);
-        this.isNumeric = this.isNumeric.bind(this);
+        this.isNonNegNumber = this.isNonNegNumber.bind(this);
         this.handleClickQuantityMinus = this.handleClickQuantityMinus.bind(this);
         this.handleClickQuantityPlus = this.handleClickQuantityPlus.bind(this);
         this.handleClickAddToCart = this.handleClickAddToCart.bind(this);
@@ -33,7 +34,7 @@ class PurchaseOptions extends React.Component {
     }
 
     handleClickPrintingSize(event) {
-        const target = event.target;
+        let target = event.target;
         if (target.tagName.toLowerCase() !== 'input') {
             this.setState({
                 selectedPrintingSize: target.textContent.toLowerCase() === 'none' ? false : target.textContent,
@@ -73,34 +74,43 @@ class PurchaseOptions extends React.Component {
     }
 
     handleInputChangePrintingSize(event) {
-        const target = event.target;
+        let e = event.nativeEvent;
+        let target = event.target;
 
         let value;
-
-        if (this.isNumeric(target.value)) {
-            // check for lower and upper limits
-            if (target.value < 0) {
-                value = 6;
-            } else if (target.value > 100) {
+        if (this.isNonNegNumber(e.data) || e.data === '.') {
+            // check for upper limit
+            if (parseFloat(target.value) > 100) {
                 value = 100;
             } else {
                 value = target.value;
             }
             // allow for up to 2 decimal places
             if (value.toString().includes('.')) {
-                let decimalString = value.split('.')[1];
+                let array = value.split('.');
+
+                let decimalString = array[1];
                 if (decimalString.length > 2) {
                     value = this.state.selectedPrintingSize;
                 } else {
-                    value = target.value;
+                    if (array.length === 2) {
+                        value = target.value;
+                    } else { // array.length > 2
+                        value = target.value.substring(0, target.value.length - 1);
+                    }
                 }
             }
         } else {
-            if (target.value === '') {
-                value = true;
+            if (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward') {
+                if (target.value === '') {
+                    value = true;
+                } else {
+                    value = target.value;
+                }
             } else {
                 value = this.state.selectedPrintingSize;
             }
+
         }
 
         target.value = value === true ? '' : value;
@@ -110,11 +120,21 @@ class PurchaseOptions extends React.Component {
             printingCost: this.calculatePrintingCost(value === true ? 0 : value)
         });
 
+
+    }
+
+    handleKeyPressPrintingSize(event) {
+        const e = event.nativeEvent;
+        let target = event.target;
+
+        if (e.keyCode === 13) {
+            target.blur();
+        }
     }
 
     handleInputBlurPrintingSize(event) {
-        const target = event.target;
-        if (this.isNumeric(target.value)) {
+        let target = event.target;
+        if (this.isNonNegNumber(target.value)) {
 
             if (target.value < 6) {
                 target.value = 6;
@@ -134,12 +154,10 @@ class PurchaseOptions extends React.Component {
                 target.focus();
             }
         }
-
-
     }
 
-    isNumeric(number) {
-        return !isNaN(parseFloat(number)) && isFinite(number);
+    isNonNegNumber(number) {
+        return !isNaN(parseFloat(number)) && isFinite(number) && number >= 0;
     }
 
     handleClickQuantityPlus() {
@@ -201,9 +219,9 @@ class PurchaseOptions extends React.Component {
                                 None
                             </span>
                             {printingSizeOptions}
-                            <input type="number" name="customizePrintingSize" placeholder="Customize"
+                            <input type="text" name="customizePrintingSize" placeholder="Customize"
                                    min="0" max="100" className="printingSizeItem" onClick={this.handleClickPrintingSize}
-                                   onChange={this.handleInputChangePrintingSize} onBlur={this.handleInputBlurPrintingSize}/>
+                                   onChange={this.handleInputChangePrintingSize} onKeyPress={this.handleKeyPressPrintingSize} onBlur={this.handleInputBlurPrintingSize}/>
                             <Button icon className="customizeTooltip" tooltipPosition="top"
                                     tooltipLabel="Enter a number 6 - 100, in up to 2 decimal places">
                                 help
