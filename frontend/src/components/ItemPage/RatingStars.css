@@ -1,0 +1,8 @@
+.ratingStarsContainer {
+    display: flex;
+}
+
+.ratingStarsContainer > svg.star {
+    width: 26px;
+    height: 24px;
+}

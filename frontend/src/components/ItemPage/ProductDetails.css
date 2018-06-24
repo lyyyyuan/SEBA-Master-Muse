@@ -1,0 +1,40 @@
+.productDetailsContainer {
+    padding: 18px 18px 15px 18px;
+    border: 1px solid #e7e7e7;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+}
+
+.productDetailsContainer > div.segment {
+    margin-bottom: 15px;
+}
+
+.productDetailsContainer > div.segment:last-child {
+    margin-bottom: unset;
+}
+
+.productDetailsContainer > div.segment > .segmentHeader {
+    font-weight: 500;
+}
+
+.productDetailsContainer > div.segment > button.category {
+    font-size: 13px;
+    height: 27px;
+    border-radius: 1px;
+    outline: none;
+    color: #0494d7;
+    background: rgba(4, 169, 244, 0.04);
+    border: none;
+    padding: 5px 8px 7px 8px;
+    margin-left: 6px;
+}
+
+.productDetailsContainer > div.segment > button.category:first-of-type {
+    margin-left: 5px;
+}
+
+
+.productDetailsContainer > div.segment > .segmentBody {
+    margin-top: 3px;
+    text-align: justify;
+}

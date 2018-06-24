@@ -32,7 +32,7 @@
 }
 
 .itemCost {
-    color: #f54336;
+    color: #ff6e40;
     font-weight: 400;
     font-size: 30px;
 }
@@ -69,12 +69,12 @@
 }
 
 .printingSizeItem:hover {
-    border: 1px solid #f54336;
+    border: 1px solid #ff6e40;
 }
 
 input.printingSizeItem {
-    min-width: 100px;
-    margin-top: 0px;
+    width: 75px;
+    margin-top: 0;
 }
 
 input.printingSizeItem:focus {
@@ -82,8 +82,8 @@ input.printingSizeItem:focus {
 }
 
 .printingSizeItem.selected {
-    border: 1px solid #f54336;
-    color: #f54336;
+    border: 1px solid #ff6e40;
+    color: #ff6e40;
 }
 
 input.printingSizeItem.selected {
@@ -121,23 +121,23 @@ input.printingSizeItem.selected:-moz-placeholder {
 }
 
 .buy > button.addToCart {
-    background: #f57224;
-    border: 1px solid #f57224;
+    background: #ff6e40;
+    border: 1px solid #ff6e40;
 }
 
 .buy > button.addToCart:hover {
-    background: #eb6720;
-    border: 1px solid #eb6720;
+    background: #f7643a;
+    border: 1px solid #f7643a;
 }
 
 .buy > button.buyNow {
-    background: #f5b128;
-    border: 1px solid #f5b128;
+    background: #03a9f4;
+    border: 1px solid #03a9f4;
 }
 
 .buy > button.buyNow:hover {
-    background: #ebab27;
-    border: 1px solid #ebab27;
+    background: #03a4eb;
+    border: 1px solid #03a4eb;
 }
 
 input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {

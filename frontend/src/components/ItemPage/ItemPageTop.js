@@ -1,20 +1,23 @@
 "use strict";
-import './ItemPageTop.css'
-import { Icon } from 'react-icons-kit'
-import { user_circle } from 'react-icons-kit/ikons/user_circle'
 
 import React from 'react';
 import ItemPicsCarousel from "./ItemPicsCarousel";
 import PurchaseOptions from "./PurchaseOptions";
+import RatingStars from "./RatingStars";
+import './ItemPageTop.css';
+import { Icon } from 'react-icons-kit';
+import { user_circle } from 'react-icons-kit/ikons/user_circle';
+// import { Avatar, IconSeparator } from 'react-md';
 
 class ItemPageTop extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             itemPics: this.props.itemPics,
             itemInfo: this.props.itemInfo,
             artistInfo: this.props.artistInfo,
-            basePrintingCostData: this.props.basePrintingCostData
+            basePrintingCostData: this.props.basePrintingCostData,
         };
 
         this.handleClickGoToArtistHomepage = this.handleClickGoToArtistHomepage.bind(this);
@@ -31,14 +34,26 @@ class ItemPageTop extends React.Component {
     }
 
     render() {
+
+        let artistProfilePicAvatar;
+        if (this.state.artistInfo.profilePicUrl === '') {
+            artistProfilePicAvatar  =
+                <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+        } else {
+            artistProfilePicAvatar =
+                <div className="avatarWrapper">
+                    <img src={this.state.artistInfo.profilePicUrl} alt="Avatar" className="artistIcon avatar"/>
+                </div>
+        }
+
         return (
-            <div className="horizontalFlex">
+            <div className="horizontalFlex itemPageTopContainer">
                 <div className="sectionLeft">
                     <ItemPicsCarousel itemPics={this.state.itemPics}/>
                 </div>
                 <div className="sectionRight">
                     <div className="segment artistInfo">
-                        <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+                        {artistProfilePicAvatar}
                         <div className="artistText">
                             <div className="artistName" onClick={this.handleClickGoToArtistHomepage}>
                                 {this.state.artistInfo.artistName}
@@ -52,8 +67,19 @@ class ItemPageTop extends React.Component {
                         <div className="itemTitle">
                             {this.state.itemInfo.name}
                         </div>
-                        <div className="itemDescription">
-                            {this.state.itemInfo.description}
+                        <div className="itemRating">
+                            <span className="ratingByStars">
+                                <RatingStars totalRating={this.state.itemInfo.totalRating}/>
+                            </span>
+                            <span className="ratingByScore">
+                                <span className="ratingScore">{this.state.itemInfo.totalRating.toFixed(1)}</span>
+                                <span className="ratingMaxScore">
+                                    /5.0
+                                </span>
+                                <span className="ratingCount">
+                                    ({this.state.itemInfo.ratingCount} Ratings)
+                                </span>
+                            </span>
                         </div>
                     </div>
                     <div className="segment purchaseOptions">

@@ -1,17 +1,18 @@
-.sectionLeft {
+.itemPageTopContainer > .sectionLeft {
     width: 35%;
+    height: 510px;
     border-radius: 3px;
-    height: 500px;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2), 0 3px 12px 0 rgba(0,0,0,0.19);
     overflow: hidden;
     display: inherit;
 }
 
-.horizontalFlex {
+.itemPageTopContainer.horizontalFlex {
     display: flex;
+    height: 560px;
 }
 
-.sectionRight {
+.itemPageTopContainer > .sectionRight {
     margin-left: 3%;
     width: 62%;
     display: flex;
@@ -19,62 +20,109 @@
     justify-content: flex-start;
 }
 
-.sectionRight > .segment {
+.itemPageTopContainer .sectionRight > .segment {
     border-bottom: 1px dashed #e7e7e7;
     padding-bottom: 20px;
     padding-top: 12px;
 }
 
-.sectionRight > .segment:last-child {
+.itemPageTopContainer .sectionRight > .segment.itemInfo {
+    border-bottom: 1px dashed #e7e7e7;
+    padding-bottom: 45px;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemTitle {
+    font-weight: 600;
+    font-size: 20px;
+    display: -webkit-box;
+    max-height: 55px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating {
+    padding-top: 15px;
+    bottom: 10px;
+    left: -27px;
+    position: absolute;
+    display: flex;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByStars {
+    transform: scale(0.68, 0.68);
+    margin-left: 7px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore {
+    margin-top: 3px;
+    margin-left: -15px;
+    font-size: 14px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingScore {
+    color: #ff6e40;
+    font-weight: 500;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingCount {
+    margin-left: 7px;
+    color: #3b3b3b;
+    position: absolute;
+    width: 70px;
+}
+
+.itemPageTopContainer > .sectionRight > .itemInfo > .itemRating > .ratingByScore > .ratingMaxScore {
+    color: #3b3b3b;
+}
+
+.itemPageTopContainer .sectionRight > .segment:last-child {
     border-bottom: none;
     padding-bottom: auto;
 }
 
-.artistInfo {
+.itemPageTopContainer > .sectionRight > .artistInfo {
     display: flex;
 }
 
-.artistIcon {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon {
     color: #3B3B3B;
 }
 
-.artistText {
+.itemPageTopContainer > .sectionRight > .artistInfo > .avatarWrapper > .artistIcon.avatar {
+    vertical-align: middle;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon:hover {
+    cursor: pointer;
+}
+
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText {
     margin-left: 20px;
 }
 
-.artistName {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistName {
     font-size: 18px;
     font-weight: 600;
     top: 8%;
     position: relative;
 }
 
-.artistName:hover {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistName:hover {
     cursor: pointer;
-    color: #f54c1a;
+    color: #ff6e40;
 }
 
-.artistIcon:hover {
-    cursor: pointer;
-}
-
-.artistTitle {
+.itemPageTopContainer > .sectionRight > .artistInfo > .artistText > .artistTitle {
     font-size: 13px;
+    color: #4e4e4e;
     top: 15%;
     position: relative;
-}
-
-.itemInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.itemTitle {
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.itemDescription {
-    font-size: 13px;
-    margin-top: 1.5%;
 }

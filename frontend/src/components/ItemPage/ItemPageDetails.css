@@ -1,0 +1,12 @@
+.itemPageDetailsContainer.horizontalFlex {
+    display: flex;
+}
+
+.itemPageDetailsContainer > div.recommendationsWrapper {
+    width: 25%;
+}
+
+.itemPageDetailsContainer > div.itemDetailsWrapper {
+    width: 70%;
+    margin-left: 2%;
+}
