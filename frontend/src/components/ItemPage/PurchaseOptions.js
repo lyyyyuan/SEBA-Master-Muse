@@ -42,7 +42,7 @@ class PurchaseOptions extends React.Component {
             });
         } else {
             this.setState(prevState => ({
-                selectedPrintingSize: prevState.selectedPrintingSize === false ? true : prevState.selectedPrintingSize,
+                selectedPrintingSize: (target.value.substring(0, target.value - 1) !== prevState.selectedPrintingSize || prevState.selectedPrintingSize === false) ? true : prevState.selectedPrintingSize,
                 printingCost: this.calculatePrintingCost(prevState.selectedPrintingSize === false ? 0 : target.value)
             }));
         }
@@ -93,10 +93,10 @@ class PurchaseOptions extends React.Component {
                     value = this.state.selectedPrintingSize;
                 } else {
                     if (array.length === 2) {
-                        if (array[0] !== '') {
+                            if (array[0] !== '') {
                             value = target.value;
                         } else {
-                            value = this.state.selectedPrintingSize;
+                            value = true;
                         }
                     } else { // array.length > 2
                         value = target.value.substring(0, target.value.length - 1);
@@ -111,6 +111,8 @@ class PurchaseOptions extends React.Component {
                     value = target.value;
                 }
             } else {
+                // if ()
+                // console.log('lol');
                 value = this.state.selectedPrintingSize;
             }
 
