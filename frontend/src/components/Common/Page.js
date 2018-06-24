@@ -27,10 +27,10 @@ export default class Page extends React.Component {
             <div>
                 <Header title={this.state.title} />
                 <div style={{
-                    overflowY: 'scroll',
-                    overflowX: 'hidden',
+                    overflow: 'hidden',
                     marginTop: '80px',
-                    marginBottom: '40px'
+                    marginBottom: '40px',
+                    height: '100vh'
                 }}>
 
                     {this.props.children}
