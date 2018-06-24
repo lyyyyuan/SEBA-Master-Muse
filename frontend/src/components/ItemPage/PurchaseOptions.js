@@ -88,13 +88,16 @@ class PurchaseOptions extends React.Component {
             // allow for up to 2 decimal places
             if (value.toString().includes('.')) {
                 let array = value.split('.');
-
                 let decimalString = array[1];
                 if (decimalString.length > 2) {
                     value = this.state.selectedPrintingSize;
                 } else {
                     if (array.length === 2) {
-                        value = target.value;
+                        if (array[0] !== '') {
+                            value = target.value;
+                        } else {
+                            value = this.state.selectedPrintingSize;
+                        }
                     } else { // array.length > 2
                         value = target.value.substring(0, target.value.length - 1);
                     }
