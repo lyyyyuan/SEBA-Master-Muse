@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Page from '../Common/Page';
 import CartCard from './CartCard';
-import { Divider } from "react-md";
+import { Divider, Button } from "react-md";
 import './Cart.css';
 
 
@@ -29,9 +29,10 @@ class CartPage extends Component {
     onStateChange = (index, state) => {
         const { orderState } = this.state;
         orderState[index] = state;
+        console.log(orderState);
         const totalPrice = orderState.reduce(
             (prev, next, i) => {
-                return next.isChecked ? prev + next.quantity * this.orders[i].price : 0
+                return next.isChecked ? prev + next.quantity * this.orders[i].price : prev;
             }, 0)
         this.setState({
             orderState,
@@ -61,6 +62,9 @@ class CartPage extends Component {
                     <div className='total-price-div'>
                         <p className='total-price-label'>Total:</p>
                         <p className='total-price'>{this.state.totalPrice}€</p>
+                        <div className='submit-div'>
+                            <Button flat swapTheming primary>Pay</Button>
+                        </div>
                     </div>
                 </Page>
             </div>
