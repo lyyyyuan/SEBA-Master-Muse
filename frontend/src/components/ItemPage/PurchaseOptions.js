@@ -199,7 +199,7 @@ class PurchaseOptions extends React.Component {
 
         return (
             <div className="purchaseOptions">
-                <div className="segment price">
+                <div className="segment">
                     <div className="itemCost">
                         €{this.state.itemInfo.price.toFixed(2)}
                     </div>
