@@ -13,7 +13,7 @@ class Recommendations extends React.Component {
         this.state = {
             artistInfo: this.props.artistInfo,
             otherArtworksInfo: this.props.otherArtworksInfo,
-        }
+        };
         this.handleClickGoToArtistHomepage = this.handleClickGoToArtistHomepage.bind(this);
         this.handleClickOpenArtistPic = this.handleClickOpenArtistPic.bind(this);
         this.handleMouseEnterArtworkItem = this.handleMouseEnterArtworkItem.bind(this);
@@ -66,11 +66,22 @@ class Recommendations extends React.Component {
 
     render() {
 
+        let artistProfilePicAvatar;
+        if (this.state.artistInfo.profilePicUrl === '') {
+            artistProfilePicAvatar  =
+                <Icon className="artistIcon" size={36} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+        } else {
+            artistProfilePicAvatar =
+                <div className="avatarWrapper">
+                    <img src={this.state.artistInfo.profilePicUrl} alt="Avatar" className="artistIcon avatar"/>
+                </div>
+        }
+
         return (
             <div className="recommendationsContainer">
                 <div className="artistSummary">
                     <div className="segment artistInfo">
-                        <Icon className="artistIcon" size={24} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
+                        {artistProfilePicAvatar}
                         <div className="artistText">
                             <div className="artistName" onClick={this.handleClickGoToArtistHomepage}>
                                 {this.state.artistInfo.artistName}

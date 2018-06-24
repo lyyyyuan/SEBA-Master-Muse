@@ -93,9 +93,11 @@
     color: #3B3B3B;
 }
 
-.itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon .md-avatar{
-    height: 50px;
-    width: 50px;
+.itemPageTopContainer > .sectionRight > .artistInfo > .avatarWrapper > .artistIcon.avatar {
+    vertical-align: middle;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
 }
 
 .itemPageTopContainer > .sectionRight > .artistInfo > .artistIcon:hover {

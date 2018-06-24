@@ -16,6 +16,13 @@
     cursor: pointer;
 }
 
+.recommendationsContainer > .artistSummary > .artistInfo > .avatarWrapper > img.artistIcon.avatar {
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
 .recommendationsContainer > .artistSummary > .artistInfo > .artistText {
     margin-left: 20px;
 }

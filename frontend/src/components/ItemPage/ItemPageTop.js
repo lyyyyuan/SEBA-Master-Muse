@@ -7,7 +7,7 @@ import RatingStars from "./RatingStars";
 import './ItemPageTop.css';
 import { Icon } from 'react-icons-kit';
 import { user_circle } from 'react-icons-kit/ikons/user_circle';
-import { Avatar, IconSeparator } from 'react-md';
+// import { Avatar, IconSeparator } from 'react-md';
 
 class ItemPageTop extends React.Component {
     constructor(props) {
@@ -35,22 +35,14 @@ class ItemPageTop extends React.Component {
 
     render() {
 
-        const Item = ({ label, children }) => (
-            <IconSeparator label={label} iconBefore component="li" className="md-cell md-cell--12">
-                {children}
-            </IconSeparator>
-        );
-
         let artistProfilePicAvatar;
         if (this.state.artistInfo.profilePicUrl === '') {
             artistProfilePicAvatar  =
                 <Icon className="artistIcon" size={56} icon={user_circle} onClick={this.handleClickOpenArtistPic}/>
         } else {
             artistProfilePicAvatar =
-                <div className="artistIcon">
-                    <Item label="">
-                        <Avatar src={this.props.artistInfo.profilePicUrl} role="presentation" />
-                    </Item>
+                <div className="avatarWrapper">
+                    <img src={this.state.artistInfo.profilePicUrl} alt="Avatar" className="artistIcon avatar"/>
                 </div>
         }
 
