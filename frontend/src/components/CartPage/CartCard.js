@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Paper, Media, SelectionControl, Button, TextField } from 'react-md';
 import './Cart.css';
 import equal from "deep-equal";
+import { withRouter } from "react-router-dom";
 
 class CartCard extends Component {
     constructor(props) {
@@ -10,6 +11,13 @@ class CartCard extends Component {
             quantity: props.quantity,
             isChecked: false,
         }
+        this.redirect = {
+            onClick: this.toDetails
+        }
+    }
+
+    toDetails = () => {
+        this.props.history.push(`/item-details/${this.props._id}`);
     }
 
     componentWillUpdate = (props, state) =>  {
@@ -75,12 +83,12 @@ class CartCard extends Component {
                             checked={this.state.isChecked}
                         />
                     </div>
-                    <div className='thumbnail card-section'>
+                    <div className='thumbnail card-section' {...this.redirect}>
                         <Media aspectRatio='1-1'>
                             <img src={this.props.thumbnail} alt="thumbnail" />
                         </Media>
                     </div>
-                    <div className='info card-section'>
+                    <div className='info card-section' {...this.redirect}>
                         <p className='cart-card-title'>{this.props.title}</p>
                         <p className='cart-card-description'>{this.props.description}</p>
                     </div>
@@ -115,4 +123,4 @@ class CartCard extends Component {
     }
 }
 
-export default CartCard;
+export default withRouter(CartCard);

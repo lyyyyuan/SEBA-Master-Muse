@@ -15,6 +15,7 @@
 
 .thumbnail {
     width: 200px;
+    cursor: pointer;
 }
 
 .card-price {
@@ -47,10 +48,16 @@
 .cart-card-title { 
     font-size: 24px;
     color: grey;
+    cursor: pointer;
+}
+
+.cart-card-description {
+    cursor: pointer;
 }
 
 .card-section {
     padding: 20px;
+    text-overflow: ellipsis;
 }
 
 .total-price-div {
