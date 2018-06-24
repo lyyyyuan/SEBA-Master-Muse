@@ -29,7 +29,6 @@ class CartPage extends Component {
     onStateChange = (index, state) => {
         const { orderState } = this.state;
         orderState[index] = state;
-        console.log(orderState);
         const totalPrice = orderState.reduce(
             (prev, next, i) => {
                 return next.isChecked ? prev + next.quantity * this.orders[i].price : prev;

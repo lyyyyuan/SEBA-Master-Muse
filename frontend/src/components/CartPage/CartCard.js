@@ -84,7 +84,7 @@ class CartCard extends Component {
                         <p className='cart-card-title'>{this.props.title}</p>
                         <p className='cart-card-description'>{this.props.description}</p>
                     </div>
-                    <div className='price vertical-center'>
+                    <div className='card-price vertical-center'>
                         <b>{this.props.price}€</b>
                     </div>
                     <div className='vertical-center card-section'>
