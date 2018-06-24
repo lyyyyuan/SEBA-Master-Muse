@@ -7,7 +7,6 @@ import RatingStars from "./RatingStars";
 import './ItemPageTop.css';
 import { Icon } from 'react-icons-kit';
 import { user_circle } from 'react-icons-kit/ikons/user_circle';
-// import { Avatar, IconSeparator } from 'react-md';
 
 class ItemPageTop extends React.Component {
     constructor(props) {

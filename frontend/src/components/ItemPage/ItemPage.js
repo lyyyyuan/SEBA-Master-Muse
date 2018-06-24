@@ -4,7 +4,7 @@ import React from 'react';
 import ItemPageHeader from "./ItemPageHeader";
 import ItemPageTop from "./ItemPageTop";
 import ItemPageDetails from "./ItemPageDetails";
-import './ItemPage.css'
+import './ItemPage.css';
 
 class ItemPage extends React.Component {
 

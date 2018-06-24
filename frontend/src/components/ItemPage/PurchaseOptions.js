@@ -42,7 +42,7 @@ class PurchaseOptions extends React.Component {
             });
         } else {
             this.setState(prevState => ({
-                selectedPrintingSize: prevState.selectedPrintingSize === false ? true : prevState.selectedPrintingSize,
+                selectedPrintingSize: (target.value.substring(0, target.value - 1) !== prevState.selectedPrintingSize || prevState.selectedPrintingSize === false) ? true : prevState.selectedPrintingSize,
                 printingCost: this.calculatePrintingCost(prevState.selectedPrintingSize === false ? 0 : target.value)
             }));
         }
@@ -88,13 +88,16 @@ class PurchaseOptions extends React.Component {
             // allow for up to 2 decimal places
             if (value.toString().includes('.')) {
                 let array = value.split('.');
-
                 let decimalString = array[1];
                 if (decimalString.length > 2) {
                     value = this.state.selectedPrintingSize;
                 } else {
                     if (array.length === 2) {
-                        value = target.value;
+                            if (array[0] !== '') {
+                            value = target.value;
+                        } else {
+                            value = true;
+                        }
                     } else { // array.length > 2
                         value = target.value.substring(0, target.value.length - 1);
                     }
@@ -108,6 +111,8 @@ class PurchaseOptions extends React.Component {
                     value = target.value;
                 }
             } else {
+                // if ()
+                // console.log('lol');
                 value = this.state.selectedPrintingSize;
             }
 
@@ -194,7 +199,7 @@ class PurchaseOptions extends React.Component {
 
         return (
             <div className="purchaseOptions">
-                <div className="segment price">
+                <div className="segment">
                     <div className="itemCost">
                         €{this.state.itemInfo.price.toFixed(2)}
                     </div>
