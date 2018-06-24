@@ -52,3 +52,23 @@
 .card-section {
     padding: 20px;
 }
+
+.total-price-div {
+    margin-top: 20px;
+    padding: 0 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+.total-price {
+    margin-left: 20px;
+    color: #f44336;
+    font-size: 36px;
+}
+
+.total-price-label {
+    font-size: 24px;
+    color: grey;
+    text-align: right;
+    flex: 1;
+}

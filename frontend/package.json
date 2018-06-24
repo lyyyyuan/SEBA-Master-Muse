@@ -42,6 +42,7 @@
     "@types/react": "^16.4.1",
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
+    "deep-equal": "^1.0.1",
     "defer-promise": "^1.0.1",
     "nuka-carousel": "^4.2.2",
     "query-string": "^6.1.0",

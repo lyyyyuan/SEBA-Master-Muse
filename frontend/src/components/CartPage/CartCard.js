@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { Paper, Media, SelectionControl, Button, TextField } from 'react-md';
 import './Cart.css';
+import equal from "deep-equal";
 
 class CartCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quantity: props.quantity
+            quantity: props.quantity,
+            isChecked: false,
+        }
+    }
+
+    componentWillUpdate = (props, state) =>  {
+        if (!equal(state, this.state)) {
+            this.onStateChange(state);
         }
     }
 
@@ -34,6 +42,20 @@ class CartCard extends Component {
         }
     }
 
+    toggleCheckbox = () => {
+        this.setState({
+            isChecked: !this.state.isChecked
+        });
+    }
+
+    onStateChange = (state) => {
+        this.props.onStateChange(this.props.index, state);
+    }
+
+
+    onRemove = () => {
+        this.props.onRemove(this.props.index);
+    }
 
     render() {
         return (
@@ -45,7 +67,12 @@ class CartCard extends Component {
                 <div className='cart-content'>
                     <div className='vertical-center'>
                         <SelectionControl
+                            id={`checkbox-${this.props.index}`}
+                            label=''
+                            name={`checkbox-${this.props.index}`}
                             type='checkbox'
+                            onChange={this.toggleCheckbox}
+                            checked={this.state.isChecked}
                         />
                     </div>
                     <div className='thumbnail card-section'>
@@ -62,11 +89,12 @@ class CartCard extends Component {
                     </div>
                     <div className='vertical-center card-section'>
                         <div className='quantity-div'>
-                            <Button icon 
+                            <Button icon
                                 disabled={this.state.quantity < 2}
                                 onClick={this.decrementQuantity}
                             >arrow_left</Button>
                             <TextField
+                                id='quantity'
                                 className='quantity-input'
                                 type='number'
                                 value={this.state.quantity}
@@ -78,7 +106,7 @@ class CartCard extends Component {
                         </div>
                     </div>
                     <div>
-                        <Button primary icon>cancel</Button>
+                        <Button primary icon onClick={this.onRemove}>cancel</Button>
                     </div>
                 </div>
 
