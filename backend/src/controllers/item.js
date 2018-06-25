@@ -155,6 +155,20 @@ const getBestSeller = async (req, res) => {
     res.status(200).json(bestSellers);
 };
 
+const getArtist = async (req, res) => {
+    const {itemId} = req.query;
+
+    const user = await UserModel.find({
+        'store.items.itemId': itemId,
+    }, {
+            store: 1,
+            profilePicUrl: 1,
+            title: 1,
+        });
+
+    res.status(200).json(user);
+};
+
 module.exports = {
     getItem,
     removeItem,
@@ -164,4 +178,5 @@ module.exports = {
     promoteItem,
     getPromotedItems,
     getBestSeller,
+    getArtist,
 };

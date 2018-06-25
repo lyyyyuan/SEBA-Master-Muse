@@ -207,7 +207,7 @@ class ItemPage extends React.Component {
                 <ItemPageHeader />
                 <div style={{width: '1117px', margin: '0 auto' }}>
                     <ItemPageTop itemPics={this.state.MockItemPicsData}
-                                 itemInfo={this.state.MockItemData}
+                                 itemInfo={this.props.item}
                                  artistInfo={this.state.MockArtistData}
                                  basePrintingCostData={this.state.MockBasePrintingCostData} />
                     <ItemPageDetails otherArtworksInfo={this.state.MockOtherArtworksData}

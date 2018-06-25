@@ -13,5 +13,6 @@ router.get('/', ItemController.findItems);
 router.post('/promote', ItemController.promoteItem);
 router.get('/items/promoted', ItemController.getPromotedItems);
 router.get('/items/bestsellers', ItemController.getBestSeller);
+router.get('/items/artist', ItemController.getArtist);
 
 module.exports = router;

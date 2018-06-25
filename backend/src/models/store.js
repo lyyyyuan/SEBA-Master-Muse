@@ -23,6 +23,7 @@ const StoreSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    about: String,
     items: {
         type: [
             {

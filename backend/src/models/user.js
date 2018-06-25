@@ -25,6 +25,8 @@ const UserSchema = new mongoose.Schema({
     },
     age: Number,
     address: String,
+    profilePicUrl: String,
+    title: String,
     store: {
         type: StoreSchema,
         default: StoreSchema,

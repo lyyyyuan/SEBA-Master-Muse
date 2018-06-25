@@ -28,17 +28,6 @@ export default class App extends React.Component {
             routes: [
                 { component: MainPageView, path: '/', exact: true },
                 { component: ItemPageView, path: '/item-details/:id' },
-                { component: MovieDetailView, path: '/show/:id' },
-                // {
-                //     render: (props) => {
-                //         if (UserService.isAuthenticated()) {
-                //             return (<MovieFormView {...props} />)
-                //         }
-                //         else {
-                //             return (<Redirect to={'/login'} />)
-                //         }
-                //     }, path: '/edit/:id'
-                // },
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
