@@ -18,7 +18,7 @@ export class ItemPageView extends React.Component {
 
     async componentDidMount() {
         const itemId = this.props.match.params.id;
-
+     
         const [item, user] = await Promise.all([
             ItemService.getItem(itemId),
             ItemService.getArtist(itemId)
@@ -37,7 +37,7 @@ export class ItemPageView extends React.Component {
             itemId => ItemService.getItem(itemId)
         ));
 
-        
+
 
         this.setState({
             loading: false,

@@ -3,6 +3,8 @@ import Page from '../Common/Page';
 import CartCard from './CartCard';
 import { Divider, Button } from "react-md";
 import './Cart.css';
+import OrderService from '../../services/OrderService';
+import { withRouter } from "react-router-dom";
 
 class CartPage extends Component {
     constructor(props) {
@@ -29,6 +31,17 @@ class CartPage extends Component {
         });
     }
 
+    pay = async () => {
+        const orderIds = [];
+        for (const index in this.state.orderState) {
+            if (this.state.orderState[index].isChecked) {
+                orderIds.push(this.state.orders[index]._id);
+            }
+        }
+        await Promise.all(orderIds.map(id => OrderService.payForOrder(id)));
+        this.props.history.push('/orders');
+    }
+
     onRemove = (index) => {
         const { orderState, orders } = this.state;
         orderState.splice(index, 1);
@@ -52,7 +65,7 @@ class CartPage extends Component {
                         <p className='total-price-label'>Total:</p>
                         <p className='total-price'>{this.state.totalPrice}€</p>
                         <div className='submit-div'>
-                            <Button flat swapTheming primary>Pay</Button>
+                            <Button flat swapTheming primary onClick={this.pay}>Pay</Button>
                         </div>
                     </div>
                 </Page>
@@ -61,4 +74,4 @@ class CartPage extends Component {
     }
 }
 
-export default CartPage;
+export default withRouter(CartPage);
