@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Drawer, FontIcon, List, ListItem, Avatar, Divider } from 'react-md';
 import DrawerHeader from '../Drawer/DrawerHeader';
 import { withRouter } from 'react-router-dom';
+import UserService from '../../services/UserService';
 
 
 class CustomDrawer extends Component {
@@ -16,7 +17,7 @@ class CustomDrawer extends Component {
             key='2'
             leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-store'></FontIcon>} />}
             primaryText="My Store"
-            onClick={() => { this.props.history.push('/store') }}
+            onClick={() => { this.props.history.push(`/store/${this.userId}`) }}
         />,
         <ListItem
             key='3'
@@ -29,7 +30,7 @@ class CustomDrawer extends Component {
 
     constructor(props) {
         super(props);
-
+        this.userId = UserService.getCurrentUser().id;
     }
 
     render() {

@@ -43,7 +43,7 @@ export default class App extends React.Component {
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' },
                 { component: SearchPageView, path: '/search' },
-                { component: StorePageView, path: '/store' },
+                { component: StorePageView, path: '/store/:id' },
                 { component: CartPageView, path: '/cart'},
             ]
         };
