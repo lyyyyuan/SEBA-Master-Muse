@@ -26,7 +26,7 @@ class ListingPage extends Component {
             printingSizes: [],
             isDigital: true,
         }
-        this.availableSizes = ['12 inch', '24 inch', '36 inch', '48 inch'];
+        this.availableSizes = [12, 24, 36, 48];
     }
 
     componentWillReceiveProps(props) {
@@ -196,7 +196,7 @@ class ListingPage extends Component {
                         {this.state.isDigital &&
                             <div className='selector'>
 
-                                <p className='label'>Printing Size Available</p>
+                                <p className='label'>Printing Size Available (inch)</p>
                                 {this.availableSizes.map((size, i) => <Button
                                     raised
                                     onClick={() => this.toggleButton(size)}

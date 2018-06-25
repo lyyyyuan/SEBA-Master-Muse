@@ -16,6 +16,7 @@ class PurchaseOptions extends React.Component {
             printingCost: 0,
             quantity: 1
         };
+
         this.setPrintingSizeItemsRef = element => {
             this.printingSizeItemsRef  = element;
         };
