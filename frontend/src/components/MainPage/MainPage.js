@@ -18,7 +18,7 @@ class MainPage extends Component {
     }
     
 
-    async componentWillMount() {
+    async componentDidMount() {
         const [promotedItems, bestSellers] = await Promise.all([
             ItemService.getPromotedItems(),
             ItemService.getBestSellers(10)
@@ -36,7 +36,7 @@ class MainPage extends Component {
             <div>
                 <Page>
                     <div style={{
-                        marginBottom: '24px'
+                        marginBottom: '24px',
                     }}>
                         <MyCarousel images={this.state.images} />
                     </div>

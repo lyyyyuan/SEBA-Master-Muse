@@ -30,7 +30,6 @@ export default class Page extends React.Component {
                     overflow: 'hidden',
                     marginTop: '80px',
                     marginBottom: '40px',
-                    height: '100vh'
                 }}>
 
                     {this.props.children}
