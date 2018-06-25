@@ -6,14 +6,13 @@ import { withRouter } from 'react-router-dom'
 class OrderHistoryCard extends Component {
     constructor(props) {
         super(props);
-        console.dir(props.order);
         this.redirect = {
             onClick: this.toDetails
         }
     }
 
     toDetails = () => {
-        this.props.history.push(`/item-details/${this.props.item._id}`);
+        this.props.history.push(`/item-details/${this.props.order.item._id}`);
     }
 
     render() {
@@ -25,12 +24,12 @@ class OrderHistoryCard extends Component {
                     <p>{_id}</p>
                 </div>
                 <div className='card-body'>
-                    <div className='thumbnail order-section card-section'>
+                    <div className='thumbnail order-section card-section' {...this.redirect}>
                         <Media aspectRatio='1-1'>
                             <img src={item.thumbnail} alt="thumbnail" />
                         </Media>
                     </div>
-                    <div className='order-info order-section card-section'>
+                    <div className='order-info order-section card-section' {...this.redirect}>
                         <div className='info-section'>
                             <p className='cart-card-title'>{item.title}</p>
                             <p className='cart-card-description'>{item.description}</p>
@@ -69,4 +68,4 @@ class OrderHistoryCard extends Component {
     }
 }
 
-export default OrderHistoryCard;
+export default withRouter(OrderHistoryCard);
