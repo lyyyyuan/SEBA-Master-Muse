@@ -18,7 +18,7 @@ class CartCard extends Component {
     }
 
     toDetails = () => {
-        this.props.history.push(`/item-details/${this.props._id}`);
+        this.props.history.push(`/item-details/${this.props.itemId}`);
     }
 
     componentWillUpdate = (props, state) =>  {

@@ -9,7 +9,6 @@ import { withRouter } from "react-router-dom";
 class CartPage extends Component {
     constructor(props) {
         super(props);
-        console.log(props.orders);
         this.state = {
             totalPrice: 0,
             orderState: [],

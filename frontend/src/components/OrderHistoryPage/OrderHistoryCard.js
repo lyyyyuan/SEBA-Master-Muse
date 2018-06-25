@@ -67,7 +67,7 @@ class OrderHistoryCard extends Component {
                             <p>Order Price</p>
                         </div>
                         <div className='vertical-center section-content'>
-                            <b>{item.price}€</b>
+                            <b>{item.price * quantity}€</b>
                         </div>
                     </div>
                 </div>
