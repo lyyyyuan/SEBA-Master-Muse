@@ -1,6 +1,7 @@
 'use strict';
 
 const OrderModel = require('../models/order');
+const ItemModel = require('../models/item');
 
 const addItemToCart = async (req, res) => {
     const {buyerId, itemId, quantity, deliveryMethod} = req.body;
@@ -29,7 +30,12 @@ const listCart = async (req, res) => {
         status: 'inCart',
     });
 
-    res.status(200).json(orders);
+    const orderObjects = orders.map((order) => order.toObject());
+    for (const orderObject of orderObjects) {
+        orderObject.item = await ItemModel.findById(orderObject.itemId);
+    }
+
+    res.status(200).json(orderObject);
 };
 
 const listOrderHistory = async (req, res) => {
