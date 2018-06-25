@@ -1,0 +1,75 @@
+.card-header {
+    background-color: #f44336;
+    padding: 5px 20px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.order-number-tag {
+    margin-right: 10px;
+}
+
+.card-header > p {
+    color: white;
+}
+
+.order-history-card {
+    margin: 0 10%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: row;
+    border: thin solid coral;
+}
+
+.order-info {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-info {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.item-info-label {
+    text-align: left;
+    margin: 0 5px;
+}
+
+.item-info-detail {
+    text-align: right;
+    margin: 0 5px;
+}
+
+.info-section {
+    padding-top: 20px;
+}
+
+.order-section {
+    padding: 0 10px;
+    text-align: center;
+    position: relative;
+    border-right: thin dotted coral;
+}
+
+.section-label {
+    margin-top: 10px;
+}
+
+.section-label > p {
+    color: grey;
+}
+
+.section-content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}

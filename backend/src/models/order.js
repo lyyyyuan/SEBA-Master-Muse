@@ -25,5 +25,6 @@ const OrderSchema = new mongoose.Schema({
 });
 
 OrderSchema.set('versionKey', false);
+OrderSchema.set('timestamps', true);
 
 module.exports = mongoose.model('Order', OrderSchema);

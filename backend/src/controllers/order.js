@@ -4,13 +4,14 @@ const OrderModel = require('../models/order');
 const ItemModel = require('../models/item');
 
 const addItemToCart = async (req, res) => {
-    const {buyerId, itemId, quantity, deliveryMethod} = req.body;
+    const {buyerId, itemId, quantity, deliveryMethod, printingSize} = req.body;
 
     const order = await OrderModel.create({
         buyerId,
         itemId,
         quantity: quantity || 1,
         deliveryMethod,
+        printingSize,
     });
 
     res.status(200).json(order);

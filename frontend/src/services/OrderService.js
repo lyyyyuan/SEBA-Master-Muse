@@ -5,10 +5,10 @@ import AsyncHttpService from './AsyncHttpService';
 export default class OrderService {
     static baseURL = () => 'http://localhost:3000/order';
 
-    static addItemToCart = async (buyerId, itemId, quantity, deliveryMethod) => {
+    static addItemToCart = async (buyerId, itemId, quantity, deliveryMethod, printingSize) => {
         return await AsyncHttpService.post(
             `${OrderService.baseURL()}/cart`,
-            {buyerId, itemId, quantity, deliveryMethod}
+            {buyerId, itemId, quantity, deliveryMethod, printingSize}
         );
     }
 

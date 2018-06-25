@@ -7,6 +7,7 @@ import { Icon } from 'react-icons-kit';
 import { plusRound, minusRound } from 'react-icons-kit/ionicons/';
 import OrderService from '../../services/OrderService';
 import UserService from '../../services/UserService';
+import { withRouter } from "react-router-dom";
 
 class PurchaseOptions extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class PurchaseOptions extends React.Component {
         };
 
         this.setPrintingSizeItemsRef = element => {
-            this.printingSizeItemsRef  = element;
+            this.printingSizeItemsRef = element;
         };
 
         this.handleClickPrintingSize = this.handleClickPrintingSize.bind(this);
@@ -65,7 +66,7 @@ class PurchaseOptions extends React.Component {
                     node.classList.add('selected');
                 }
             } else {
-                if (node.classList.contains('selected') ) {
+                if (node.classList.contains('selected')) {
                     node.classList.remove('selected');
                     if (node.tagName.toLowerCase() === 'input') {
                         node.value = '';
@@ -96,7 +97,7 @@ class PurchaseOptions extends React.Component {
                     value = this.state.selectedPrintingSize;
                 } else {
                     if (array.length === 2) {
-                            if (array[0] !== '') {
+                        if (array[0] !== '') {
                             value = target.value;
                         } else {
                             value = true;
@@ -181,18 +182,22 @@ class PurchaseOptions extends React.Component {
     }
 
     calculatePrintingCost(printingSize) {
-        return this.state.basePrintingCostData.basePrice * ( +printingSize / this.state.basePrintingCostData.baseDimension );
+        return this.state.basePrintingCostData.basePrice * (+printingSize / this.state.basePrintingCostData.baseDimension);
     }
 
     async handleClickAddToCart() {
         // TO-DO: Create an order object and pass to whatever global object
         const userId = UserService.getCurrentUser().id;
-        await OrderService.addItemToCart(userId, this.state.itemInfo._id, this.state.quantity, '');
+        await OrderService.addItemToCart(userId, this.state.itemInfo._id, this.state.quantity, '', this.state.selectedPrintingSize || 0);
     }
 
-    handleClickBuyNow() {
+    async handleClickBuyNow() {
         // TO-DO: Redirect to order summary page
-
+        const userId = UserService.getCurrentUser().id;
+        const order = await OrderService.addItemToCart(userId, this.state.itemInfo._id, this.state.quantity, '', this.state.selectedPrintingSize || 0);
+        await OrderService.payForOrder(order._id);
+        this.props.history.push('/orders');
+          
     }
 
     render() {
@@ -210,8 +215,8 @@ class PurchaseOptions extends React.Component {
                         €{this.state.itemInfo.price.toFixed(2)}
                     </div>
                     {this.state.itemInfo.isDigital && this.state.selectedPrintingSize &&
-                    <div className="printingCost">
-                        + €{this.state.printingCost.toFixed(2)} printing cost
+                        <div className="printingCost">
+                            + €{this.state.printingCost.toFixed(2)} printing cost
                     </div>
                     }
                     <div className="shippingCost">
@@ -223,36 +228,36 @@ class PurchaseOptions extends React.Component {
                 </div>
                 <div className="segment options">
                     {this.state.itemInfo.isDigital &&
-                    <div className="subSegment printing">
-                        <div className="optionHeader">Printing Size (inch)</div>
-                        <div className="optionBody printingSizeOptions" ref={this.setPrintingSizeItemsRef}>
-                            <span className="printingSizeItem selected" onClick={this.handleClickPrintingSize}>
-                                None
+                        <div className="subSegment printing">
+                            <div className="optionHeader">Printing Size (inch)</div>
+                            <div className="optionBody printingSizeOptions" ref={this.setPrintingSizeItemsRef}>
+                                <span className="printingSizeItem selected" onClick={this.handleClickPrintingSize}>
+                                    None
                             </span>
-                            {printingSizeOptions}
-                            <input type="text" name="customizePrintingSize" placeholder="Customize"
-                                   min="0" max="100" className="printingSizeItem" onClick={this.handleClickPrintingSize}
-                                   onChange={this.handleInputChangePrintingSize} onKeyPress={this.handleKeyPressPrintingSize} onBlur={this.handleInputBlurPrintingSize}/>
-                            <Button icon className="customizeTooltip" tooltipPosition="top"
+                                {printingSizeOptions}
+                                <input type="text" name="customizePrintingSize" placeholder="Customize"
+                                    min="0" max="100" className="printingSizeItem" onClick={this.handleClickPrintingSize}
+                                    onChange={this.handleInputChangePrintingSize} onKeyPress={this.handleKeyPressPrintingSize} onBlur={this.handleInputBlurPrintingSize} />
+                                <Button icon className="customizeTooltip" tooltipPosition="top"
                                     tooltipLabel="Enter a number 6 - 100, in up to 2 decimal places">
-                                help
+                                    help
                             </Button>
+                            </div>
                         </div>
-                    </div>
                     }
                     <div className="subSegment quantity">
                         <div className="optionHeader">Quantity</div>
                         <div className="optionBody">
                             <button className="quantityPickerLeft" disabled={this.state.quantity <= 1}
-                                    onClick={this.handleClickQuantityMinus}>
-                            <Icon icon={minusRound}/>
+                                onClick={this.handleClickQuantityMinus}>
+                                <Icon icon={minusRound} />
                             </button>
                             <span className="quantityPickerCenter">
-                                <input type="number" name="quantityPicker" min="1" max="5" value={this.state.quantity} readOnly="true"/>
+                                <input type="number" name="quantityPicker" min="1" max="5" value={this.state.quantity} readOnly="true" />
                             </span>
                             <button className="quantityPickerRight" disabled={this.state.quantity >= 5}
-                                    onClick={this.handleClickQuantityPlus}>
-                                <Icon icon={plusRound}/>
+                                onClick={this.handleClickQuantityPlus}>
+                                <Icon icon={plusRound} />
                             </button>
                         </div>
                     </div>
@@ -269,4 +274,4 @@ class PurchaseOptions extends React.Component {
         )
     }
 }
-export default PurchaseOptions
+export default withRouter(PurchaseOptions)

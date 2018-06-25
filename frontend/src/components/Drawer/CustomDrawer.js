@@ -19,7 +19,7 @@ class CustomDrawer extends Component {
             primaryText="Order History"
             onClick={() => { this.props.history.push('/orders') }}
         />,
-        <Divider />,
+        <Divider key='5' />,
         <ListItem
             key='1'
             leftIcon={<FontIcon>add</FontIcon>}

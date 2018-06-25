@@ -14,7 +14,7 @@ class OrderHistoryView extends Component {
 
     async componentDidMount() {
         const userId = UserService.getCurrentUser().id;
-        const orders = OrderService.listOrderHistory(userId);
+        const orders = await OrderService.listOrderHistory(userId);
         this.setState({
             orders,
             loading: false,
