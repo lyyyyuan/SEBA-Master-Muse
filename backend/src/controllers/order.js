@@ -45,7 +45,12 @@ const listOrderHistory = async (req, res) => {
         buyerId,
     });
 
-    res.status(200).json(orders);
+    const orderObjects = orders.map((order) => order.toObject());
+    for (const orderObject of orderObjects) {
+        orderObject.item = await ItemModel.findById(orderObject.itemId);
+    }
+
+    res.status(200).json(orderObjects);
 };
 
 const incrementOrderQuantity = async (req, res) => {
