@@ -16,6 +16,7 @@ import UserService from "./services/UserService";
 import { ItemPageView } from "./views/ItemPageView";
 import ListingPageView from "./views/ListingPageView";
 import CartPageView from './views/CartPageView';
+import OrderHistoryView from './views/OrderHistoryView';
 
 
 export default class App extends React.Component {
@@ -45,6 +46,7 @@ export default class App extends React.Component {
                 { component: SearchPageView, path: '/search' },
                 { component: StorePageView, path: '/store/:id' },
                 { component: CartPageView, path: '/cart'},
+                { component: OrderHistoryView, path: '/orders'},
             ]
         };
     }

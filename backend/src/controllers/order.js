@@ -43,6 +43,9 @@ const listOrderHistory = async (req, res) => {
     const {buyerId} = req.query;
     const orders = await OrderModel.find({
         buyerId,
+        status: {
+            $in: ['Paid', 'Delivered'],
+        },
     });
 
     const orderObjects = orders.map((order) => order.toObject());

@@ -13,6 +13,12 @@ class CustomDrawer extends Component {
             primaryText="Shopping Cart"
             onClick={() => { this.props.history.push('/cart') }}
         />,
+        <ListItem
+            key='4'
+            leftAvatar={<Avatar icon={<FontIcon>history</FontIcon>} />}
+            primaryText="Order History"
+            onClick={() => { this.props.history.push('/orders') }}
+        />,
         <Divider />,
         <ListItem
             key='1'
