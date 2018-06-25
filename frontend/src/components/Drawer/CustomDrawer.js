@@ -8,6 +8,13 @@ import UserService from '../../services/UserService';
 class CustomDrawer extends Component {
     itemList = [
         <ListItem
+            key='3'
+            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-shopping-cart'></FontIcon>} />}
+            primaryText="Shopping Cart"
+            onClick={() => { this.props.history.push('/cart') }}
+        />,
+        <Divider />,
+        <ListItem
             key='1'
             leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>} />}
             primaryText="List New Items"
@@ -18,12 +25,6 @@ class CustomDrawer extends Component {
             leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-store'></FontIcon>} />}
             primaryText="My Store"
             onClick={() => { this.props.history.push(`/store/${this.userId}`) }}
-        />,
-        <ListItem
-            key='3'
-            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-shopping-cart'></FontIcon>} />}
-            primaryText="Shopping Cart"
-            onClick={() => { this.props.history.push('/cart') }}
         />,
     ]
 
