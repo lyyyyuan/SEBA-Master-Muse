@@ -18,7 +18,9 @@ class CartPageView extends Component {
         this.setState({
             orders,
             loading: false
-        })
+        });
+
+
     }
 
     render() {
@@ -26,7 +28,7 @@ class CartPageView extends Component {
             <div>
                 {
                     !this.state.loading &&
-                    <CartPage />
+                    <CartPage orders={this.state.orders} />
                 }
             </div>
         );

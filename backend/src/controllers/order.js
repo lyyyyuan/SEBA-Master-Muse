@@ -17,10 +17,11 @@ const addItemToCart = async (req, res) => {
 };
 
 const removeItemFromCart = async (req, res) => {
-    const {orderId} = req.body;
+    const {orderId} = req.params;
 
     await OrderModel.findByIdAndRemove(orderId);
-    res.status(200).send();
+
+    res.status(200).json();
 };
 
 const listCart = async (req, res) => {
@@ -35,7 +36,7 @@ const listCart = async (req, res) => {
         orderObject.item = await ItemModel.findById(orderObject.itemId);
     }
 
-    res.status(200).json(orderObject);
+    res.status(200).json(orderObjects);
 };
 
 const listOrderHistory = async (req, res) => {

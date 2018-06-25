@@ -6,7 +6,7 @@ const router = express.Router();
 const OrderController = require('../controllers/order');
 
 router.post('/cart', OrderController.addItemToCart);
-router.delete('/cart', OrderController.removeItemFromCart);
+router.delete('/cart/:orderId', OrderController.removeItemFromCart);
 router.get('/cart', OrderController.listCart);
 router.get('/', OrderController.listOrderHistory);
 router.post('/increment', OrderController.incrementOrderQuantity);

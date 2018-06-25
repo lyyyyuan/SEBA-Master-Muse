@@ -5,6 +5,8 @@ import { Button } from 'react-md';
 import './PurchaseOptions.css';
 import { Icon } from 'react-icons-kit';
 import { plusRound, minusRound } from 'react-icons-kit/ionicons/';
+import OrderService from '../../services/OrderService';
+import UserService from '../../services/UserService';
 
 class PurchaseOptions extends React.Component {
     constructor(props) {
@@ -182,12 +184,15 @@ class PurchaseOptions extends React.Component {
         return this.state.basePrintingCostData.basePrice * ( +printingSize / this.state.basePrintingCostData.baseDimension );
     }
 
-    handleClickAddToCart() {
+    async handleClickAddToCart() {
         // TO-DO: Create an order object and pass to whatever global object
+        const userId = UserService.getCurrentUser().id;
+        await OrderService.addItemToCart(userId, this.state.itemInfo._id, this.state.quantity, '');
     }
 
     handleClickBuyNow() {
         // TO-DO: Redirect to order summary page
+
     }
 
     render() {

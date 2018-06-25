@@ -43,11 +43,10 @@ export default class AsyncHttpService {
         return deferred.promise;
     }
 
-    static delete = async (url, data) => {
+    static delete = async (url, id) => {
         const deferred = defer();
         HttpService.remove(
-            url,
-            data,
+            url+`/${id}`,
             res => deferred.resolve(res),
             err => deferred.reject(err)
         );

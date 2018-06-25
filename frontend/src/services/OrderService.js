@@ -12,10 +12,10 @@ export default class OrderService {
         );
     }
 
-    static remoteItemFromCart = async (orderId) => {
+    static removeItemFromCart = async (orderId) => {
         return await AsyncHttpService.delete(
             `${OrderService.baseURL()}/cart`,
-            {orderId}
+            orderId
         );
     }
 

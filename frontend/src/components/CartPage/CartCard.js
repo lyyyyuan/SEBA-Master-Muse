@@ -3,6 +3,7 @@ import { Paper, Media, SelectionControl, Button, TextField } from 'react-md';
 import './Cart.css';
 import equal from "deep-equal";
 import { withRouter } from "react-router-dom";
+import OrderService from '../../services/OrderService';
 
 class CartCard extends Component {
     constructor(props) {
@@ -30,12 +31,14 @@ class CartCard extends Component {
         this.setState({
             quantity: this.state.quantity + 1
         })
+        OrderService.incrementOrderQuantity(this.props._id);
     }
-
+    
     decrementQuantity = () => {
         this.setState({
             quantity: this.state.quantity - 1
         })
+        OrderService.decrementOrderQuantity(this.props._id);
     }
 
     onQuantityChange = (value) => {
@@ -63,6 +66,7 @@ class CartCard extends Component {
 
     onRemove = () => {
         this.props.onRemove(this.props.index);
+        OrderService.removeItemFromCart(this.props._id);
     }
 
     render() {
@@ -85,15 +89,15 @@ class CartCard extends Component {
                     </div>
                     <div className='thumbnail card-section' {...this.redirect}>
                         <Media aspectRatio='1-1'>
-                            <img src={this.props.thumbnail} alt="thumbnail" />
+                            <img src={this.props.item.thumbnail} alt="thumbnail" />
                         </Media>
                     </div>
                     <div className='info card-section' {...this.redirect}>
-                        <p className='cart-card-title'>{this.props.title}</p>
-                        <p className='cart-card-description'>{this.props.description}</p>
+                        <p className='cart-card-title'>{this.props.item.title}</p>
+                        <p className='cart-card-description'>{this.props.item.description}</p>
                     </div>
                     <div className='card-price vertical-center'>
-                        <b>{this.props.price}€</b>
+                        <b>{this.props.item.price}€</b>
                     </div>
                     <div className='vertical-center card-section'>
                         <div className='quantity-div'>
