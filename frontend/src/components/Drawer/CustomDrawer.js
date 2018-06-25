@@ -9,26 +9,26 @@ class CustomDrawer extends Component {
     itemList = [
         <ListItem
             key='3'
-            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-shopping-cart'></FontIcon>} />}
+            leftIcon={<FontIcon>shopping_cart</FontIcon>}
             primaryText="Shopping Cart"
             onClick={() => { this.props.history.push('/cart') }}
         />,
         <ListItem
             key='4'
-            leftAvatar={<Avatar icon={<FontIcon>history</FontIcon>} />}
+            leftIcon={<FontIcon>history</FontIcon>}
             primaryText="Order History"
             onClick={() => { this.props.history.push('/orders') }}
         />,
         <Divider />,
         <ListItem
             key='1'
-            leftAvatar={<Avatar icon={<FontIcon>add</FontIcon>} />}
+            leftIcon={<FontIcon>add</FontIcon>}
             primaryText="List New Items"
             onClick={() => { this.props.history.push('/list') }}
         />,
         <ListItem
             key='2'
-            leftAvatar={<Avatar icon={<FontIcon iconClassName='fa fa-store'></FontIcon>} />}
+            leftIcon={<FontIcon>store</FontIcon>}
             primaryText="My Store"
             onClick={() => { this.props.history.push(`/store/${this.userId}`) }}
         />,
