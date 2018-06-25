@@ -3,7 +3,7 @@ import './Store.css';
 import Page from '../Common/Page';
 import StoreCard from '../StoreCard/StoreCard'
 import { Media } from 'react-md'
-import Images from '../../Data/images';
+import UserService from '../../services/UserService'
 
 const data = {
     labels: ['1 star', '2 star', '3 star', '4 star', '5 star'],
@@ -55,7 +55,7 @@ export default class Store extends Component {
                         }}>
                             <Media aspectRatio='1-1'>
                                 <img
-                                    src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg'
+                                    src={UserService.getCurrentUser().profilePicUrl}
                                     role="presentation"
                                     style={{
                                         borderRadius: '50%'
