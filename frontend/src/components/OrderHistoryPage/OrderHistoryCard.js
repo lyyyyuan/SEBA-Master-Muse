@@ -35,14 +35,22 @@ class OrderHistoryCard extends Component {
                             <p className='cart-card-description'>{item.description}</p>
                         </div>
                     </div>
-                    <div className='order-section item-info card-section'>
-                        <div className='vertical-center section-label item-info-label'>
-                            <p>Price</p>
-                            <p>Quantity</p>
+                    <div className='flex-column'>
+                        <div className='order-section flex-grow border-bottom'>
+                            <div className='section-label'>
+                                <p>Price</p>
+                            </div>
+                            <div className='section-content vertical-center'>
+                                <p>{item.price}€</p>
+                            </div>
                         </div>
-                        <div className='vertical-center item-info-detail'>
-                            <p>{item.price}€</p>
-                            <p>{quantity}</p>
+                        <div className='order-section flex-grow'>
+                            <div className='section-label'>
+                                <p>Quantity</p>
+                            </div>
+                            <div className='section-content vertical-center'>
+                                <p>{quantity}</p>
+                            </div>
 
                         </div>
                     </div>

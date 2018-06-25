@@ -13,8 +13,8 @@ class OrderHistoryPage extends Component {
             <Page>
 
                 {this.props.orders.map((order, i) =>
-                    <div className='history-card'>
-                        <OrderHistoryCard key={i} order={order} />
+                    <div key={i} className='history-card'>
+                        <OrderHistoryCard order={order} />
                     </div>
                 )}
             </Page>

@@ -10,7 +10,7 @@
     margin-right: 10px;
 }
 
-.card-header > p {
+.card-header>p {
     color: white;
 }
 
@@ -62,7 +62,7 @@
     margin-top: 10px;
 }
 
-.section-label > p {
+.section-label>p {
     color: grey;
 }
 
@@ -76,4 +76,17 @@
 
 .history-card {
     margin-bottom: 20px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-grow {
+    flex: 1;
+}
+
+.border-bottom {
+    border-bottom: thin dotted coral;
 }
