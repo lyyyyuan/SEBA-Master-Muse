@@ -18,7 +18,7 @@ class ProductDetails extends React.Component {
             <div className="productDetailsContainer">
                 <div className="segment">
                     <span className="segmentHeader">Category: </span>
-                    {this.state.itemInfo.categories.map((category, index) =>
+                    {Object.values(this.state.itemInfo.categories).map((category, index) =>
                         <button key={index} className="category">{category}</button>
                     )}
                 </div>

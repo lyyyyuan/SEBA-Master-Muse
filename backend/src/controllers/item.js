@@ -166,7 +166,7 @@ const getArtist = async (req, res) => {
             title: 1,
         });
 
-    res.status(200).json(user);
+    res.status(200).json(user[0] || {});
 };
 
 module.exports = {

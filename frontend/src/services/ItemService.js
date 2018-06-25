@@ -59,4 +59,11 @@ export default class ItemService {
             { quantity }
         )
     }
+
+    static getArtist = async (itemId) => {
+        return await AsyncHttpService.get(
+            `${ItemService.baseURL()}/items/artist`,
+            { itemId }
+        )
+    }
 }
