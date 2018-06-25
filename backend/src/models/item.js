@@ -27,7 +27,7 @@ const ItemSchema = new mongoose.Schema({
     },
     promotionEndDate: Date,
     printingSizes: {
-        type: [String],
+        type: [Number],
     },
     comments: [mongoose.SchemaTypes.ObjectId],
     ratingCount: {
