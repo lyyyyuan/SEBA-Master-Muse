@@ -7,54 +7,54 @@ export default class OrderService {
 
     static addItemToCart = async (buyerId, itemId, quantity, deliveryMethod) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/cart`,
+            `${OrderService.baseURL()}/cart`,
             {buyerId, itemId, quantity, deliveryMethod}
         );
     }
 
     static remoteItemFromCart = async (orderId) => {
         return await AsyncHttpService.delete(
-            `${this.baseURL()}/cart`,
+            `${OrderService.baseURL()}/cart`,
             {orderId}
         );
     }
 
     static listCart = async (buyerId) => {
         return await AsyncHttpService.get(
-            `${this.baseURL()}/cart`,
+            `${OrderService.baseURL()}/cart`,
             {buyerId}
         );
     }
 
     static listOrderHistory = async (buyerId) => {
         return await AsyncHttpService.get(
-            this.baseURL(),
+            OrderService.baseURL(),
             {buyerId}
         );
     }
     static incrementOrderQuantity = async (orderId) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/increment`,
+            `${OrderService.baseURL()}/increment`,
             {orderId}
         );
     }
     static decrementOrderQuantity = async (orderId) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/decrement`,
+            `${OrderService.baseURL()}/decrement`,
             {orderId}
         );
     }
 
     static payForOrder = async (orderId) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/pay`,
+            `${OrderService.baseURL()}/pay`,
             {orderId}
         );
     }
 
     static deliverOrder = async (orderId) => {
         return await AsyncHttpService.post(
-            `${this.baseURL()}/deliver`,
+            `${OrderService.baseURL()}/deliver`,
             {orderId}
         );
     }
