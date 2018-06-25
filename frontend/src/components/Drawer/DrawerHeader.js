@@ -31,7 +31,7 @@ class DrawerHeader extends Component {
                 <div>
                     
                     <Toolbar
-                        nav={<Avatar src='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg' role="presentation" />}
+                        nav={<Avatar src={user.profilePicUrl} role="presentation" />}
                         title={user.username}
                         className="md-divider-border md-divider-border--bottom"
                     />

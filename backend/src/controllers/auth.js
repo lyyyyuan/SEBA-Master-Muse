@@ -28,9 +28,11 @@ const login = (req, res) => {
 
             // if user is found and password is valid
             // create a token
-            const token = jwt.sign({id: user._id, username: user.username}, config.JwtSecret, {
-                expiresIn: 86400, // expires in 24 hours
-            });
+            const token = jwt.sign({
+                id: user._id, username: user.username, profilePicUrl: user.profilePicUrl,
+            }, config.JwtSecret, {
+                    expiresIn: 86400, // expires in 24 hours
+                });
 
             res.status(200).json({token: token});
         })
@@ -63,9 +65,11 @@ const register = (req, res) => {
         .then((user) => {
             // if user is registered without errors
             // create a token
-            const token = jwt.sign({id: user._id, username: user.username}, config.JwtSecret, {
-                expiresIn: 86400, // expires in 24 hours
-            });
+            const token = jwt.sign({
+                id: user._id, username: user.username, profilePicUrl: user.profilePicUrl,
+            }, config.JwtSecret, {
+                    expiresIn: 86400, // expires in 24 hours
+                });
 
             res.status(200).json({token: token});
         })
