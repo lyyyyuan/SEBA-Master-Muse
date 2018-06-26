@@ -2,27 +2,32 @@ import React, { Component } from 'react';
 import Page from '../Common/Page';
 import AvatarProductCard from '../ProductCard/AvatarProductCard';
 import SearchFilter from './SearchFilter';
-
-import Images from "../../Data/images";
-
-const testCard = (key) => <AvatarProductCard
-    key={key}
-    avatar='https://www.ienglishstatus.com/wp-content/uploads/2018/04/Anonymous-Whatsapp-profile-picture.jpg'
-    img={Images[0]}
-    rating='3.5'
-    title='Title'
-    category='Category'
-    artist='Artist Name'
-    price='600'
-/>;
+import ItemService from '../../services/ItemService';
+import './SearchPage.css';
 
 class SearchPage extends Component {
     constructor(props) {
         super(props);
-        this.testCards = Array.from(Array(8)).map((_, i) => testCard(i));
+        this.state = {
+            loading: true,
+            items: [],
+        }
+    }
+
+    async componentDidMount() {
+        const { keyword } = this.props.query;
+        const items = await ItemService.findItems(keyword);
+        const artists = await Promise.all(items.map(item => ItemService.getArtist(item._id)));
+
+        this.setState({
+            loading: false,
+            items,
+            artists
+        });
     }
 
     render() {
+        const { loading, items, artists } = this.state;
         return (
             <Page>
                 <div style={{
@@ -32,7 +37,10 @@ class SearchPage extends Component {
                 }}>
                     <div style={{
                         borderRight: '3px solid grey',
-                        position: 'relative'
+                        position: 'fixed',
+                        height: '90%',
+                        left: 0,
+                        top: '70px'
                     }}>
                         <div style={{
                             display: 'flex',
@@ -43,12 +51,11 @@ class SearchPage extends Component {
                             <SearchFilter />
                         </div>
                     </div>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(5, 1fr)',
-                        gridGap: '10px',
-                    }}>
-                        {this.testCards}
+                    <div className='search-results'>
+                        {
+                            !loading &&
+                            items.map((item, i) => <AvatarProductCard key={i} {...item} artist={artists[i].store.name} avatar={artists[i].profilePicUrl} />)
+                        }
                     </div>
                 </div>
             </Page>

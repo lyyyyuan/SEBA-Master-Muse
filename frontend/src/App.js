@@ -2,9 +2,6 @@
 
 import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-
-import { MovieListView } from './views/MovieListView';
-import { MovieDetailView } from './views/MovieDetailView';
 import { MovieFormView } from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";

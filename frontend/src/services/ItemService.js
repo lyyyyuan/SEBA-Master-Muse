@@ -33,10 +33,10 @@ export default class ItemService {
         );
     }
 
-    static findItems = async (names, categories) => {
+    static findItems = async (keyword) => {
         return await AsyncHttpService.get(
             ItemService.baseURL(),
-            { names, categories }
+            { keyword }
         );
     }
 

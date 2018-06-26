@@ -93,28 +93,14 @@ const promoteItem = async (req, res) => {
     res.status(200).json(item);
 };
 
+
 const findItems = async (req, res) => {
-    const {names, categories} = req.params;
-    const promises = names.map((name) => findItemsByName(name));
-    let items = await Promise.all(promises);
-    items = items.concat(await findItemsByCategories(categories));
+    const {keyword} = req.params;
+    const nameRegex = new RegExp(keyword, 'g');
+    const items = await ItemModel.find({title: nameRegex});
     res.status(200).json(items);
 };
 
-const findItemsByName = async (name) => {
-    const nameRegex = new RegExp(name, 'g');
-    const items = await ItemModel.find({name: nameRegex});
-    return items;
-};
-
-const findItemsByCategories = async (categories) => {
-    const items = await ItemModel.find({
-        'categories.type': {
-            $in: categories,
-        },
-    });
-    return items;
-};
 
 const getPromotedItems = async (req, res) => {
     const items = await ItemModel.find({
@@ -164,6 +150,7 @@ const getArtist = async (req, res) => {
             store: 1,
             profilePicUrl: 1,
             title: 1,
+            name: 1,
         });
 
     res.status(200).json(user[0] || {});
