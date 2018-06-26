@@ -95,8 +95,9 @@ const promoteItem = async (req, res) => {
 
 
 const findItems = async (req, res) => {
-    const {keyword} = req.params;
-    const nameRegex = new RegExp(keyword, 'g');
+    const {keyword} = req.query;
+
+    const nameRegex = new RegExp(keyword, 'gi');
     const items = await ItemModel.find({title: nameRegex});
     res.status(200).json(items);
 };

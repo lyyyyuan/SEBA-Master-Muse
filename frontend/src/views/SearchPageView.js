@@ -6,12 +6,21 @@ import SearchPage from '../components/SearchPage/SearchPage';
 class SearchPageView extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            query: queryString.parse(props.location.search)
+        }
+    }
+
+    componentWillReceiveProps(props) {
+        this.setState({
+            query: queryString.parse(props.location.search)
+        });
     }
 
     render() {
         return (
             <div>
-                <SearchPage query={queryString.parse(this.props.location.search)}/>
+                <SearchPage query={this.state.query}/>
             </div>
         );
     }

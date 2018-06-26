@@ -14,17 +14,27 @@ class SearchPage extends Component {
         }
     }
 
-    async componentDidMount() {
-        const { keyword } = this.props.query;
+    componentDidMount() {
+       this.fetchData();
+    }
+
+
+    componentWillReceiveProps(props) {
+        this.fetchData(props);
+    }
+
+    async fetchData(props) {
+        const propsRef = props || this.props;
+        const { keyword } = propsRef.query;
         const items = await ItemService.findItems(keyword);
         const artists = await Promise.all(items.map(item => ItemService.getArtist(item._id)));
-
         this.setState({
             loading: false,
             items,
             artists
         });
     }
+
 
     render() {
         const { loading, items, artists } = this.state;
