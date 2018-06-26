@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Avatar, Button, Card, CardText, CardTitle, Media } from 'react-md';
 import './ProductCard.css'
 import RatingStar from '../RatingStar/RatingStar';
+import {withRouter} from 'react-router-dom';
 
 class AvatarProductCard extends Component {
     constructor(props) {
         super(props);
-
     }
 
+    goToStore = () => {
+        this.props.history.push(`/store/${this.props.artistId}`)
+    }
 
     render() {
 
@@ -25,7 +28,6 @@ class AvatarProductCard extends Component {
                     <CardTitle
                         className='card-title'
                         title={this.props.title}
-                        subtitle={this.props.category}
                         avatar={<Avatar src={this.props.avatar} role="presentation" />}
                     />
                     <Media aspectRatio='1-1'>
@@ -37,8 +39,15 @@ class AvatarProductCard extends Component {
                     </Media>
                     <CardText>
                         <RatingStar rating={ratingCount ? totalRating / ratingCount : 0} />
-                        <div>{this.props.artist}</div>
-                        <div>{this.props.price}€</div>
+                        <div onClick={this.goToStore}>by <span style={{
+                            color: 'red',
+                            textTransform: 'uppercase',
+                            cursor: 'pointer',
+                            fontFamily: 'Merienda One'
+                        }}>{this.props.artist}</span></div>
+                        <div style={{
+                            color: 'grey'
+                        }}>{this.props.price}€</div>
                     </CardText>
                 </Card>
             </div>
@@ -46,4 +55,4 @@ class AvatarProductCard extends Component {
     }
 }
 
-export default AvatarProductCard;
+export default withRouter(AvatarProductCard);

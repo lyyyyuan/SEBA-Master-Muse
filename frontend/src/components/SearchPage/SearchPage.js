@@ -64,7 +64,13 @@ class SearchPage extends Component {
                     <div className='search-results'>
                         {
                             !loading &&
-                            items.map((item, i) => <AvatarProductCard key={i} {...item} artist={artists[i].store.name} avatar={artists[i].profilePicUrl} />)
+                            items.map((item, i) => <AvatarProductCard 
+                            key={i} 
+                            {...item} 
+                            artist={artists[i].store.name} 
+                            avatar={artists[i].profilePicUrl} 
+                            artistId={artists[i]._id}
+                            />)
                         }
                     </div>
                 </div>
