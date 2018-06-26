@@ -59,7 +59,7 @@ class StoreCard extends Component {
                     onHide={this.hideDialog}
                     focusOnMount={false}
                 >
-                    <HorizontalChart/>
+                    <HorizontalChart distribution={this.props.distribution}/>
                 </DialogContainer>
 
                 <Card raise>

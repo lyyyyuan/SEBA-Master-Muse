@@ -49,5 +49,11 @@ export default class StoreService {
             { userId, itemId }
         )
     }
-
+    //add new
+    static getRatingDistribution = async (userId, itemId) => {
+        return await AsyncHttpService.get(
+            `${StoreService.baseURL()}/getRatingDistribution`,
+            { userId, itemId }
+        )
+    }
 }

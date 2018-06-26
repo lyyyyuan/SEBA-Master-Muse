@@ -6,10 +6,10 @@ import { Media } from 'react-md';
 import UserService from '../../services/UserService';
 
 
-
 const card = (key, item) =>
     <StoreCard key={key} id={item._id} title={item.title} image={item.thumbnail}
         category={Object.values(item.categories).toString()}
+        distribution={item.ratingDistribution}
         stock={`${item.stock} in Stock`}
         rating={item.rating}
         price={item.price} data={data}
