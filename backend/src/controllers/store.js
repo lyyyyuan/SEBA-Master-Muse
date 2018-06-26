@@ -50,18 +50,26 @@ const addRevenue = async (req, res) => {
 const rate = async (req, res) => {
     const {
         userId,
+        itemId,
         rating,
     } = req.body;
+    //I am not sure if it's right, because it indicates rating is an unused constant. It might work, I referred to the link
+    //https://stackoverflow.com/questions/42223352/mongodb-update-array-element-of-a-document-by-index-in-nodejs
+    const item=await ItemModel.findByIdAndUpdate(itemId,{
+        $inc: {
+            ['ratingDistribution.${rating}']: 1
+         },
 
+    });
+    //I am not sure whether the userId means the store owner's Id or buyer's Id
     const user = await UserModel.findByIdAndUpdate(userId, {
         $inc: {
-            'store.totalRating': rating,
             'store.ratingCount': 1,
         },
     });
 
     res.status(200).json({
-        totalRating: user.store.totalRating + rating,
+        ratingDistribution: item.ratingDistribution,
         ratingCount: user.store.ratingCount + 1,
     });
 };
@@ -96,16 +104,19 @@ const storeStats = async (req, res) => {
     const itemSold = orders.reduce((prev, next) => prev + next.quantity, 0);
     let totalRating=0;
     let i=1;
-    user.store.ratingDistribution.forEach(function (elem) {
-        totalRating+=elem*i;
-        i++;
+    itemIds.forEach(function(elem) {
+        user.store.items.findById(elem,function (item) {
+            item.ratingDistribution.forEach(function (elem) {
+                totalRating += elem * i;
+                i++;
+            });
+        });
     });
     res.status(200).json({
         itemSold,
         revenue: user.store.revenue,
         visits: user.store.visits,
         //rating: user.store.totalRating / (user.store.ratingCount || 1),
-        ratingDistribution:user.store.ratingDistribution,
         rating:totalRating/(user.store.ratingCount || 1)
 
     });
@@ -115,8 +126,18 @@ const getStock = async (req, res) => {
     const {userId, itemId} = req.query;
     const user = await UserModel.findById(userId);
     const items = user.store.items;
-    const {stock} = items.filter((item) => item.itemId.toString() === itemId.toString())[0];
+    // I add .stock, as the 0 index can only get the first object right?
+    const {stock} = items.filter((item) => item.itemId.toString() === itemId.toString())[0].stock;
     res.status(200).json({stock});
+};
+
+//add this new function
+const getRatingDistribution = async (req, res) => {
+    const {userId, itemId} = req.query;
+    const user = await UserModel.findById(userId);
+    const items = user.store.items;
+    const {ratingDistribution} = items.filter((item) => item.itemId.toString() === itemId.toString())[0].ratingDistribution;
+    res.status(200).json({ratingDistribution});
 };
 
 module.exports = {
@@ -127,4 +148,5 @@ module.exports = {
     listItems,
     storeStats,
     getStock,
+    getRatingDistribution
 };

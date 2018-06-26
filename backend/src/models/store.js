@@ -19,10 +19,10 @@ const StoreSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    totalRating: {
-        type: Number,
-        default: 0,
-    },
+    //totalRating: {
+      //  type: Number,
+       // default: 0,
+    //},
     about: String,
     items: {
         type: [
@@ -30,6 +30,10 @@ const StoreSchema = new mongoose.Schema({
                 itemId: mongoose.SchemaTypes.ObjectId,
                 stock: Number,
                 _id: false,
+                ratingDistribution:{
+                    type:[Number],
+                    default:[0,0,0,0,0]
+                }
             },
         ],
     },

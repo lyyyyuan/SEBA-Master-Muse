@@ -12,5 +12,5 @@ router.post('/rate', StoreController.rate);
 router.get('/item/:userId', StoreController.listItems);
 router.get('/stats/:userId', StoreController.storeStats);
 router.get('/stock', StoreController.getStock);
-
+router.get('/getRatingDistribution', StoreController.getRatingDistribution);
 module.exports = router;
