@@ -3,9 +3,6 @@ import { Checkbox, Divider, Slider } from 'react-md';
 import './SearchFilter.css'
 import categories from '../../Data/categories';
 
-const minValue = 10;
-const maxValue = 1000;
-
 
 class SearchFilter extends Component {
 
@@ -26,6 +23,14 @@ class SearchFilter extends Component {
 
         this.setState({ categoryFilter });
         this.props.onFilterChange(this.state);
+    }
+
+    onPriceMinChange = (value) => {
+        this.props.onPriceChange(value, this.props.maxPrice);
+    }
+
+    onPriceMaxChange = (value) => {
+        this.props.onPriceChange(this.props.minPrice, value);
     }
 
     renderCheckboxes = (categories) => {
@@ -52,14 +57,28 @@ class SearchFilter extends Component {
     }
 
     render() {
+        const {minPrice, maxPrice} = this.props;
         return (
             <div className='filter-container'>
                 {this.renderCheckboxes(categories)}
                 <h3 className='filter-header'>Minimum Price</h3>
-                <Slider editable defaultValue={minValue} min={minValue} max={maxValue} id="continuous-plain-slider" />
+                <Slider
+                    editable
+                    defaultValue={minPrice}
+                    min={minPrice}
+                    max={maxPrice}
+                    id="continuous-plain-slider"
+                    onChange={this.onPriceMinChange}
+                />
                 <Divider />
                 <h3 className='filter-header'>Maximum Price</h3>
-                <Slider defaultValue={maxValue} min={minValue} max={maxValue} editable id="continuous-plain-slider" />
+                <Slider
+                    defaultValue={maxPrice}
+                    min={minPrice}
+                    max={maxPrice}
+                    editable
+                    id="continuous-plain-slider"
+                    onChange={this.onPriceMaxChange} />
             </div>
         );
     }
