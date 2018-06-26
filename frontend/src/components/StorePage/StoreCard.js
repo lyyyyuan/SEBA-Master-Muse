@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import CardFront from './CardFront'
-import HorizontalChart from './HorizontalChart'
+import React, { Component } from 'react';
+import HorizontalChart from './HorizontalChart';
 import { Card, CardText, CardTitle, Media, Button, DialogContainer, FontIcon } from 'react-md';
 import RatingStar from '../RatingStar/RatingStar';
 import { withRouter } from 'react-router-dom';
-import DialogChart from '../DialogChart/DialogChart';
+import DialogChart from './DialogChart';
 import ItemService from '../../services/ItemService';
 
 class StoreCard extends Component {
@@ -60,7 +59,7 @@ class StoreCard extends Component {
                     onHide={this.hideDialog}
                     focusOnMount={false}
                 >
-                    <HorizontalChart data={this.props.data} />
+                    <HorizontalChart/>
                 </DialogContainer>
 
                 <Card raise>

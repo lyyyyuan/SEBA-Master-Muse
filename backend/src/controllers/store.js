@@ -94,12 +94,20 @@ const storeStats = async (req, res) => {
     );
     orders = orders.reduce((prev, next) => [...prev, ...next], []);
     const itemSold = orders.reduce((prev, next) => prev + next.quantity, 0);
-
+    let totalRating=0;
+    let i=1;
+    user.store.ratingDistribution.forEach(function (elem) {
+        totalRating+=elem*i;
+        i++;
+    });
     res.status(200).json({
         itemSold,
         revenue: user.store.revenue,
         visits: user.store.visits,
-        rating: user.store.totalRating / (user.store.ratingCount || 1),
+        //rating: user.store.totalRating / (user.store.ratingCount || 1),
+        ratingDistribution:user.store.ratingDistribution,
+        rating:totalRating/(user.store.ratingCount || 1)
+
     });
 };
 
@@ -110,7 +118,6 @@ const getStock = async (req, res) => {
     const {stock} = items.filter((item) => item.itemId.toString() === itemId.toString())[0];
     res.status(200).json({stock});
 };
-
 
 module.exports = {
     changeName,

@@ -38,6 +38,9 @@ const ItemSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    ratingDistribution:{
+        type:[Number],
+    }
 });
 
 ItemSchema.set('versionKey', false);
