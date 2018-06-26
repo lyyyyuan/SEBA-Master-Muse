@@ -11,6 +11,8 @@ class SearchPage extends Component {
         this.state = {
             loading: true,
             items: [],
+            filters: {},
+            filteredItems: [],
         }
     }
 
@@ -26,18 +28,44 @@ class SearchPage extends Component {
     async fetchData(props) {
         const propsRef = props || this.props;
         const { keyword } = propsRef.query;
-        const items = await ItemService.findItems(keyword);
+        let items = await ItemService.findItems(keyword);
         const artists = await Promise.all(items.map(item => ItemService.getArtist(item._id)));
+        items = items.map((item, i) => {
+            // item = item.toObject();
+            item.artist = artists[i];
+            return item;
+        });
         this.setState({
             loading: false,
             items,
-            artists
+            filteredItems: items,
         });
+    }
+
+    filterCategory = (items, filters) => {
+        const {categoryFilter} = filters;
+        if (categoryFilter === undefined || categoryFilter.length === 0) return items;
+        return items.filter(
+            item => Object.values(item.categories).reduce(
+                (prev, next) => categoryFilter.includes(next) || prev, false
+            )
+        );
+    }
+
+    filterItems = (filters) => {
+        const {items} = this.state;
+        const filteredItems = this.filterCategory(items, filters);
+        this.setState({filteredItems});
+    }
+
+    onFilterChange = (filters) => { 
+        this.setState({filters});
+        this.filterItems(filters || {});
     }
 
 
     render() {
-        const { loading, items, artists } = this.state;
+        const { loading, filteredItems} = this.state;
         return (
             <Page>
                 <div style={{
@@ -58,18 +86,15 @@ class SearchPage extends Component {
                             paddingRight: '10px',
                             paddingLeft: '10px'
                         }}>
-                            <SearchFilter />
+                            <SearchFilter onFilterChange={this.onFilterChange} />
                         </div>
                     </div>
                     <div className='search-results'>
                         {
                             !loading &&
-                            items.map((item, i) => <AvatarProductCard 
+                            filteredItems.map((item, i) => <AvatarProductCard 
                             key={i} 
                             {...item} 
-                            artist={artists[i].store.name} 
-                            avatar={artists[i].profilePicUrl} 
-                            artistId={artists[i]._id}
                             />)
                         }
                     </div>

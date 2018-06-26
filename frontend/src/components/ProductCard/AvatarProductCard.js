@@ -10,7 +10,7 @@ class AvatarProductCard extends Component {
     }
 
     goToStore = () => {
-        this.props.history.push(`/store/${this.props.artistId}`)
+        this.props.history.push(`/store/${this.props.artist._id}`)
     }
 
     render() {
@@ -28,7 +28,7 @@ class AvatarProductCard extends Component {
                     <CardTitle
                         className='card-title'
                         title={this.props.title}
-                        avatar={<Avatar src={this.props.avatar} role="presentation" />}
+                        avatar={<Avatar src={this.props.artist.profilePicUrl} role="presentation" />}
                     />
                     <Media aspectRatio='1-1'>
                         <img src={this.props.thumbnail} style={{
@@ -44,7 +44,7 @@ class AvatarProductCard extends Component {
                             textTransform: 'uppercase',
                             cursor: 'pointer',
                             fontFamily: 'Merienda One'
-                        }}>{this.props.artist}</span></div>
+                        }}>{this.props.artist.store.name}</span></div>
                         <div style={{
                             color: 'grey'
                         }}>{this.props.price}€</div>
